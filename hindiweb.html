@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>प्रभाकर - सौर ऊर्जा संचालित अन्वेषण रोवर</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #256528;
+            --light-green: #4caf50;
+            --dark-green: #1b5e20;
+            --accent-green: #81c784;
+            --text-dark: #333;
+            --text-light: #f5f5f5;
+            --background-light: #f9f9f9;
+            --card-bg: #ffffff;
+            --gradient: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            --header-gradient: linear-gradient(135deg, #1b5e20, #2e7d32, #4caf50);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--header-gradient);
+            color: var(--text-light);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #ffcc00, #ff9900);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #ffffff, #e8f5e9);
+            -webkit-background-clip: text;
+            background-clip: text; /* Standard property for compatibility */
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        .logo-subtitle {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #e8f5e9;
+            margin-top: -5px;
+            letter-spacing: 1.5px;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 0.8rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: #e8f5e9;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        nav ul li a:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffcc00;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        nav ul li a:hover:before {
+            width: 100%;
+        }
+        
+        /* Language Buttons */
+        .language-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--primary-green);
+            border: 2px solid white;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .bengali-btn:hover {
+            border-color: #008000;
+        }
+
+        .hindi-btn:hover {
+            border-color: #008000;
+        }
+
+        .lang-btn i {
+            font-size: 1.1rem;
+        }
+     
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-light);
+            text-align: center;
+            padding: 10rem 0;
+            position: relative;
+        }
+        
+        .hero h2 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.5s ease;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 2s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-green);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover:after {
+            animation: ripple 1s ease-out;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--primary-green);
+            position: relative;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: var(--gradient);
+            margin: 15px auto;
+            border-radius: 3px;
+        }
+        
+        /* About Rover Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .rover-image {
+            background: var(--gradient);
+            height: 400px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s;
+        }
+        
+        .rover-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .about-text h3 {
+            margin-bottom: 1.5rem;
+            color: var(--dark-green);
+            font-size: 1.8rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            border-top: 5px solid var(--light-green);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-green);
+        }
+        
+        /* Data Section */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .data-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            border-left: 5px solid var(--light-green);
+        }
+        
+        .data-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .data-card i {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        .data-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-green);
+        }
+        
+        .data-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin: 1rem 0;
+        }
+        
+        .data-unit {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        /* Team Section */
+        .team {
+            background-color: #f0f7f0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .team-member {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            text-align: center;
+            position: relative;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-img {
+            height: 250px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .member-img:after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .member-info {
+            padding: 2rem;
+        }
+        
+        .member-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark-green);
+            font-size: 1.4rem;
+        }
+        
+        .member-role {
+            color: var(--primary-green);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info {
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary-green);
+            width: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-green);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-green);
+            transform: translateY(-3px);
+        }
+        
+        /* Technology Section */
+        .tech-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        
+        .tech-tab {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid var(--primary-green);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .tech-tab.active {
+            background: var(--primary-green);
+            color: white;
+        }
+        
+        .tech-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tech-content.active {
+            display: block;
+        }
+        
+        .tech-detail {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .tech-detail h3 {
+            margin-bottom: 1.5rem;
+            color: var(--dark-green);
+            font-size: 1.6rem;
+        }
+        
+        .tech-detail ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-detail li {
+            margin-bottom: 0.8rem;
+        }
+        
+        /* Media Section */
+        .media {
+            background-color: #f0f7f0;
+        }
+        
+        .media-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .media-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .preview-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            transition: transform 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .preview-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .preview-date {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .media-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 15px;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            position: relative;
+            animation: modalFadeIn 0.5s;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary-green);
+        }
+        
+        .media-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid var(--light-green);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active {
+            background: var(--light-green);
+            color: white;
+        }
+        
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .media-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .media-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .media-date {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        /* Research Papers */
+        .papers-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .paper-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            border-left: 5px solid var(--light-green);
+        }
+        
+        .paper-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .paper-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-green);
+            font-size: 1.3rem;
+        }
+        
+        .paper-meta {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .paper-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .paper-link:hover {
+            color: var(--dark-green);
+        }
+        
+        /* Institute & University Sections */
+        .institute-info, .university-info {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+        }
+        
+        .institute-logo, .university-logo {
+            background: var(--gradient);
+            height: 200px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        
+        .institute-details h3, .university-details h3 {
+            margin-bottom: 1.5rem;
+            color: var(--dark-green);
+            font-size: 1.6rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--gradient);
+            color: var(--text-light);
+            padding: 4rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 12px;
+            font-size: 1.4rem;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-green);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-green);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            transition: all 0.3s;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-green);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 1;
+            }
+            20% {
+                transform: scale(25, 25);
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(40, 40);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content, .institute-info, .university-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .rover-image {
+                height: 300px;
+            }
+            
+            .header-right {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .logo-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .header-right {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .language-buttons {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .logo-container {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 7rem 0;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+            
+            .feature-card, .team-member, .paper-card {
+                padding: 1.5rem;
+            }
+            
+            .institute-info, .university-info {
+                padding: 2rem;
+            }
+            
+            .logo-title {
+                font-size: 1.8rem;
+            }
+            
+            .logo-img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .language-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .lang-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <div class="logo-img">
+                        <!-- Logo placeholder - in a real implementation, you would use an actual image -->
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1 class="logo-title">प्रभाकर</h1>
+                        <div class="logo-subtitle">सौर ऊर्जा संचालित अन्वेषण रोवर</div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="header-right">
+                        <div class="language-buttons">
+                            <a href="C:\Users\nilot\OneDrive\Documents\zWebsites\englishweb.html" class="lang-btn bengali-btn">
+                                <i class="fas fa-language"></i>
+                                <span>अंग्रेजी</span>
+                            </a>
+                            <a href="C:\Users\nilot\OneDrive\Documents\zWebsites\bengaliweb.html" class="lang-btn hindi-btn">
+                                <i class="fas fa-language"></i>
+                                <span>बांग्ला</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-container">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="#about">परिचय</a></li>
+                        <li><a href="#team">टीम</a></li>
+                        <li><a href="#technology">प्रौद्योगिकी</a></li>
+                        <li><a href="#media">मीडिया</a></li>
+                        <li><a href="#data">डेटा</a></li>
+                        <li><a href="#research">शोध पत्र</a></li>
+                        <li><a href="#institute">संस्थान</a></li>
+                        <li><a href="#university">विश्वविद्यालय</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>प्रभाकर: सौर ऊर्जा संचालित अन्वेषण रोवर</h2>
+            <p>एक अभिनव स्वायत्त वाहन जो टिकाऊ सौर प्रौद्योगिकी का उपयोग करके पर्यावरण निगरानी, मिट्टी विश्लेषण और दूरस्थ स्थानों के मल्टीमीडिया दस्तावेजीकरण के लिए डिज़ाइन किया गया है।</p>
+            <a href="#about" class="btn">प्रोजेक्ट एक्सप्लोर करें</a>
+        </div>
+    </section>
+
+    <!-- About Prabhakar Section -->
+    <section id="about" class="about-rover">
+        <div class="container">
+            <h2 class="section-title">प्रभाकर के बारे में</h2>
+            <div class="about-content">
+                <div class="rover-image">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="about-text">
+                    <h3>पर्यावरण अन्वेषण में क्रांति</h3>
+                    <p>प्रभाकर एक अत्याधुनिक सौर ऊर्जा संचालित रोवर है जिसे दूरस्थ वातावरण का स्वायत्त रूप से अन्वेषण और निगरानी करते हुए मूल्यवान वैज्ञानिक डेटा एकत्र करने के लिए डिज़ाइन किया गया है। बंगाली शब्द "सूर्य-संचालित" के नाम पर रखा गया यह अभिनव वाहन टिकाऊ अन्वेषण प्रौद्योगिकी में एक महत्वपूर्ण प्रगति का प्रतिनिधित्व करता है।</p>
+                    <p>अत्याधुनिक सेंसर, उच्च-रिज़ॉल्यूशन कैमरों और उन्नत सौर ट्रैकिंग सिस्टम से लैस, प्रभाकर मानवीय हस्तक्षेप के बिना चुनौतीपूर्ण वातावरण में लंबे समय तक संचालित हो सकता है। इसका प्राथमिक मिशन पर्यावरणीय परिस्थितियों को दस्तावेज करना, मिट्टी के गुणों का विश्लेषण करना और दूरस्थ स्थानों की मल्टीमीडिया सामग्री कैप्चर करना है जहाँ मनुष्यों के लिए पहुँचना कठिन है।</p>
+                    <p>रोवर का डिज़ाइन स्थिरता पर जोर देता है, जो अपनी प्राथमिक शक्ति स्रोत के रूप में नवीकरणीय सौर ऊर्जा का उपयोग करता है। यह दृष्टिकोण पर्यावरणीय प्रभाव को कम करते हुए क्षेत्र की स्थितियों में परिचालन अवधि को अधिकतम करता है।</p>
+                </div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-solar-panel"></i>
+                    <h3>सौर ऊर्जा संचालित</h3>
+                    <p>दूरस्थ वातावरण में निरंतर संचालन के लिए उन्नत ट्रैकिंग प्रौद्योगिकी के साथ उच्च-दक्षता वाले सौर पैनल।</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-camera"></i>
+                    <h3>फोटो और वीडियो दस्तावेजीकरण</h3>
+                    <p>व्यापक पर्यावरणीय दस्तावेजीकरण के लिए 360-डिग्री रोटेशन क्षमता वाले दोहरे 4K कैमरे।</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-vial"></i>
+                    <h3>मिट्टी विश्लेषण</h3>
+                    <p>रीयल-टाइम पर्यावरण विश्लेषण के लिए आर्द्रता सेंसर के साथ एकीकृत मिट्टी नमूनाकरण प्रणाली।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Section -->
+    <section id="data" class="data">
+        <div class="container">
+            <h2 class="section-title">माप डेटा</h2>
+            <div class="data-grid">
+                <div class="data-card">
+                    <i class="fas fa-battery-full"></i>
+                    <h3>बैटरी प्रतिशत</h3>
+                    <div class="data-value">78%</div>
+                    <p class="data-unit">अंतिम अपडेट: 2 घंटे पहले</p>
+                </div>
+                <div class="data-card">
+                    <i class="fas fa-thermometer-half"></i>
+                    <h3>तापमान</h3>
+                    <div class="data-value">32°C</div>
+                    <p class="data-unit">अंतिम अपडेट: 15 मिनट पहले</p>
+                </div>
+                <div class="data-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>वायु आर्द्रता</h3>
+                    <div class="data-value">65%</div>
+                    <p class="data-unit">अंतिम अपडेट: 15 मिनट पहले</p>
+                </div>
+                <div class="data-card">
+                    <i class="fas fa-seedling"></i>
+                    <h3>मिट्टी की आर्द्रता</h3>
+                    <div class="data-value">42%</div>
+                    <p class="data-unit">अंतिम अपडेट: 30 मिनट पहले</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">हमारी टीम</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-img">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>निलोत्पल बोस</h3>
+                        <div class="member-role">प्रोजेक्ट लीड और रोबोटिक्स इंजीनियर</div>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                            <p><i class="fas fa-envelope"></i> priya.sharma@example.com</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>राहुल वर्मा</h3>
+                        <div class="member-role">सॉफ्टवेयर और एआई विशेषज्ञ</div>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone"></i> +91 87654 32109</p>
+                            <p><i class="fas fa-envelope"></i> rahul.verma@example.com</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>अनन्या पटेल</h3>
+                        <div class="member-role">हार्डवेयर और सेंसर एकीकरण</div>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone"></i> +91 76543 21098</p>
+                            <p><i class="fas fa-envelope"></i> ananya.patel@example.com</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="technology">
+        <div class="container">
+            <h2 class="section-title">प्रौद्योगिकी</h2>
+            <div class="tech-tabs">
+                <div class="tech-tab active" data-tab="solar">सौर प्रौद्योगिकी</div>
+                <div class="tech-tab" data-tab="navigation">नेविगेशन सिस्टम</div>
+                <div class="tech-tab" data-tab="sensors">सेंसर ऐरे</div>
+                <div class="tech-tab" data-tab="communication">संचार</div>
+            </div>
+            
+            <div class="tech-content active" id="solar-content">
+                <div class="tech-detail">
+                    <h3>उन्नत सौर ऊर्जा प्रणाली</h3>
+                    <p>प्रभाकर उच्च-दक्षता वाले मोनोक्रिस्टलाइन सौर पैनलों का उपयोग करता है जिसमें एक उन्नत ट्रैकिंग सिस्टम होता है जो दिन भर सूर्य के पथ का अनुसरण करता है, जिससे स्थिर पैनलों की तुलना में ऊर्जा अवशोषण 40% तक बढ़ जाता है।</p>
+                    <ul>
+                        <li>28% दक्षता वाली ट्रिपल-जंक्शन सौर कोशिकाएं</li>
+                        <li>द्वि-अक्ष सौर ट्रैकिंग सिस्टम</li>
+                        <li>बैटरी अनुकूलन के साथ बुद्धिमान बिजली प्रबंधन</li>
+                        <li>निरंतर संचालन के लिए बैकअप बैटरी सिस्टम</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tech-content" id="navigation-content">
+                <div class="tech-detail">
+                    <h3>स्वायत्त नेविगेशन सिस्टम</h3>
+                    <p>प्रभाकर जीपीएस, जड़त्वीय मापन इकाइयों (आईएमयू) और कंप्यूटर विजन को जोड़ने वाली एक परिष्कृत नेविगेशन प्रणाली का उपयोग करता है जो बाधाओं से बचते हुए चुनौतीपूर्ण इलाके को स्वायत्त रूप से पार कर सकती है।</p>
+                    <ul>
+                        <li>सेंटीमीटर-स्तरीय सटीकता के लिए दोहरी-आवृत्ति जीपीएस</li>
+                        <li>3डी पर्यावरण मानचित्रण के लिए स्टीरियो विजन कैमरे</li>
+                        <li>बाधा पहचान और परिहार के लिए लिडार</li>
+                        <li>एआई-संचालित पथ नियोजन एल्गोरिदम</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tech-content" id="sensors-content">
+                <div class="tech-detail">
+                    <h3>व्यापक सेंसर ऐरे</h3>
+                    <p>रोवर रीयल-टाइम में पर्यावरणीय परिस्थितियों, मिट्टी के गुणों और वायुमंडलीय मापदंडों की निगरानी के लिए सेंसरों की एक विस्तृत श्रृंखला से लैस है।</p>
+                    <ul>
+                        <li>मल्टी-स्पेक्ट्रल मिट्टी विश्लेषण सेंसर</li>
+                        <li>वायुमंडलीय तापमान, दबाव और आर्द्रता सेंसर</li>
+                        <li>मिट्टी की नमी और संरचना सेंसर</li>
+                        <li>वायु गुणवत्ता निगरानी सेंसर</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tech-content" id="communication-content">
+                <div class="tech-detail">
+                    <h3>मजबूत संचार प्रणाली</h3>
+                    <p>प्रभाकर में एक मल्टी-मोडल संचार प्रणाली है जो दूरस्थ स्थानों से बेस स्टेशन तक विश्वसनीय डेटा ट्रांसमिशन सुनिश्चित करती है।</p>
+                    <ul>
+                        <li>लंबी दूरी की रेडियो संचार (10 किमी तक)</li>
+                        <li>सैटेलाइट संचार बैकअप सिस्टम</li>
+                        <li>रीयल-टाइम वीडियो स्ट्रीमिंग क्षमता</li>
+                        <li>मल्टी-रोवर संचालन के लिए मेश नेटवर्किंग</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Section -->
+    <section id="media" class="media">
+        <div class="container">
+            <h2 class="section-title">मीडिया और दस्तावेजीकरण</h2>
+            <div class="media-intro">
+                <p>प्रभाकर द्वारा अपने अन्वेषण मिशनों के दौरान कैप्चर किए गए दृश्य दस्तावेजीकरण का अन्वेषण करें। हमारे रोवर ने शुष्क रेगिस्तानों से लेकर हरे-भरे वनस्पति क्षेत्रों तक विविध वातावरणों को दस्तावेज किया है।</p>
+            </div>
+            
+            <div class="media-preview">
+                <div class="preview-item">
+                    <i class="fas fa-mountain"></i>
+                    <div class="preview-date">15 अप्रैल, 2023</div>
+                </div>
+                <div class="preview-item">
+                    <i class="fas fa-tree"></i>
+                    <div class="preview-date">22 मई, 2023</div>
+                </div>
+                <div class="preview-item">
+                    <i class="fas fa-water"></i>
+                    <div class="preview-date">8 जून, 2023</div>
+                </div>
+                <div class="preview-item">
+                    <i class="fas fa-cloud-sun"></i>
+                    <div class="preview-date">14 जुलाई, 2023</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="#" class="btn media-btn" id="view-all-media">
+                    <i class="fas fa-images"></i>
+                    <span>सभी मीडिया देखें</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Papers Section -->
+    <section id="research" class="papers">
+        <div class="container">
+            <h2 class="section-title">शोध पत्र</h2>
+            <div class="papers-list">
+                <div class="paper-card">
+                    <h3>असंरचित वातावरण में सौर ऊर्जा संचालित रोवर्स का स्वायत्त नेविगेशन</h3>
+                    <div class="paper-meta">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>मार्च 2023</span>
+                        <i class="fas fa-user-friends"></i>
+                        <span>शर्मा, पी., वर्मा, आर., पटेल, ए.</span>
+                    </div>
+                    <p>यह पेपर असंरचित बाहरी वातावरण में सौर ऊर्जा संचालित रोवर्स के लिए स्वायत्त नेविगेशन के एक नवीन दृष्टिकोण को प्रस्तुत करता है, जो कंप्यूटर विजन को सेंसर फ्यूजन तकनीकों के साथ जोड़ता है।</p>
+                    <a href="#" class="paper-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        पूरा शोध पत्र पढ़ें
+                    </a>
+                </div>
+                
+                <div class="paper-card">
+                    <h3>लंबी अवधि के सौर रोवर मिशनों के लिए ऊर्जा प्रबंधन प्रणाली</h3>
+                    <div class="paper-meta">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>जनवरी 2023</span>
+                        <i class="fas fa-user-friends"></i>
+                        <span>वर्मा, आर., शर्मा, पी.</span>
+                    </div>
+                    <p>हम एक बुद्धिमान ऊर्जा प्रबंधन प्रणाली प्रस्तावित करते हैं जो परिवर्तनशील मौसम की स्थितियों में विस्तारित रोवर मिशनों के लिए बिजली की खपत और सौर ऊर्जा संग्रह को अनुकूलित करती है।</p>
+                    <a href="#" class="paper-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        पूरा शोध पत्र पढ़ें
+                    </a>
+                </div>
+                
+                <div class="paper-card">
+                    <h3>स्वायत्त रोबोटिक प्लेटफॉर्म का उपयोग करके बहु-सेंसर मिट्टी विश्लेषण</h3>
+                    <div class="paper-meta">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>नवंबर 2022</span>
+                        <i class="fas fa-user-friends"></i>
+                        <span>पटेल, ए., शर्मा, पी., वर्मा, आर.</span>
+                    </div>
+                    <p>यह अध्ययन त्वरित पर्यावरणीय मूल्यांकन और मिट्टी वर्गीकरण के लिए स्वायत्त रोवर्स पर लगे मल्टी-स्पेक्ट्रल मिट्टी सेंसरों की प्रभावशीलता का मूल्यांकन करता है।</p>
+                    <a href="#" class="paper-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        पूरा शोध पत्र पढ़ें
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Institute Section -->
+    <section id="institute" class="institute">
+        <div class="container">
+            <h2 class="section-title">हमारा संस्थान</h2>
+            <div class="institute-info">
+                <div class="institute-logo">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="institute-details">
+                    <h3>एडवांस्ड रोबोटिक्स रिसर्च इंस्टीट्यूट</h3>
+                    <p>एडवांस्ड रोबोटिक्स रिसर्च इंस्टीट्यूट (ARRI) रोबोटिक्स और स्वायत्त प्रणालियों को आगे बढ़ाने के लिए समर्पित एक प्रमुख अनुसंधान सुविधा है। अत्याधुनिक प्रयोगशालाओं और शोधकर्ताओं की एक बहु-विषयक टीम के साथ, ARRI पर्यावरण निगरानी, आपदा प्रतिक्रिया और अन्वेषण के लिए अभिनव समाधान विकसित करने पर केंद्रित है।</p>
+                    <p>हमारा मिशन रोबोटिक प्रौद्योगिकी की सीमाओं को आगे बढ़ाना है जबकि स्थिरता और पर्यावरणीय जिम्मेदारी सुनिश्चित करना है। प्रभाकर परियोजना चुनौतीपूर्ण वातावरण में संचालित होने वाली स्वायत्त प्रणालियों को बनाने के लिए हमारी प्रतिबद्धता का प्रतिनिधित्व करती है जबकि पारिस्थितिक प्रभाव को कम करती है।</p>
+                    <a href="#" class="btn" style="margin-top: 1.5rem;">संस्थान वेबसाइट देखें</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- University Section -->
+    <section id="university" class="university">
+        <div class="container">
+            <h2 class="section-title">विश्वविद्यालय संबद्धता</h2>
+            <div class="university-info">
+                <div class="university-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="university-details">
+                    <h3>नेशनल इंस्टीट्यूट ऑफ टेक्नोलॉजी, कुरुक्षेत्र</h3>
+                    <p>नेशनल इंस्टीट्यूट ऑफ टेक्नोलॉजी, कुरुक्षेत्र (NIT KKR) भारत के प्रमुख तकनीकी विश्वविद्यालयों में से एक है, जो इंजीनियरिंग शिक्षा और अनुसंधान में उत्कृष्टता के लिए जाना जाता है। 1963 में स्थापित, यह संस्थान तकनीकी नवाचार के अग्रभाग में रहा है और इंजीनियरिंग और प्रौद्योगिकी के विभिन्न क्षेत्रों में कई नेता तैयार किए हैं।</p>
+                    <p>प्रभाकर परियोजना एडवांस्ड रोबोटिक्स रिसर्च इंस्टीट्यूट और एनआईटी कुरुक्षेत्र के इलेक्ट्रॉनिक्स और कम्युनिकेशन इंजीनियरिंग विभाग के बीच एक सहयोगात्मक प्रयास है। यह साझेदारी अकादमिक उत्कृष्टता के साथ अत्याधुनिक अनुसंधान को जोड़ती है ताकि स्वायत्त रोबोटिक्स के क्षेत्र को आगे बढ़ाया जा सके।</p>
+                    <a href="#" class="btn" style="margin-top: 1.5rem;">विश्वविद्यालय वेबसाइट देखें</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>प्रभाकर के बारे में</h3>
+                    <p>प्रभाकर एक सौर ऊर्जा संचालित स्वायत्त रोवर है जो दूरस्थ स्थानों में पर्यावरण निगरानी और अन्वेषण के लिए डिज़ाइन किया गया है।</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>त्वरित लिंक</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> परिचय</a></li>
+                        <li><a href="#team"><i class="fas fa-chevron-right"></i> टीम</a></li>
+                        <li><a href="#technology"><i class="fas fa-chevron-right"></i> प्रौद्योगिकी</a></li>
+                        <li><a href="#media"><i class="fas fa-chevron-right"></i> मीडिया</a></li>
+                        <li><a href="#data"><i class="fas fa-chevron-right"></i> डेटा</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>संपर्क जानकारी</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> एडवांस्ड रोबोटिक्स रिसर्च इंस्टीट्यूट, एनआईटी कैंपस, कुरुक्षेत्र, हरियाणा 136119</a></li>
+                        <li><a href="mailto:contact@prabhakarproject.in"><i class="fas fa-envelope"></i> contact@prabhakarproject.in</a></li>
+                        <li><a href="tel:+911744236521"><i class="fas fa-phone"></i> +91-1744-236521</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 प्रभाकर प्रोजेक्ट। सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Media Modal -->
+    <div class="modal" id="media-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>मीडिया गैलरी</h2>
+            
+            <div class="media-filters">
+                <div class="filter-btn active" data-filter="all">सभी</div>
+                <div class="filter-btn" data-filter="photos">तस्वीरें</div>
+                <div class="filter-btn" data-filter="videos">वीडियो</div>
+                <div class="filter-btn" data-filter="maps">मानचित्र</div>
+            </div>
+            
+            <div class="media-grid">
+                <div class="media-item" data-type="photos">
+                    <i class="fas fa-mountain"></i>
+                    <div class="media-date">15 अप्रैल, 2023</div>
+                </div>
+                <div class="media-item" data-type="photos">
+                    <i class="fas fa-tree"></i>
+                    <div class="media-date">22 मई, 2023</div>
+                </div>
+                <div class="media-item" data-type="videos">
+                    <i class="fas fa-video"></i>
+                    <div class="media-date">3 जून, 2023</div>
+                </div>
+                <div class="media-item" data-type="photos">
+                    <i class="fas fa-water"></i>
+                    <div class="media-date">8 जून, 2023</div>
+                </div>
+                <div class="media-item" data-type="maps">
+                    <i class="fas fa-map"></i>
+                    <div class="media-date">18 जून, 2023</div>
+                </div>
+                <div class="media-item" data-type="photos">
+                    <i class="fas fa-cloud-sun"></i>
+                    <div class="media-date">14 जुलाई, 2023</div>
+                </div>
+                <div class="media-item" data-type="videos">
+                    <i class="fas fa-video"></i>
+                    <div class="media-date">5 अगस्त, 2023</div>
+                </div>
+                <div class="media-item" data-type="maps">
+                    <i class="fas fa-map"></i>
+                    <div class="media-date">12 सितंबर, 2023</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tech Tabs
+        const techTabs = document.querySelectorAll('.tech-tab');
+        const techContents = document.querySelectorAll('.tech-content');
+        
+        techTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Remove active class from all tabs and contents
+                techTabs.forEach(t => t.classList.remove('active'));
+                techContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to current tab and content
+                this.classList.add('active');
+                document.getElementById(`${tabId}-content`).classList.add('active');
+            });
+        });
+        
+        // Media Modal
+        const viewMediaBtn = document.getElementById('view-all-media');
+        const mediaModal = document.getElementById('media-modal');
+        const closeModal = document.querySelector('.close-modal');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const mediaItems = document.querySelectorAll('.media-item');
+        
+        viewMediaBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            mediaModal.style.display = 'block';
+        });
+        
+        closeModal.addEventListener('click', function() {
+            mediaModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(event) {
+            if (event.target === mediaModal) {
+                mediaModal.style.display = 'none';
+            }
+        });
+        
+        // Media Filters
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                
+                // Update active filter button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter media items
+                mediaItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-type') === filter) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
