@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>প্রভাকর - সৌরশক্তিচালিত অন্বেষণ রোভার</title>
+    <title>প্রভাকর - সৌরশক্তি চালিত অনুসন্ধান রোভার</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Noto Sans Bengali', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
@@ -47,8 +47,7 @@
             background: var(--header-gradient);
             color: var(--text-light);
             padding: 0;
-            position: sticky;
-            top: 0;
+            position: static;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
@@ -98,7 +97,7 @@
             font-weight: 900;
             background: linear-gradient(to right, #ffffff, #e8f5e9);
             -webkit-background-clip: text;
-            background-clip: text; /* Standard property for compatibility */
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             letter-spacing: 1px;
@@ -123,6 +122,7 @@
         .nav-container {
             background-color: rgba(0, 0, 0, 0.2);
             padding: 0.8rem 0;
+            position: relative;
         }
         
         nav ul {
@@ -209,6 +209,165 @@
 
         .lang-btn i {
             font-size: 1.1rem;
+        }
+        
+        /* Mobile Navigation Styles */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-green);
+            border: 2px solid white;
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 8px;
+            gap: 4px;
+            transition: all 0.3s ease;
+            position: fixed;
+            left: 20px;
+            bottom: 25px;
+            transform: none;
+            z-index: 1001
+        }
+
+        .mobile-menu-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: green;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--header-gradient);
+            z-index: 2000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-nav-title {
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+        }
+
+        .close-mobile-nav {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-mobile-nav:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .mobile-nav-links li a {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .mobile-nav-links li a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: #ffcc00;
+            transform: translateX(5px);
+        }
+
+        .mobile-nav-links li a i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Hide regular nav on mobile, show hamburger */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .nav-container {
+                padding: 0.5rem 0;
+            }
+        }
+
+        /* Animation for mobile nav */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
      
         /* Hero Section */
@@ -735,7 +894,7 @@
         /* Research Papers */
         .papers-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit);
             gap: 2.5rem;
         }
         
@@ -1037,12 +1196,11 @@
             <div class="header-top">
                 <div class="logo-container">
                     <div class="logo-img">
-                        <!-- Logo placeholder - in a real implementation, you would use an actual image -->
                         <i class="fas fa-robot"></i>
                     </div>
                     <div class="logo-text">
                         <h1 class="logo-title">প্রভাকর</h1>
-                        <div class="logo-subtitle">সৌরশক্তিচালিত অন্বেষণ রোভার</div>
+                        <div class="logo-subtitle">সৌর অনুসন্ধান রোভার</div>
                     </div>
                 </div>
                 <div class="header-right">
@@ -1050,11 +1208,11 @@
                         <div class="language-buttons">
                             <a href="https://nilotpalbose20.github.io/englishweb.html" class="lang-btn bengali-btn">
                                 <i class="fas fa-language"></i>
-                                <span>ইংরেজি</span>
+                                <span>English</span>
                             </a>
                             <a href="https://nilotpalbose20.github.io/hindiweb.html" class="lang-btn hindi-btn">
                                 <i class="fas fa-language"></i>
-                                <span>হিন্দী</span>
+                                <span>हिन्दी</span>
                             </a>
                         </div>
                     </div>
@@ -1063,6 +1221,12 @@
         </div>
         <div class="nav-container">
             <div class="container">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
                 <nav>
                     <ul>
                         <li><a href="#about">পরিচিতি</a></li>
@@ -1079,11 +1243,55 @@
         </div>
     </header>
 
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-nav-title">নেভিগেশন মেনু</div>
+            <button class="close-mobile-nav" id="closeMobileNav">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#about" class="mobile-nav-link">
+                <i class="fas fa-info-circle"></i>
+                প্রভাকর সম্পর্কে
+            </a></li>
+            <li><a href="#team" class="mobile-nav-link">
+                <i class="fas fa-users"></i>
+                আমাদের দল
+            </a></li>
+            <li><a href="#technology" class="mobile-nav-link">
+                <i class="fas fa-microchip"></i>
+                প্রযুক্তি
+            </a></li>
+            <li><a href="#media" class="mobile-nav-link">
+                <i class="fas fa-photo-video"></i>
+                মিডিয়া ও ডকুমেন্টেশন
+            </a></li>
+            <li><a href="#data" class="mobile-nav-link">
+                <i class="fas fa-chart-bar"></i>
+                পরিমাপ ডেটা
+            </a></li>
+            <li><a href="#research" class="mobile-nav-link">
+                <i class="fas fa-file-alt"></i>
+                গবেষণাপত্র
+            </a></li>
+            <li><a href="#institute" class="mobile-nav-link">
+                <i class="fas fa-university"></i>
+                আমাদের ইনস্টিটিউট
+            </a></li>
+            <li><a href="#university" class="mobile-nav-link">
+                <i class="fas fa-graduation-cap"></i>
+                বিশ্ববিদ্যালয়
+            </a></li>
+        </ul>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h2>প্রভাকর: সৌরশক্তিচালিত অন্বেষণ রোভার</h2>
-            <p>একটি উদ্ভাবনী স্বায়ত্তশাসিত যান যা টেকসই সৌর প্রযুক্তি ব্যবহার করে পরিবেশগত পর্যবেক্ষণ, মৃত্তিকা বিশ্লেষণ এবং দূরবর্তী স্থানের মাল্টিমিডিয়া ডকুমেন্টেশনের জন্য ডিজাইন করা হয়েছে।</p>
+            <h2>প্রভাকর: সৌরশক্তি চালিত অনুসন্ধান রোভার</h2>
+            <p>একটি উদ্ভাবনী স্বায়ত্তশাসিত যান যা টেকসই সৌর প্রযুক্তি ব্যবহার করে পরিবেশ পর্যবেক্ষণ, মৃত্তিকা বিশ্লেষণ এবং দূরবর্তী স্থানের মাল্টিমিডিয়া ডকুমেন্টেশনের জন্য ডিজাইন করা হয়েছে।</p>
             <a href="#about" class="btn">প্রকল্পটি অন্বেষণ করুন</a>
         </div>
     </section>
@@ -1097,28 +1305,28 @@
                     <i class="fas fa-robot"></i>
                 </div>
                 <div class="about-text">
-                    <h3>পরিবেশগত অন্বেষণে বিপ্লব</h3>
-                    <p>প্রভাকর একটি অত্যাধুনিক সৌরশক্তিচালিত রোভার যা স্বায়ত্তশাসিতভাবে দূরবর্তী পরিবেশ অন্বেষণ এবং পর্যবেক্ষণ করার পাশাপাশি মূল্যবান বৈজ্ঞানিক তথ্য সংগ্রহ করার জন্য ডিজাইন করা হয়েছে। বাংলা শব্দ "সূর্য-শক্তিচালিত"-এর নামে নামকরণ করা এই উদ্ভাবনী যানটি টেকসই অন্বেষণ প্রযুক্তিতে একটি উল্লেখযোগ্য অগ্রগতির প্রতিনিধিত্ব করে।</p>
-                    <p>প্রভাকর সর্বাধুনিক সেন্সর, উচ্চ-রেজোলিউশন ক্যামেরা এবং উন্নত সৌর ট্র্যাকিং সিস্টেম দিয়ে সজ্জিত, যা মানুষের হস্তক্ষেপ ছাড়াই চ্যালেঞ্জিং পরিবেশে দীর্ঘ সময় ধরে কাজ করতে পারে। এর প্রাথমিক মিশন হল পরিবেশগত অবস্থা নথিভুক্ত করা, মাটির বৈশিষ্ট্য বিশ্লেষণ করা এবং দূরবর্তী স্থানের মাল্টিমিডিয়া কন্টেন্ট ক্যাপচার করা যা মানুষের পক্ষে অ্যাক্সেস করা কঠিন।</p>
-                    <p>রোভারের নকশা টেকসইতাকে গুরুত্ব দেয়, এর প্রাথমিক শক্তির উৎস হিসাবে নবায়নযোগ্য সৌর শক্তি ব্যবহার করে। এই পদ্ধতিটি পরিবেশগত প্রভাব কমিয়ে দেয় যখন ক্ষেত্রের অবস্থায় অপারেশনাল সময়কাল সর্বাধিক করে।</p>
+                    <h3>পরিবেশগত অনুসন্ধানে বিপ্লব</h3>
+                    <p>প্রভাকর একটি অত্যাধুনিক সৌরশক্তি চালিত রোভার যা মূল্যবান বৈজ্ঞানিক তথ্য সংগ্রহ করার সময় স্বায়ত্তশাসিতভাবে দূরবর্তী পরিবেশ অন্বেষণ এবং পর্যবেক্ষণ করার জন্য ডিজাইন করা হয়েছে। বাংলা ভাষায় সূর্যের নামাঙ্কিত এই উদ্ভাবনী যানটি টেকসই অনুসন্ধান প্রযুক্তিতে একটি উল্লেখযোগ্য অগ্রগতির প্রতিনিধিত্ব করে।</p>
+                    <p>সর্বাধুনিক সেন্সর, উচ্চ রেজোলিউশন ক্যামেরা এবং উন্নত সৌর ট্র্যাকিং সিস্টেম দিয়ে সজ্জিত, প্রভাকর মানুষের হস্তক্ষেপ ছাড়াই দুর্যোগপূর্ণ পরিবেশে দীর্ঘ সময় ধরে কাজ করতে পারে। এর প্রাথমিক মিশন হল পরিবেশগত অবস্থা নথিভুক্ত করা, মাটির বৈশিষ্ট্য বিশ্লেষণ করা এবং দূরবর্তী স্থানের মাল্টিমিডিয়া কন্টেন্ট ক্যাপচার করা যা মানুষের পক্ষে অ্যাক্সেস করা কঠিন।</p>
+                    <p>রোভারের নকশা টেকসইতাকে গুরুত্ব দেয়, এর প্রাথমিক শক্তির উৎস হিসাবে নবায়নযোগ্য সৌর শক্তি ব্যবহার করে। এই পদ্ধতিটি পরিবেশগত প্রভাব কমায় যখন ফিল্ড অবস্থায় অপারেশনাল সময়কাল সর্বাধিক করে।</p>
                 </div>
             </div>
             
             <div class="features-grid">
                 <div class="feature-card">
                     <i class="fas fa-solar-panel"></i>
-                    <h3>সৌরশক্তিচালিত</h3>
-                    <p>দূরবর্তী পরিবেশে অবিচ্ছিন্ন অপারেশনের জন্য উন্নত ট্র্যাকিং প্রযুক্তি সহ উচ্চ-দক্ষতা সৌর প্যানেল।</p>
+                    <h3>সৌরশক্তি চালিত</h3>
+                    <p>দূরবর্তী পরিবেশে অবিচ্ছিন্ন অপারেশনের জন্য উন্নত ট্র্যাকিং প্রযুক্তি সহ উচ্চ-দক্ষতার সৌর প্যানেল।</p>
                 </div>
                 <div class="feature-card">
                     <i class="fas fa-camera"></i>
                     <h3>ফটো ও ভিডিও ডকুমেন্টেশন</h3>
-                    <p>ব্যাপক পরিবেশগত ডকুমেন্টেশনের জন্য 360-ডিগ্রি ঘূর্ণন ক্ষমতা সহ ডুয়াল 4K ক্যামেরা।</p>
+                    <p>ব্যাপক পরিবেশগত ডকুমেন্টেশনের জন্য 360-ডিগ্রি রোটেশন ক্ষমতা সহ ডুয়াল 4K ক্যামেরা।</p>
                 </div>
                 <div class="feature-card">
                     <i class="fas fa-vial"></i>
                     <h3>মৃত্তিকা বিশ্লেষণ</h3>
-                    <p>রিয়েল-টাইম পরিবেশগত বিশ্লেষণের জন্য আর্দ্রতা সেন্সর সহ ইন্টিগ্রেটেড মৃত্তিকা স্যাম্পলিং সিস্টেম।</p>
+                    <p>রিয়েল-টাইম পরিবেশগত বিশ্লেষণের জন্য আর্দ্রতা সেন্সর সহ সমন্বিত মৃত্তিকা স্যাম্পলিং সিস্টেম।</p>
                 </div>
             </div>
         </div>
@@ -1143,7 +1351,7 @@
                 </div>
                 <div class="data-card">
                     <i class="fas fa-tint"></i>
-                    <h3>বায়ু আর্দ্রতা</h3>
+                    <h3>বায়ুর আর্দ্রতা</h3>
                     <div class="data-value">65%</div>
                     <p class="data-unit">সর্বশেষ আপডেট: 15 মিনিট আগে</p>
                 </div>
@@ -1168,10 +1376,10 @@
                     </div>
                     <div class="member-info">
                         <h3>নীলোৎপল বসু</h3>
-                        <div class="member-role">প্রকল্প প্রধান ও রোবোটিক্স ইঞ্জিনিয়ার</div>
+                        <div class="member-role">প্রকল্প লিড ও এমবেডেড সিস্টেমস ইঞ্জিনিয়ার</div>
                         <div class="contact-info">
                             <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-                            <p><i class="fas fa-envelope"></i> priya.sharma@example.com</p>
+                            <p><i class="fas fa-envelope"></i> nilotpal.bose@example.com</p>
                         </div>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -1185,11 +1393,11 @@
                         <i class="fas fa-user-graduate"></i>
                     </div>
                     <div class="member-info">
-                        <h3>রাহুল বর্মা</h3>
-                        <div class="member-role">সফটওয়্যার ও এআই বিশেষজ্ঞ</div>
+                        <h3>শুভাশীষ পাল</h3>
+                        <div class="member-role">হার্ডওয়্যার ও সেন্সর ইন্টিগ্রেশন বিশেষজ্ঞ</div>
                         <div class="contact-info">
                             <p><i class="fas fa-phone"></i> +91 87654 32109</p>
-                            <p><i class="fas fa-envelope"></i> rahul.verma@example.com</p>
+                            <p><i class="fas fa-envelope"></i> subhashish.paul@example.com</p>
                         </div>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -1203,11 +1411,29 @@
                         <i class="fas fa-user-graduate"></i>
                     </div>
                     <div class="member-info">
-                        <h3>অনন্যা পাটেল</h3>
-                        <div class="member-role">হার্ডওয়্যার ও সেন্সর ইন্টিগ্রেশন</div>
+                        <h3>মহাশ্বেতা ঘোষ</h3>
+                        <div class="member-role">সফটওয়্যার বিশেষজ্ঞ</div>
                         <div class="contact-info">
                             <p><i class="fas fa-phone"></i> +91 76543 21098</p>
-                            <p><i class="fas fa-envelope"></i> ananya.patel@example.com</p>
+                            <p><i class="fas fa-envelope"></i> mahashweta.ghosh@example.com</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>ড. সোমা বর্মন (মণ্ডল)</h3>
+                        <div class="member-role">ফ্যাকাল্টি উপদেষ্টা ও গবেষণা লিড</div>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone"></i> +91 65432 10987</p>
+                            <p><i class="fas fa-envelope"></i> soma.mondal@example.com</p>
                         </div>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -1233,11 +1459,11 @@
             
             <div class="tech-content active" id="solar-content">
                 <div class="tech-detail">
-                    <h3>উন্নত সৌর বিদ্যুৎ ব্যবস্থা</h3>
-                    <p>প্রভাকর উচ্চ-দক্ষতার মনোক্রিস্টালাইন সৌর প্যানেল ব্যবহার করে একটি উন্নত ট্র্যাকিং সিস্টেমের সাথে যা দিনের বেলা সূর্যের পথ অনুসরণ করে, স্থির প্যানেলের তুলনায় 40% পর্যন্ত শক্তি ক্যাপচার সর্বাধিক করে।</p>
+                    <h3>উন্নত সৌর শক্তি সিস্টেম</h3>
+                    <p>প্রভাকর উচ্চ-দক্ষতার মনোক্রিস্টালাইন সোলার প্যানেল ব্যবহার করে একটি উন্নত ট্র্যাকিং সিস্টেমের সাথে যা সারাদিন সূর্যের পথ অনুসরণ করে, স্থির প্যানেলের তুলনায় শক্তি ক্যাপচার 40% পর্যন্ত বাড়িয়ে দেয়।</p>
                     <ul>
-                        <li>28% দক্ষতা সহ ট্রিপল-জাংশন সৌর কোষ</li>
-                        <li>দ্বি-অক্ষীয় সৌর ট্র্যাকিং সিস্টেম</li>
+                        <li>28% দক্ষতা সহ ট্রিপল-জাংশন সোলার সেল</li>
+                        <li>দ্বি-অক্ষ সৌর ট্র্যাকিং সিস্টেম</li>
                         <li>ব্যাটারি অপ্টিমাইজেশন সহ বুদ্ধিমান পাওয়ার ম্যানেজমেন্ট</li>
                         <li>অবিচ্ছিন্ন অপারেশনের জন্য ব্যাকআপ ব্যাটারি সিস্টেম</li>
                     </ul>
@@ -1247,12 +1473,12 @@
             <div class="tech-content" id="navigation-content">
                 <div class="tech-detail">
                     <h3>স্বায়ত্তশাসিত নেভিগেশন সিস্টেম</h3>
-                    <p>প্রভাকর জিপিএস, ইনার্শিয়াল মেজারমেন্ট ইউনিট (IMU) এবং কম্পিউটার ভিশন সমন্বিত একটি অত্যাধুনিক নেভিগেশন সিস্টেম ব্যবহার করে যা বাধা এড়াতে এড়াতে চ্যালেঞ্জিং ভূখণ্ড স্বায়ত্তশাসিতভাবে অতিক্রম করে।</p>
+                    <p>প্রভাকর জিপিএস, জড়তা পরিমাপ ইউনিট (IMU) এবং কম্পিউটার ভিশনকে একত্রিত করে একটি অত্যাধুনিক নেভিগেশন সিস্টেম ব্যবহার করে যা বাধা এড়াতে এড়াতে চ্যালেঞ্জিং ভূখণ্ড স্বায়ত্তশাসিতভাবে অতিক্রম করে।</p>
                     <ul>
                         <li>সেন্টিমিটার-স্তরের নির্ভুলতার জন্য দ্বি-ফ্রিকোয়েন্সি জিপিএস</li>
                         <li>3D পরিবেশ ম্যাপিংয়ের জন্য স্টেরিও ভিশন ক্যামেরা</li>
                         <li>বাধা সনাক্তকরণ এবং এড়ানোর জন্য LIDAR</li>
-                        <li>AI-চালিত পথ পরিকল্পনা অ্যালগরিদম</li>
+                        <li>AI-চালিত পাথ প্ল্যানিং অ্যালগরিদম</li>
                     </ul>
                 </div>
             </div>
@@ -1260,12 +1486,12 @@
             <div class="tech-content" id="sensors-content">
                 <div class="tech-detail">
                     <h3>বিস্তৃত সেন্সর অ্যারে</h3>
-                    <p>রোভারটি রিয়েল-টাইমে পরিবেশগত অবস্থা, মাটির বৈশিষ্ট্য এবং বায়ুমণ্ডলীয় পরামিতি নিরীক্ষণের জন্য একটি বিস্তৃত সেন্সর অ্যারে দিয়ে সজ্জিত।</p>
+                    <p>রোভারটি রিয়েল-টাইমে পরিবেশগত অবস্থা, মাটির বৈশিষ্ট্য এবং বায়ুমণ্ডলীয় পরামিতি নিরীক্ষণ করার জন্য সেন্সরের একটি বিস্তৃত অ্যারে দিয়ে সজ্জিত।</p>
                     <ul>
-                        <li>মাল্টি-স্পেকট্রাল মৃত্তিকা বিশ্লেষণ সেন্সর</li>
+                        <li>মাল্টি-স্পেক্ট্রাল মৃত্তিকা বিশ্লেষণ সেন্সর</li>
                         <li>বায়ুমণ্ডলীয় তাপমাত্রা, চাপ এবং আর্দ্রতা সেন্সর</li>
                         <li>মাটির আর্দ্রতা এবং গঠন সেন্সর</li>
-                        <li>বায়ুর গুণমান নিরীক্ষণ সেন্সর</li>
+                        <li>বায়ুর গুণমান পর্যবেক্ষণ সেন্সর</li>
                     </ul>
                 </div>
             </div>
@@ -1273,7 +1499,7 @@
             <div class="tech-content" id="communication-content">
                 <div class="tech-detail">
                     <h3>শক্তিশালী কমিউনিকেশন সিস্টেম</h3>
-                    <p>প্রভাকর একটি মাল্টি-মোডাল কমিউনিকেশন সিস্টেম বৈশিষ্ট্য যা দূরবর্তী অবস্থান থেকে বেস স্টেশনে নির্ভরযোগ্য ডেটা ট্রান্সমিশন নিশ্চিত করে।</p>
+                    <p>প্রভাকর একটি মাল্টি-মোডাল কমিউনিকেশন সিস্টেম বৈশিষ্ট্য যা দূরবর্তী স্থান থেকে বেস স্টেশনে নির্ভরযোগ্য ডেটা ট্রান্সমিশন নিশ্চিত করে।</p>
                     <ul>
                         <li>লং-রেঞ্জ রেডিও কমিউনিকেশন (10km পর্যন্ত)</li>
                         <li>স্যাটেলাইট কমিউনিকেশন ব্যাকআপ সিস্টেম</li>
@@ -1290,25 +1516,25 @@
         <div class="container">
             <h2 class="section-title">মিডিয়া ও ডকুমেন্টেশন</h2>
             <div class="media-intro">
-                <p>প্রভাকরের অন্বেষণ মিশনের সময় ক্যাপচার করা ভিজ্যুয়াল ডকুমেন্টেশন অন্বেষণ করুন। আমাদের রোভার শুষ্ক মরুভূমি থেকে লালিত গাছপালা অঞ্চল পর্যন্ত বিভিন্ন পরিবেশ নথিভুক্ত করেছে।</p>
+                <p>প্রভাকর তার অনুসন্ধান মিশন যে চিত্রগ্রহণ করেছে, তা পরীক্ষা করুন। আমাদের রোভার শুষ্ক মরুভূমি থেকে শুরু করে ঘন সবুজ অঞ্চল পর্যন্ত বিভিন্ন পরিবেশ নথিভুক্ত করেছে।</p>
             </div>
             
             <div class="media-preview">
                 <div class="preview-item">
                     <i class="fas fa-mountain"></i>
-                    <div class="preview-date">১৫ এপ্রিল, ২০২৩</div>
+                    <div class="preview-date">এপ্রিল ১৫, ২০২৩</div>
                 </div>
                 <div class="preview-item">
                     <i class="fas fa-tree"></i>
-                    <div class="preview-date">২২ মে, ২০২৩</div>
+                    <div class="preview-date">মে ২২, ২০২৩</div>
                 </div>
                 <div class="preview-item">
                     <i class="fas fa-water"></i>
-                    <div class="preview-date">৮ জুন, ২০২৩</div>
+                    <div class="preview-date">জুন ৮, ২০২৩</div>
                 </div>
                 <div class="preview-item">
                     <i class="fas fa-cloud-sun"></i>
-                    <div class="preview-date">১৪ জুলাই, ২০২৩</div>
+                    <div class="preview-date">জুলাই ১৪, ২০২৩</div>
                 </div>
             </div>
             
@@ -1327,14 +1553,14 @@
             <h2 class="section-title">গবেষণাপত্র</h2>
             <div class="papers-list">
                 <div class="paper-card">
-                    <h3>অসংগঠিত পরিবেশে সৌরশক্তিচালিত রোভারের স্বায়ত্তশাসিত নেভিগেশন</h3>
+                    <h3>সৌরশক্তিচালিত রোভারের জন্য অগঠিত পরিবেশে স্বায়ত্তশাসিত নেভিগেশন</h3>
                     <div class="paper-meta">
                         <i class="far fa-calendar-alt"></i>
                         <span>মার্চ ২০২৩</span>
                         <i class="fas fa-user-friends"></i>
-                        <span>শর্মা, পি., বর্মা, আর., পাটেল, এ.</span>
+                        <span>বসু, ন., পাল, শ., ঘোষ, ম., মণ্ডল, স.ব.</span>
                     </div>
-                    <p>এই গবেষণাপত্রটি অসংগঠিত বহিরঙ্গন পরিবেশে সৌরশক্তিচালিত রোভারের জন্য স্বায়ত্তশাসিত নেভিগেশনের একটি নতুন পদ্ধতি উপস্থাপন করে, কম্পিউটার ভিশনকে সেন্সর ফিউশন কৌশলের সাথে একত্রিত করে।</p>
+                    <p>এই গবেষণাপত্রটি মুক্ত প্রাকৃতিক পরিবেশে সৌরশক্তিচালিত রোভারের স্বায়ত্তশাসিত নেভিগেশনের জন্য একটি অভিনব পদ্ধতি উপস্থাপন করে, যা কম্পিউটার ভিশন এবং সেন্সর ফিউশন কৌশলগুলিকে একত্রিত করে।</p>
                     <a href="#" class="paper-link">
                         <i class="fas fa-external-link-alt"></i>
                         সম্পূর্ণ গবেষণাপত্র পড়ুন
@@ -1342,14 +1568,14 @@
                 </div>
                 
                 <div class="paper-card">
-                    <h3>দীর্ঘস্থায়ী সৌর রোভার মিশনের জন্য শক্তি ব্যবস্থাপনা সিস্টেম</h3>
+                    <h3>দীর্ঘস্থায়ী সৌর রোভার মিশনের জন্য শক্তি ব্যবস্থাপনা পদ্ধতি</h3>
                     <div class="paper-meta">
                         <i class="far fa-calendar-alt"></i>
                         <span>জানুয়ারি ২০২৩</span>
                         <i class="fas fa-user-friends"></i>
-                        <span>বর্মা, আর., শর্মা, পি.</span>
+                        <span>পাল, শ., বসু, ন.</span>
                     </div>
-                    <p>আমরা একটি বুদ্ধিমান শক্তি ব্যবস্থাপনা সিস্টেম প্রস্তাব করি যা পরিবর্তনশীল আবহাওয়া অবস্থার মধ্যে বর্ধিত রোভার মিশনের জন্য শক্তি খরচ এবং সৌর শক্তি সংগ্রহ অপ্টিমাইজ করে।</p>
+                    <p>আমরা একটি 'বুদ্ধিমান শক্তি ব্যবস্থাপনা' পদ্ধতি প্রস্তাব করছি, যা পরিবর্তনশীল আবহাওয়ার পরিস্থিতিতে দীর্ঘমেয়াদী রোভার মিশনের জন্য বিদ্যুৎ খরচ এবং সৌরশক্তি সংগ্রহকে অপ্টিমাইজ করে।</p>
                     <a href="#" class="paper-link">
                         <i class="fas fa-external-link-alt"></i>
                         সম্পূর্ণ গবেষণাপত্র পড়ুন
@@ -1357,14 +1583,14 @@
                 </div>
                 
                 <div class="paper-card">
-                    <h3>স্বায়ত্তশাসিত রোবোটিক প্ল্যাটফর্ম ব্যবহার করে মাল্টি-সেন্সর মৃত্তিকা বিশ্লেষণ</h3>
+                    <h3>স্বায়ত্তশাসিত রোবোটিক প্ল্যাটফর্ম ব্যবহার করে বহু-সেন্সর মৃত্তিকা বিশ্লেষণ</h3>
                     <div class="paper-meta">
                         <i class="far fa-calendar-alt"></i>
                         <span>নভেম্বর ২০২২</span>
                         <i class="fas fa-user-friends"></i>
-                        <span>পাটেল, এ., শর্মা, পি., বর্মা, আর.</span>
+                        <span>ঘোষ, ম., বসু, ন., পাল, শ., মণ্ডল, স.ব.</span>
                     </div>
-                    <p>এই গবেষণা দ্রুত পরিবেশগত মূল্যায়ন এবং মৃত্তিকা শ্রেণীবিভাগের জন্য স্বায়ত্তশাসিত রোভারে মাউন্ট করা মাল্টি-স্পেকট্রাল মৃত্তিকা সেন্সরের কার্যকারিতা মূল্যায়ন করে।</p>
+                    <p>এই গবেষণায় দ্রুত পরিবেশগত মূল্যায়ন এবং মৃত্তিকা শ্রেণীবিভাগের জন্য স্বায়ত্তশাসিত রোভারে স্থাপিত মাল্টি-স্পেকট্রাল মৃত্তিকা সেন্সরগুলির কার্যকারিতা মূল্যায়ন করা হয়েছে।</p>
                     <a href="#" class="paper-link">
                         <i class="fas fa-external-link-alt"></i>
                         সম্পূর্ণ গবেষণাপত্র পড়ুন
@@ -1383,10 +1609,10 @@
                     <i class="fas fa-university"></i>
                 </div>
                 <div class="institute-details">
-                    <h3>এডভান্সড রোবোটিক্স রিসার্চ ইনস্টিটিউট</h3>
-                    <p>এডভান্সড রোবোটিক্স রিসার্চ ইনস্টিটিউট (ARRI) রোবোটিক্স এবং স্বায়ত্তশাসিত সিস্টেম এগিয়ে নেওয়ার জন্য নিবেদিত একটি প্রিমিয়ার গবেষণা সুবিধা। সর্বাধুনিক পরীক্ষাগার এবং গবেষকদের একটি বহু-বিভাগীয় দল নিয়ে, ARRI পরিবেশগত পর্যবেক্ষণ, দুর্যোগ প্রতিক্রিয়া এবং অন্বেষণের জন্য উদ্ভাবনী সমাধান বিকাশের উপর দৃষ্টি নিবদ্ধ করে।</p>
-                    <p>আমাদের মিশন হল টেকসইতা এবং পরিবেশগত দায়িত্ব নিশ্চিত করার সময় রোবোটিক প্রযুক্তির সীমানা ঠেলে দেওয়া। প্রভাকর প্রকল্পটি চ্যালেঞ্জিং পরিবেশে কাজ করতে পারে এমন স্বায়ত্তশাসিত সিস্টেম তৈরি করার জন্য আমাদের প্রতিশ্রুতির প্রতিনিধিত্ব করে যখন পরিবেশগত প্রভাব কমানো হয়।</p>
-                    <a href="#" class="btn" style="margin-top: 1.5rem;">ইনস্টিটিউট ওয়েবসাইট দেখুন</a>
+                    <h3>ইনস্টিটিউট অব রেডিও ফিজিক্স অ্যান্ড ইলেকট্রনিক্স</h3>
+                    <p>রেডিও ফিজিক্স অ্যান্ড ইলেকট্রনিক্স ইনস্টিটিউট (আইআরপিই) হল কলকাতা বিশ্ববিদ্যালয়ের অধীন একটি শীর্ষস্থানীয় গবেষণা প্রতিষ্ঠান, যা রেডিও ফিজিক্স, ইলেকট্রনিক্স এবং কমিউনিকেশন প্রযুক্তিতে জ্ঞান অগ্রগতির জন্য নিবেদিত। অত্যাধুনিক ল্যাবরেটরি এবং বিশিষ্ট ফ্যাকাল্টি সহ, আইআরপিই ইলেক্ট্রোম্যাগনেটিক থিওরি, মাইক্রোওয়েভ ইঞ্জিনিয়ারিং, সেমিকন্ডাক্টর ডিভাইস এবং অ্যাডভান্সড কমিউনিকেশন সিস্টেমে অত্যাধুনিক গবেষণার উপর মনোনিবেশ করে।</p>
+                    <p>আমাদের মিশন হলো একাডেমিক উৎকর্ষের সর্বোচ্চ মান বজায় রাখার পাশাপাশি ইলেকট্রনিক ও কমিউনিকেশন প্রযুক্তিতে উদ্ভাবনী চিন্তাকে উৎসাহিত করা। প্রভাকর প্রকল্পটি বাস্তব-বিশ্বের পরিবেশগত চ্যালেঞ্জ মোকাবেলায় অত্যাধুনিক ইলেকট্রনিক্স এবং রোবোটিক্স প্রয়োগের প্রতি আমাদের অঙ্গীকারের প্রতিনিধিত্ব করে।</p>
+                    <a href="https://www.irpe.in" class="btn" style="margin-top: 1.5rem;">ইনস্টিটিউট ওয়েবসাইট দেখুন</a>
                 </div>
             </div>
         </div>
@@ -1395,16 +1621,16 @@
     <!-- University Section -->
     <section id="university" class="university">
         <div class="container">
-            <h2 class="section-title">বিশ্ববিদ্যালয় অনুমোদন</h2>
+            <h2 class="section-title">বিশ্ববিদ্যালয় অধিভুক্তি</h2>
             <div class="university-info">
                 <div class="university-logo">
                     <i class="fas fa-graduation-cap"></i>
                 </div>
                 <div class="university-details">
-                    <h3>ন্যাশনাল ইনস্টিটিউট অফ টেকনোলজি, কুরুক্ষেত্র</h3>
-                    <p>ন্যাশনাল ইনস্টিটিউট অফ টেকনোলজি, কুরুক্ষেত্র (NIT KKR) ভারতের প্রিমিয়ার প্রযুক্তিগত বিশ্ববিদ্যালয়গুলির মধ্যে একটি, যা প্রকৌশল শিক্ষা এবং গবেষণায় এর শ্রেষ্ঠত্বের জন্য পরিচিত। 1963 সালে প্রতিষ্ঠিত, ইনস্টিটিউটটি প্রযুক্তিগত উদ্ভাবনের অগ্রভাগে রয়েছে এবং প্রকৌশল ও প্রযুক্তির বিভিন্ন ক্ষেত্রে অসংখ্য নেতা তৈরি করেছে।</p>
-                    <p>প্রভাকর প্রকল্পটি এডভান্সড রোবোটিক্স রিসার্চ ইনস্টিটিউট এবং NIT কুরুক্ষেত্রের ইলেকট্রনিক্স এবং কমিউনিকেশন ইঞ্জিনিয়ারিং বিভাগের মধ্যে একটি সহযোগিতামূলক প্রচেষ্টা। এই অংশীদারিত্বটি একাডেমিক শ্রেষ্ঠত্বের সাথে অত্যাধুনিক গবেষণাকে একত্রিত করে স্বায়ত্তশাসিত রোবোটিক্সের ক্ষেত্রকে এগিয়ে নিয়ে যায়।</p>
-                    <a href="#" class="btn" style="margin-top: 1.5rem;">বিশ্ববিদ্যালয় ওয়েবসাইট দেখুন</a>
+                    <h3>কলকাতা বিশ্ববিদ্যালয়</h3>
+                    <p>কলকাতা বিশ্ববিদ্যালয়, যা ১৮৫৭ সালে প্রতিষ্ঠিত হয়, এটি ভারতের প্রাচীনতম এবং সর্বাধিক খ্যাতিসম্পন্ন বিশ্ববিদ্যালয়গুলির মধ্যে একটি। ইউজিসি কর্তৃক "ফাইভ-স্টার ইউনিভার্সিটি" এবং "সামর্থ্যময় বিশ্ববিদ্যালয়" (ইউনিভার্সিটি উইথ পোটেনশিয়াল ফর এক্সিলেন্স) হিসাবে স্বীকৃত এই প্রতিষ্ঠানটি উচ্চশিক্ষা, গবেষণা উদ্ভাবন এবং সামাজিক উন্নয়নের ক্ষেত্রে ১৬০ বছরেরও বেশি সময় ধরে অগ্রণী ভূমিকা পালন করে আসছে।</p>
+                    <p>বিশ্ববিদ্যালয়টির নোবেল পুরস্কার বিজয়ী, খ্যাতনামা বিজ্ঞানী এবং বিভিন্ন শাস্ত্রের বিশিষ্ট পণ্ডিতদের তৈরি করার একটি সমৃদ্ধ ঐতিহ্য রয়েছে। প্রভাকর প্রকল্পটি রেডিও ফিজিক্স অ্যান্ড ইলেকট্রনিক্স ইনস্টিটিউট এবং কলকাতা বিশ্ববিদ্যালয়ের অন্যান্য বিভাগের মধ্যে একটি সমন্বিত উদ্যোগ, যা স্বায়ত্তশাসিত রোবোটিক্স এবং টেকসই প্রযুক্তির ক্ষেত্রকে এগিয়ে নেওয়ার জন্য আন্তঃশাস্ত্রীয় দক্ষতাকে একত্রিত করছে।</p>
+                    <a href="https://www.caluniv.ac.in" class="btn" style="margin-top: 1.5rem;">বিশ্ববিদ্যালয় ওয়েবসাইট দেখুন</a>
                 </div>
             </div>
         </div>
@@ -1416,7 +1642,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>প্রভাকর সম্পর্কে</h3>
-                    <p>প্রভাকর একটি সৌরশক্তিচালিত স্বায়ত্তশাসিত রোভার যা দূরবর্তী স্থানে পরিবেশগত পর্যবেক্ষণ এবং অন্বেষণের জন্য ডিজাইন করা হয়েছে।</p>
+                    <p>প্রভাকর হল একটি সৌরশক্তি চালিত স্বায়ত্তশাসিত রোভার যা দূরবর্তী স্থানে পরিবেশ পর্যবেক্ষণ এবং অনুসন্ধানের জন্য ডিজাইন করা হয়েছে।</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -1439,15 +1665,15 @@
                 <div class="footer-section">
                     <h3>যোগাযোগের তথ্য</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> এডভান্সড রোবোটিক্স রিসার্চ ইনস্টিটিউট, NIT ক্যাম্পাস, কুরুক্ষেত্র, হরিয়ানা 136119</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> ইনস্টিটিউট অব রেডিও ফিজিক্স অ্যান্ড ইলেকট্রনিক্স, কলকাতা বিশ্ববিদ্যালয়, 92 এপিসি রোড, কলকাতা, পশ্চিমবঙ্গ 700009</a></li>
                         <li><a href="mailto:contact@prabhakarproject.in"><i class="fas fa-envelope"></i> contact@prabhakarproject.in</a></li>
-                        <li><a href="tel:+911744236521"><i class="fas fa-phone"></i> +91-1744-236521</a></li>
+                        <li><a href="tel:+913322350661"><i class="fas fa-phone"></i> +91-33-2235-0661</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; ২০২৩ প্রভাকর প্রকল্প। সমস্ত অধিকার সংরক্ষিত।</p>
+                <p>&copy; ২০২৬ প্রভাকর রোভার। সমস্ত অধিকার সংরক্ষিত।</p>
             </div>
         </div>
     </footer>
@@ -1468,39 +1694,40 @@
             <div class="media-grid">
                 <div class="media-item" data-type="photos">
                     <i class="fas fa-mountain"></i>
-                    <div class="media-date">১৫ এপ্রিল, ২০২৩</div>
+                    <div class="media-date">এপ্রিল ১৫, ২০২৩</div>
                 </div>
                 <div class="media-item" data-type="photos">
                     <i class="fas fa-tree"></i>
-                    <div class="media-date">২২ মে, ২০২৩</div>
+                    <div class="media-date">মে ২২, ২০২৩</div>
                 </div>
                 <div class="media-item" data-type="videos">
                     <i class="fas fa-video"></i>
-                    <div class="media-date">৩ জুন, ২০২৩</div>
+                    <div class="media-date">জুন ৩, ২০২৩</div>
                 </div>
                 <div class="media-item" data-type="photos">
                     <i class="fas fa-water"></i>
-                    <div class="media-date">৮ জুন, ২০২৩</div>
+                    <div class="media-date">জুন ৮, ২০২৩</div>
                 </div>
                 <div class="media-item" data-type="maps">
                     <i class="fas fa-map"></i>
-                    <div class="media-date">১৮ জুন, ২০২৩</div>
+                    <div class="media-date">জুন ১৮, ২০২৩</div>
                 </div>
                 <div class="media-item" data-type="photos">
                     <i class="fas fa-cloud-sun"></i>
-                    <div class="media-date">১৪ জুলাই, ২০২৩</div>
+                    <div class="media-date">জুলাই ১৪, ২০২৩</div>
                 </div>
                 <div class="media-item" data-type="videos">
                     <i class="fas fa-video"></i>
-                    <div class="media-date">৫ আগস্ট, ২০২৩</div>
+                    <div class="media-date">আগস্ট ৫, ২০২৩</div>
                 </div>
                 <div class="media-item" data-type="maps">
                     <i class="fas fa-map"></i>
-                    <div class="media-date">১২ সেপ্টেম্বর, ২০২৩</div>
+                    <div class="media-date">সেপ্টেম্বর ১২, ২০২৩</div>
                 </div>
             </div>
         </div>
     </div>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Tech Tabs
@@ -1563,8 +1790,60 @@
             });
         });
         
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // Mobile Navigation
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMobileNav = document.getElementById('closeMobileNav');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        // Open mobile navigation
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileNav.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        }
+
+        // Close mobile navigation
+        if (closeMobileNav) {
+            closeMobileNav.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+        }
+
+        // Close mobile nav when clicking on links
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+                
+                // Smooth scroll to section
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        setTimeout(() => {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }, 300);
+                    }
+                }
+            });
+        });
+
+        // Close mobile nav when clicking outside
+        mobileNav.addEventListener('click', function(e) {
+            if (e.target === mobileNav) {
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Smooth scrolling for navigation links (for regular navigation)
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 
