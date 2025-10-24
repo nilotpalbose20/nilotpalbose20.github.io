@@ -47,8 +47,7 @@
             background: var(--header-gradient);
             color: var(--text-light);
             padding: 0;
-            position: sticky;
-            top: 0;
+            position: static;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
@@ -227,10 +226,11 @@
             padding: 8px;
             gap: 4px;
             transition: all 0.3s ease;
-            position: absolute;
-            left: 25px;
-            top: 350%;
-            transform: translateY(-50%);
+            position: fixed;
+            left: 20px;
+            bottom: 25px;
+            transform: none;
+            z-index: 1001
         }
 
         .mobile-menu-toggle:hover {
@@ -894,7 +894,7 @@
         /* Research Papers */
         .papers-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit);
             gap: 2.5rem;
         }
         
@@ -1196,7 +1196,6 @@
             <div class="header-top">
                 <div class="logo-container">
                     <div class="logo-img">
-                        <!-- Logo placeholder - in a real implementation, you would use an actual image -->
                         <i class="fas fa-robot"></i>
                     </div>
                     <div class="logo-text">
@@ -1207,13 +1206,13 @@
                 <div class="header-right">
                     <div class="header-right">
                         <div class="language-buttons">
-                            <a href="C:\Users\nilot\OneDrive\Documents\zWebsites\bengaliweb.html" class="lang-btn bengali-btn">
+                            <a href="https://nilotpalbose20.github.io/bengaliweb.html" class="lang-btn bengali-btn">
                                 <i class="fas fa-language"></i>
-                                <span>Bengali</span>
+                                <span>বাংলা</span>
                             </a>
-                            <a href="C:\Users\nilot\OneDrive\Documents\zWebsites\hindiweb.html" class="lang-btn hindi-btn">
+                            <a href="https://nilotpalbose20.github.io/hindiweb.html" class="lang-btn hindi-btn">
                                 <i class="fas fa-language"></i>
-                                <span>Hindi</span>
+                                <span>हिन्दी</span>
                             </a>
                         </div>
                     </div>
@@ -1222,14 +1221,12 @@
         </div>
         <div class="nav-container">
             <div class="container">
-                <!-- Hamburger Menu Button -->
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
                 
-                <!-- Regular Navigation (hidden on mobile) -->
                 <nav>
                     <ul>
                         <li><a href="#about">About</a></li>
@@ -1379,10 +1376,10 @@
                     </div>
                     <div class="member-info">
                         <h3>Nilotpal Bose</h3>
-                        <div class="member-role">Project Lead & Robotics Engineer</div>
+                        <div class="member-role">Project Lead & Embedded Systems Engineer</div>
                         <div class="contact-info">
                             <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-                            <p><i class="fas fa-envelope"></i> priya.sharma@example.com</p>
+                            <p><i class="fas fa-envelope"></i> nilotpal.bose@example.com</p>
                         </div>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -1396,11 +1393,11 @@
                         <i class="fas fa-user-graduate"></i>
                     </div>
                     <div class="member-info">
-                        <h3>Rahul Verma</h3>
-                        <div class="member-role">Software & AI Specialist</div>
+                        <h3>Subhashish Paul</h3>
+                        <div class="member-role">Hardware & Sensor Integration Specialist</div>
                         <div class="contact-info">
                             <p><i class="fas fa-phone"></i> +91 87654 32109</p>
-                            <p><i class="fas fa-envelope"></i> rahul.verma@example.com</p>
+                            <p><i class="fas fa-envelope"></i> subhashish.paul@example.com</p>
                         </div>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -1414,11 +1411,29 @@
                         <i class="fas fa-user-graduate"></i>
                     </div>
                     <div class="member-info">
-                        <h3>Ananya Patel</h3>
-                        <div class="member-role">Hardware & Sensor Integration</div>
+                        <h3>Mahashweta Ghosh</h3>
+                        <div class="member-role">Software Specialist</div>
                         <div class="contact-info">
                             <p><i class="fas fa-phone"></i> +91 76543 21098</p>
-                            <p><i class="fas fa-envelope"></i> ananya.patel@example.com</p>
+                            <p><i class="fas fa-envelope"></i> mahashweta.ghosh@example.com</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>Dr. Soma Barman (Mandal)</h3>
+                        <div class="member-role">Faculty Advisor & Research Lead</div>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone"></i> +91 65432 10987</p>
+                            <p><i class="fas fa-envelope"></i> soma.mondal@example.com</p>
                         </div>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -1543,7 +1558,7 @@
                         <i class="far fa-calendar-alt"></i>
                         <span>March 2023</span>
                         <i class="fas fa-user-friends"></i>
-                        <span>Sharma, P., Verma, R., Patel, A.</span>
+                        <span>Bose, N., Paul, S., Ghosh, M., Mondal, S.B.</span>
                     </div>
                     <p>This paper presents a novel approach to autonomous navigation for solar-powered rovers in unstructured outdoor environments, combining computer vision with sensor fusion techniques.</p>
                     <a href="#" class="paper-link">
@@ -1558,7 +1573,7 @@
                         <i class="far fa-calendar-alt"></i>
                         <span>January 2023</span>
                         <i class="fas fa-user-friends"></i>
-                        <span>Verma, R., Sharma, P.</span>
+                        <span>Paul, S., Bose, N.</span>
                     </div>
                     <p>We propose an intelligent energy management system that optimizes power consumption and solar energy harvesting for extended rover missions in variable weather conditions.</p>
                     <a href="#" class="paper-link">
@@ -1573,7 +1588,7 @@
                         <i class="far fa-calendar-alt"></i>
                         <span>November 2022</span>
                         <i class="fas fa-user-friends"></i>
-                        <span>Patel, A., Sharma, P., Verma, R.</span>
+                        <span>Ghosh, M., Bose, N., Paul, S., Mondal, S.B.</span>
                     </div>
                     <p>This study evaluates the effectiveness of multi-spectral soil sensors mounted on autonomous rovers for rapid environmental assessment and soil classification.</p>
                     <a href="#" class="paper-link">
@@ -1594,10 +1609,10 @@
                     <i class="fas fa-university"></i>
                 </div>
                 <div class="institute-details">
-                    <h3>Advanced Robotics Research Institute</h3>
-                    <p>The Advanced Robotics Research Institute (ARRI) is a premier research facility dedicated to advancing robotics and autonomous systems. With state-of-the-art laboratories and a multidisciplinary team of researchers, ARRI focuses on developing innovative solutions for environmental monitoring, disaster response, and exploration.</p>
-                    <p>Our mission is to push the boundaries of robotic technology while ensuring sustainability and environmental responsibility. The Prabhakar project represents our commitment to creating autonomous systems that can operate in challenging environments while minimizing ecological impact.</p>
-                    <a href="#" class="btn" style="margin-top: 1.5rem;">Visit Institute Website</a>
+                    <h3>Institute of Radio Physics and Electronics</h3>
+                    <p>The Institute of Radio Physics and Electronics (IRPE) is a premier research institute under the University of Calcutta, dedicated to advancing knowledge in radio physics, electronics, and communication technologies. With state-of-the-art laboratories and a distinguished faculty, IRPE focuses on cutting-edge research in electromagnetic theory, microwave engineering, semiconductor devices, and advanced communication systems.</p>
+                    <p>Our mission is to foster innovation in electronic and communication technologies while maintaining the highest standards of academic excellence. The Prabhakar project represents our commitment to applying advanced electronics and robotics to solve real-world environmental challenges.</p>
+                    <a href="https://www.irpe.in" class="btn" style="margin-top: 1.5rem;">Visit Institute Website</a>
                 </div>
             </div>
         </div>
@@ -1612,10 +1627,10 @@
                     <i class="fas fa-graduation-cap"></i>
                 </div>
                 <div class="university-details">
-                    <h3>National Institute of Technology, Kurukshetra</h3>
-                    <p>The National Institute of Technology, Kurukshetra (NIT KKR) is one of India's premier technical universities, known for its excellence in engineering education and research. Established in 1963, the institute has been at the forefront of technological innovation and has produced numerous leaders in various fields of engineering and technology.</p>
-                    <p>The Prabhakar project is a collaborative effort between the Advanced Robotics Research Institute and the Department of Electronics and Communication Engineering at NIT Kurukshetra. This partnership combines cutting-edge research with academic excellence to advance the field of autonomous robotics.</p>
-                    <a href="#" class="btn" style="margin-top: 1.5rem;">Visit University Website</a>
+                    <h3>University of Calcutta</h3>
+                    <p>The University of Calcutta, established in 1857, is one of India's oldest and most prestigious universities, recognized as a "Five-Star University" and "University with Potential for Excellence" by the UGC. As a premier institution of higher education, it has been at the forefront of academic excellence, research innovation, and societal development for over 160 years.</p>
+                    <p>The University boasts a rich legacy of producing Nobel laureates, eminent scientists, and distinguished scholars across various disciplines. The Prabhakar project is a collaborative effort between the Institute of Radio Physics and Electronics and other departments at the University of Calcutta, combining interdisciplinary expertise to advance the field of autonomous robotics and sustainable technology.</p>
+                    <a href="https://www.caluniv.ac.in" class="btn" style="margin-top: 1.5rem;">Visit University Website</a>
                 </div>
             </div>
         </div>
@@ -1650,15 +1665,15 @@
                 <div class="footer-section">
                     <h3>Contact Information</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Advanced Robotics Research Institute, NIT Campus, Kurukshetra, Haryana 136119</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Institute of Radio Physics and Electronics, University of Calcutta, 92 APC Road, Kolkata, West Bengal 700009</a></li>
                         <li><a href="mailto:contact@prabhakarproject.in"><i class="fas fa-envelope"></i> contact@prabhakarproject.in</a></li>
-                        <li><a href="tel:+911744236521"><i class="fas fa-phone"></i> +91-1744-236521</a></li>
+                        <li><a href="tel:+913322350661"><i class="fas fa-phone"></i> +91-33-2235-0661</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Prabhakar Project. All rights reserved.</p>
+                <p>&copy; 2026 Prabhakar Rover. All rights reserved.</p>
             </div>
         </div>
     </footer>
