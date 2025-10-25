@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prabhakar - Solar Powered Exploration Rover</title>
     <meta name="description" content="Prabhakar is a cutting-edge solar-powered rover designed to autonomously explore and monitor remote environments while collecting valuable scientific data.">
+    <link rel="icon" type="image/x-icon" href="https://nilotpalbose20.github.io/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
@@ -381,7 +383,7 @@
      
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1760715655917-0bcad3146c7a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -540,6 +542,15 @@
             font-size: 1.1rem;
         }
         
+        .report-download {
+            margin-top: 2rem;
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+        
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -652,52 +663,6 @@
             margin-right: 8px;
         }
         
-        /* Data Section */
-        .data-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .data-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-            border-left: 5px solid var(--light-green);
-        }
-        
-        .data-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-        }
-        
-        .data-card i {
-            font-size: 3rem;
-            color: var(--primary-green);
-            margin-bottom: 1.5rem;
-        }
-        
-        .data-card h3 {
-            margin-bottom: 1rem;
-            color: var(--dark-green);
-        }
-        
-        .data-value {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary-green);
-            margin: 1rem 0;
-        }
-        
-        .data-unit {
-            font-size: 1.2rem;
-            color: #666;
-        }
-        
         /* Team Section */
         .team {
             background-color: #f0f7f0;
@@ -708,8 +673,8 @@
         }
         
         .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 2.5rem;
         }
         
@@ -719,8 +684,22 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            text-align: center;
             position: relative;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            text-align: left;
+        }
+        
+        .team-member .member-img {
+            border-radius: 15px 0 0 15px;
+            height: 100%;
+        }
+        
+        .team-member .member-info {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .team-member:hover {
@@ -737,6 +716,7 @@
             font-size: 5rem;
             position: relative;
             overflow: hidden;
+            border-radius: 15px;
         }
         
         .member-img:after {
@@ -767,27 +747,51 @@
             font-size: 1.1rem;
         }
         
-        .contact-info {
+        .member-details {
             margin: 1rem 0;
-            text-align: center;
+            text-align: left;
         }
         
-        .contact-info p {
+        .member-details p {
             margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
-            justify-content: center;
         }
         
-        .contact-info i {
+        .member-details i {
             margin-right: 10px;
             color: var(--primary-green);
             width: 20px;
         }
         
+        .member-interests {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .cv-download {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 10px 20px;
+            background-color: var(--primary-green);
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            text-align: center;
+            width: 150px;
+        }
+        
+        .cv-download:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-2px);
+        }
+        
         .social-links {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 1rem;
             margin-top: 1.5rem;
         }
@@ -865,6 +869,55 @@
             margin-bottom: 0.8rem;
         }
         
+        /* Control & Measurement Section */
+        .rover-control {
+            background-color: #f0f7f0;
+        }
+        
+        .dark-mode .rover-control {
+            background-color: #1a1a1a;
+        }
+        
+        .control-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .control-content p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .control-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .control-btn {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .control-btn:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
         /* Media Section */
         .media {
             background-color: #f0f7f0;
@@ -925,135 +978,10 @@
             margin-top: 1rem;
         }
         
-        /* Rover Control Section */
-        .rover-control {
-            background-color: #f0f7f0;
-        }
-        
-        .dark-mode .rover-control {
-            background-color: #1a1a1a;
-        }
-        
-        .control-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .control-content p {
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-        
-        .control-btn {
-            background-color: var(--primary-green);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
-            border: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .control-btn:hover {
-            background-color: var(--dark-green);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Password Modal */
-        .password-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            overflow-y: auto;
-            padding: 2rem;
-        }
-        
-        .password-modal-content {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            max-width: 500px;
-            margin: 10% auto;
-            padding: 2.5rem;
-            position: relative;
-            animation: modalFadeIn 0.5s;
-            color: var(--text-dark);
-            text-align: center;
-        }
-        
-        .password-modal-title {
-            margin-bottom: 1.5rem;
-            color: var(--dark-green);
-            font-size: 1.8rem;
-        }
-        
-        .password-input {
-            width: 100%;
-            padding: 14px 20px;
-            border: 2px solid var(--light-green);
-            border-radius: 8px;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            transition: var(--transition);
-            background-color: var(--background-light);
-            color: var(--text-dark);
-        }
-        
-        .password-input:focus {
-            border-color: var(--primary-green);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
-        }
-        
-        .password-btn {
-            background-color: var(--primary-green);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            border: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            margin: 0 10px;
-        }
-        
-        .password-btn:hover {
-            background-color: var(--dark-green);
-            transform: translateY(-3px);
-        }
-        
-        .password-cancel {
-            background-color: #f44336;
-        }
-        
-        .password-cancel:hover {
-            background-color: #d32f2f;
-        }
-        
-        .password-error {
-            color: #f44336;
-            margin-top: 1rem;
-            display: none;
-        }
-        
-        /* Research Papers */
+        /* Research Papers Section */
         .papers-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 2.5rem;
         }
         
@@ -1064,6 +992,7 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             border-left: 5px solid var(--light-green);
+            width: 100%;
         }
         
         .paper-card:hover {
@@ -1182,29 +1111,22 @@
             color: var(--accent-green);
         }
         
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-icons a {
+        .blog-link {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
+            gap: 10px;
+            margin-top: 1.5rem;
+            padding: 10px 20px;
             background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--text-light);
-            transition: var(--transition);
-            font-size: 1.2rem;
+            border-radius: 50px;
+            color: white;
             text-decoration: none;
+            transition: var(--transition);
         }
         
-        .social-icons a:hover {
-            background-color: var(--accent-green);
-            transform: translateY(-5px);
+        .blog-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
         }
         
         .copyright {
@@ -1213,6 +1135,89 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Password Modal */
+        .password-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+        
+        .password-modal-content {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 10% auto;
+            padding: 2.5rem;
+            position: relative;
+            animation: modalFadeIn 0.5s;
+            color: var(--text-dark);
+            text-align: center;
+        }
+        
+        .password-modal-title {
+            margin-bottom: 1.5rem;
+            color: var(--dark-green);
+            font-size: 1.8rem;
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid var(--light-green);
+            border-radius: 8px;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            background-color: var(--background-light);
+            color: var(--text-dark);
+        }
+        
+        .password-input:focus {
+            border-color: var(--primary-green);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+        }
+        
+        .password-btn {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            margin: 0 10px;
+        }
+        
+        .password-btn:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-3px);
+        }
+        
+        .password-cancel {
+            background-color: #f44336;
+        }
+        
+        .password-cancel:hover {
+            background-color: #d32f2f;
+        }
+        
+        .password-error {
+            color: #f44336;
+            margin-top: 1rem;
+            display: none;
         }
         
         /* Animations */
@@ -1253,6 +1258,15 @@
                 grid-template-columns: 1fr;
             }
             
+            .team-member {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-member .member-img {
+                border-radius: 15px 15px 0 0;
+                height: 250px;
+            }
+            
             .rover-image {
                 height: 300px;
             }
@@ -1286,6 +1300,11 @@
             
             .right {
                 left: 0;
+            }
+            
+            .control-buttons {
+                flex-direction: column;
+                align-items: center;
             }
         }
 
@@ -1373,7 +1392,7 @@
                 <div class="logo-container">
                     <div class="logo-img">
                         <!-- <i class="fas fa-robot"></i> -->
-                        <img src="https://nilotpalbose20.github.io/logo.png" alt="Prabhakar Rover Logo">
+                        <img src="logo.png" alt="Prabhakar Rover Logo">
                     </div>
                     <div class="logo-text">
                         <h1 class="logo-title">PRABHAKAR</h1>
@@ -1399,13 +1418,13 @@
                     <ul>
                         <li><a href="#about" class="nav-link">About</a></li>
                         <li><a href="#timeline" class="nav-link">Timeline</a></li>
-                        <li><a href="#team" class="nav-link">Team</a></li>
                         <li><a href="#technology" class="nav-link">Technology</a></li>
-                        <li><a href="#rover-control" class="nav-link">Control Rover</a></li>
+                        <li><a href="#team" class="nav-link">Team</a></li>
                         <li><a href="#media" class="nav-link">Media</a></li>
-                        <li><a href="#data" class="nav-link">Data</a></li>
+                        <li><a href="#control-measurement" class="nav-link">Control</a></li>
                         <li><a href="#research" class="nav-link">Papers</a></li>
-                        <li><a href="#institute" class="nav-link">Affiliation</a></li>
+                        <li><a href="#institute" class="nav-link">Institute</a></li>
+                        <li><a href="#university" class="nav-link">University</a></li>
                     </ul>
                 </nav>
             </div>
@@ -1428,39 +1447,39 @@
         <ul class="mobile-nav-links">
             <li><a href="#about" class="mobile-nav-link">
                 <i class="fas fa-info-circle"></i>
-                About Prabhakar
+                About
             </a></li>
             <li><a href="#timeline" class="mobile-nav-link">
                 <i class="fas fa-history"></i>
-                Mission Timeline
-            </a></li>
-            <li><a href="#team" class="mobile-nav-link">
-                <i class="fas fa-users"></i>
-                Our Team
+                Timeline
             </a></li>
             <li><a href="#technology" class="mobile-nav-link">
                 <i class="fas fa-microchip"></i>
                 Technology
             </a></li>
-            <li><a href="#rover-control" class="mobile-nav-link">
-                <i class="fas fa-gamepad"></i>
-                Control Rover
+            <li><a href="#team" class="mobile-nav-link">
+                <i class="fas fa-users"></i>
+                Team
             </a></li>
             <li><a href="#media" class="mobile-nav-link">
                 <i class="fas fa-photo-video"></i>
-                Media & Documentation
+                Media
             </a></li>
-            <li><a href="#data" class="mobile-nav-link">
-                <i class="fas fa-chart-bar"></i>
-                Measurement Data
+            <li><a href="#control-measurement" class="mobile-nav-link">
+                <i class="fas fa-gamepad"></i>
+                Control
             </a></li>
             <li><a href="#research" class="mobile-nav-link">
                 <i class="fas fa-file-alt"></i>
-                Research Papers
+                Papers
             </a></li>
             <li><a href="#institute" class="mobile-nav-link">
                 <i class="fas fa-university"></i>
-                Our Institute
+                Institute
+            </a></li>
+            <li><a href="#university" class="mobile-nav-link">
+                <i class="fas fa-graduation-cap"></i>
+                University
             </a></li>
         </ul>
     </div>
@@ -1488,7 +1507,17 @@
                         <p>Prabhakar is a cutting-edge solar-powered rover designed to autonomously explore and monitor remote environments while collecting valuable scientific data. Named after the Bengali word for "sun-powered," this innovative vehicle represents a significant advancement in sustainable exploration technology.</p>
                         <p>Equipped with state-of-the-art sensors, high-resolution cameras, and advanced solar tracking systems, Prabhakar can operate for extended periods in challenging environments without human intervention. Its primary mission is to document environmental conditions, analyze soil properties, and capture multimedia content of remote locations that are difficult for humans to access.</p>
                         <p>The rover's design emphasizes sustainability, utilizing renewable solar energy as its primary power source. This approach minimizes environmental impact while maximizing operational duration in field conditions.</p>
+                        <p>Our project focuses on developing robust autonomous navigation algorithms, efficient energy management systems, and reliable communication protocols to ensure seamless operation in diverse environments. The data collected by Prabhakar contributes to environmental research, climate studies, and the development of sustainable exploration technologies.</p>
                     </div>
+                </div>
+                
+                <div class="report-download">
+                    <h3>Project Report</h3>
+                    <p>Download the comprehensive project report detailing the design, implementation, and findings of the Prabhakar rover project.</p>
+                    <a href="#" class="btn" style="margin-top: 1rem;">
+                        <i class="fas fa-download"></i>
+                        Download Project Report (PDF)
+                    </a>
                 </div>
                 
                 <div class="features-grid">
@@ -1580,120 +1609,6 @@
             </div>
         </section>
 
-        <!-- Data Section -->
-        <section id="data" class="data">
-            <div class="container">
-                <h2 class="section-title">Measurement Data</h2>
-                <div class="data-grid">
-                    <div class="data-card">
-                        <i class="fas fa-battery-full"></i>
-                        <h3>Battery Percentage</h3>
-                        <div class="data-value">78%</div>
-                        <p class="data-unit">Last updated: 2 hours ago</p>
-                    </div>
-                    <div class="data-card">
-                        <i class="fas fa-thermometer-half"></i>
-                        <h3>Temperature</h3>
-                        <div class="data-value">32°C</div>
-                        <p class="data-unit">Last updated: 15 minutes ago</p>
-                    </div>
-                    <div class="data-card">
-                        <i class="fas fa-tint"></i>
-                        <h3>Air Humidity</h3>
-                        <div class="data-value">65%</div>
-                        <p class="data-unit">Last updated: 15 minutes ago</p>
-                    </div>
-                    <div class="data-card">
-                        <i class="fas fa-seedling"></i>
-                        <h3>Soil Humidity</h3>
-                        <div class="data-value">42%</div>
-                        <p class="data-unit">Last updated: 30 minutes ago</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Team Section -->
-        <section id="team" class="team">
-            <div class="container">
-                <h2 class="section-title">Our Team</h2>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="member-img">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                        <div class="member-info">
-                            <h3>Nilotpal Bose</h3>
-                            <div class="member-role">Project Lead & Embedded Systems Engineer</div>
-                            <div class="contact-info">
-                                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-                                <p><i class="fas fa-envelope"></i> nilotpal.bose@example.com</p>
-                            </div>
-                            <div class="social-links">
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-img">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                        <div class="member-info">
-                            <h3>Subhashish Paul</h3>
-                            <div class="member-role">Hardware & Sensor Integration Specialist</div>
-                            <div class="contact-info">
-                                <p><i class="fas fa-phone"></i> +91 87654 32109</p>
-                                <p><i class="fas fa-envelope"></i> subhashish.paul@example.com</p>
-                            </div>
-                            <div class="social-links">
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-img">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                        <div class="member-info">
-                            <h3>Mahashweta Ghosh</h3>
-                            <div class="member-role">Software Specialist</div>
-                            <div class="contact-info">
-                                <p><i class="fas fa-phone"></i> +91 76543 21098</p>
-                                <p><i class="fas fa-envelope"></i> mahashweta.ghosh@example.com</p>
-                            </div>
-                            <div class="social-links">
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-img">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                        <div class="member-info">
-                            <h3>Dr. Soma Barman (Mandal)</h3>
-                            <div class="member-role">Faculty Advisor & Research Lead</div>
-                            <div class="contact-info">
-                                <p><i class="fas fa-phone"></i> +91 65432 10987</p>
-                                <p><i class="fas fa-envelope"></i> soma.mondal@example.com</p>
-                            </div>
-                            <div class="social-links">
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Technology Section -->
         <section id="technology" class="technology">
             <div class="container">
@@ -1759,16 +1674,104 @@
             </div>
         </section>
 
-        <!-- Rover Control Section -->
-        <section id="rover-control" class="rover-control">
+        <!-- Team Section -->
+        <section id="team" class="team">
             <div class="container">
-                <h2 class="section-title">Control Prabhakar</h2>
-                <div class="control-content">
-                    <p>Access the remote control interface to operate Prabhakar in real-time. This feature allows authorized users to control the rover's movement, camera systems, and data collection processes from anywhere with an internet connection.</p>
-                    <button class="control-btn" id="controlRoverBtn">
-                        <i class="fas fa-gamepad"></i>
-                        Access Rover Control Panel
-                    </button>
+                <h2 class="section-title">Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-img">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="member-info">
+                            <h3>Nilotpal Bose</h3>
+                            <div class="member-role">Project Lead & Embedded Systems Engineer</div>
+                            <div class="member-details">
+                                <p><i class="fas fa-graduation-cap"></i> B.Tech. (Hons.) in Electronics and Communication Engineering at IRPE</p>
+                                <p><i class="fas fa-heart"></i> Interests: Embedded Systems, Microelectronics & VLSI, PCB Design</p>
+                            </div>
+                            <a href="#" class="cv-download">
+                                <i class="fas fa-download"></i>
+                                Download CV
+                            </a>
+                            <div class="social-links">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fas fa-globe"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-img">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="member-info">
+                            <h3>Subhashish Paul</h3>
+                            <div class="member-role">Hardware & Sensor Integration Specialist</div>
+                            <div class="member-details">
+                                <p><i class="fas fa-graduation-cap"></i> B.Tech. in Electronics and Communication Engineering</p>
+                                <p><i class="fas fa-heart"></i> Interests: Embedded Systems, Signal Processing, Programming</p>
+                            </div>
+                            <a href="#" class="cv-download">
+                                <i class="fas fa-download"></i>
+                                Download CV
+                            </a>
+                            <div class="social-links">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-img">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="member-info">
+                            <h3>Mahashweta Ghosh</h3>
+                            <div class="member-role">Software Specialist</div>
+                            <div class="member-details">
+                                <p><i class="fas fa-graduation-cap"></i> PhD scholar at IRPE</p>
+                                <p><i class="fas fa-heart"></i> Interests: Embedded Systems, IoT, Applied AI, Sensor Development</p>
+                            </div>
+                            <a href="#" class="cv-download">
+                                <i class="fas fa-download"></i>
+                                Download CV
+                            </a>
+                            <div class="social-links">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="ai ai-google-scholar"></i></a>
+                                <a href="#"><i class="fab fa-researchgate"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-img">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="member-info">
+                            <h3>Dr. Soma Barman (Mandal)</h3>
+                            <div class="member-role">Faculty Advisor & Research Lead</div>
+                            <div class="member-details">
+                                <p><i class="fas fa-graduation-cap"></i> Associate Professor, IRPE, CU</p>
+                                <p><i class="fas fa-heart"></i> Interests: Signal processing applications in genomics, Digital Signal Processing Applications in Disease diagnosis, Circuits modelling for amino acids, protein and DNA, Synthetic Biological Circuit Design, Embedded processing and IoT application in HealthCare</p>
+                            </div>
+                            <a href="#" class="cv-download">
+                                <i class="fas fa-download"></i>
+                                Download CV
+                            </a>
+                            <div class="social-links">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="ai ai-google-scholar"></i></a>
+                                <a href="#"><i class="fab fa-researchgate"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1805,6 +1808,26 @@
                         <i class="fas fa-images"></i>
                         <span>View All Media</span>
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Control & Measurement Section -->
+        <section id="control-measurement" class="rover-control">
+            <div class="container">
+                <h2 class="section-title">Control & Measurement</h2>
+                <div class="control-content">
+                    <p>Access the remote control interface to operate Prabhakar in real-time. This feature allows authorized users to control the rover's movement, camera systems, and data collection processes from anywhere with an internet connection. You can also view real-time measurement data from the rover's sensors.</p>
+                    <div class="control-buttons">
+                        <button class="control-btn" id="controlRoverBtn">
+                            <i class="fas fa-gamepad"></i>
+                            Access Rover Control Panel
+                        </button>
+                        <button class="control-btn" id="viewMeasurementsBtn">
+                            <i class="fas fa-chart-bar"></i>
+                            View Measurement Data
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1865,7 +1888,7 @@
         <!-- Institute Section -->
         <section id="institute" class="institute">
             <div class="container">
-                <h2 class="section-title">Our Institute & University</h2>
+                <h2 class="section-title">Our Institute</h2>
                 <div class="institute-info">
                     <div class="institute-logo">
                         <i class="fas fa-university"></i>
@@ -1877,8 +1900,13 @@
                         <a href="https://www.irpe.in" class="btn" style="margin-top: 1.5rem;">Visit Institute Website</a>
                     </div>
                 </div>
-                
-                <!-- University Section -->
+            </div>
+        </section>
+        
+        <!-- University Section -->
+        <section id="university" class="university">
+            <div class="container">
+                <h2 class="section-title">Our University</h2>
                 <div class="university-info">
                     <div class="university-logo">
                         <i class="fas fa-graduation-cap"></i>
@@ -1902,30 +1930,27 @@
                 <div class="footer-section">
                     <h3>About Prabhakar</h3>
                     <p>Prabhakar is a solar-powered autonomous rover designed for environmental monitoring and exploration in remote locations.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
+                    <a href="https://blogger.com" class="blog-link">
+                        <i class="fab fa-blogger"></i>
+                        Visit Our Blog
+                    </a>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
-                        <li><a href="#timeline"><i class="fas fa-chevron-right"></i> Timeline</a></li>
                         <li><a href="#team"><i class="fas fa-chevron-right"></i> Team</a></li>
-                        <li><a href="#technology"><i class="fas fa-chevron-right"></i> Technology</a></li>
-                        <li><a href="#rover-control"><i class="fas fa-chevron-right"></i> Control Rover</a></li>
                         <li><a href="#media"><i class="fas fa-chevron-right"></i> Media</a></li>
+                        <li><a href="#control-measurement"><i class="fas fa-chevron-right"></i> Control & Measurement</a></li>
+                        <li><a href="#research"><i class="fas fa-chevron-right"></i> Papers</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Contact Information</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Institute of Radio Physics and Electronics, University of Calcutta, 92 APC Road, Kolkata, West Bengal 700009</a></li>
+                        <li><a href="https://maps.app.goo.gl/pouV4jXaEShrn4358"><i class="fas fa-map-marker-alt"></i> Institute of Radio Physics and Electronics, University of Calcutta, 92 APC Road, Kolkata, West Bengal 700009</a></li>
                         <li><a href="mailto:contact@prabhakarproject.in"><i class="fas fa-envelope"></i> contact@prabhakarproject.in</a></li>
                         <li><a href="tel:+913322350661"><i class="fas fa-phone"></i> +91-33-2235-0661</a></li>
                     </ul>
@@ -1973,6 +1998,7 @@
         
         // Password Modal
         const controlRoverBtn = document.getElementById('controlRoverBtn');
+        const viewMeasurementsBtn = document.getElementById('viewMeasurementsBtn');
         const viewAllMediaBtn = document.getElementById('viewAllMediaBtn');
         const passwordModal = document.getElementById('passwordModal');
         const passwordInput = document.getElementById('passwordInput');
@@ -1981,7 +2007,7 @@
         const passwordError = document.getElementById('passwordError');
         const passwordModalTitle = document.getElementById('passwordModalTitle');
         
-        let currentAction = ''; // 'control' or 'media'
+        let currentAction = ''; // 'control' or 'measurements' or 'media'
         
         function showPasswordModal(action) {
             currentAction = action;
@@ -1990,6 +2016,8 @@
             
             if (action === 'control') {
                 passwordModalTitle.textContent = 'Access Rover Control Panel';
+            } else if (action === 'measurements') {
+                passwordModalTitle.textContent = 'Access Measurement Data';
             } else if (action === 'media') {
                 passwordModalTitle.textContent = 'Access Media Gallery';
             }
@@ -2011,6 +2039,9 @@
                 if (currentAction === 'control') {
                     // Redirect to rover control website
                     window.open('https://example-rover-control.com', '_blank');
+                } else if (currentAction === 'measurements') {
+                    // Redirect to measurements website
+                    window.open('https://example-measurements.com', '_blank');
                 } else if (currentAction === 'media') {
                     // Redirect to media gallery website
                     window.open('https://example-media-gallery.com', '_blank');
@@ -2024,6 +2055,10 @@
         
         controlRoverBtn.addEventListener('click', function() {
             showPasswordModal('control');
+        });
+        
+        viewMeasurementsBtn.addEventListener('click', function() {
+            showPasswordModal('measurements');
         });
         
         viewAllMediaBtn.addEventListener('click', function(e) {
