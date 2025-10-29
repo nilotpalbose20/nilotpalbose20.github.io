@@ -65,20 +65,29 @@
         
         /* Header Styles */
         header {
-            background: var(--header-gradient);
-            color: var(--text-light);
-            padding: 0;
-            position: static;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
-            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
         
         .header-top {
+            background: linear-gradient(135deg, #1b5e20, #2e7d32, #4caf50);
+            padding: 1rem 0;
+            transition: var(--transition);
+            transform: translateY(0);
+        }
+        
+        header.scrolled .header-top {
+            transform: translateY(-100%);
+        }
+        
+        .header-top-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
         
         .logo-container {
@@ -134,37 +143,29 @@
             letter-spacing: 1.5px;
         }
         
-        .header-right {
+        .header-top-right {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
         }
         
-        /* Theme Toggle */
-        .theme-toggle {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid white;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            color: white;
-        }
-        
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(30deg);
-        }
-        
-        /* Navigation */
-        .nav-container {
-            background-color: rgba(0, 0, 0, 0.2);
+        .header-bottom {
+            background: linear-gradient(135deg, #0d3b0f, #1b5e20);
             padding: 0.8rem 0;
-            position: relative;
+            transition: var(--transition);
+        }
+        
+        header.scrolled .header-bottom {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
         }
         
         nav ul {
@@ -217,9 +218,113 @@
             width: 100%;
         }
         
-        /* Mobile Navigation Styles */
-        .mobile-menu-toggle {
+        /* Theme Toggle */
+        /* .theme-toggle, .sign-in {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid white;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            color: white;
+        }
+        
+        .theme-toggle:hover, .sign-in:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(15deg);
+        } */
+        
+        /* Mobile Header */
+        .mobile-header {
             display: none;
+            background: linear-gradient(135deg, #1b5e20, #2e7d32, #4caf50);
+            padding: 0.8rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .mobile-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .mobile-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .mobile-logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #ffcc00, #ff9900);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .mobile-logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .mobile-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mobile-logo-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #ffffff, #e8f5e9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        
+        .mobile-logo-subtitle {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #e8f5e9;
+            letter-spacing: 0.8px;
+            line-height: 1.2;
+        }
+        
+        .mobile-header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .mobile-nav-container {
+            background: linear-gradient(135deg, #0d3b0f, #1b5e20);
+            padding: 0.8rem 0;
+        }
+        
+        /* Mobile Navigation Styles */
+        .mobile-menu-toggle, .sign-in, .theme-toggle {
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -232,14 +337,10 @@
             padding: 8px;
             gap: 4px;
             transition: var(--transition);
-            position: fixed;
-            left: 20px;
-            bottom: 25px;
-            transform: none;
-            z-index: 1001;
+            color: white;
         }
 
-        .mobile-menu-toggle:hover {
+        .mobile-menu-toggle:hover, .sign-in:hover, .theme-toggle:hover {
             background: rgba(255, 255, 255, 0.2);
             border-color: green;
         }
@@ -273,7 +374,7 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: var(--header-gradient);
+            background: linear-gradient(135deg, #0d3b0f, #1b5e20);
             z-index: 2000;
             padding: 2rem;
             overflow-y: auto;
@@ -354,18 +455,14 @@
             text-align: center;
         }
 
-        /* Hide regular nav on mobile, show hamburger */
+        /* Hide regular nav on mobile, show mobile header */
         @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: flex;
+            .mobile-header {
+                display: block;
             }
             
-            nav ul {
+            header {
                 display: none;
-            }
-            
-            .nav-container {
-                padding: 0.5rem 0;
             }
         }
 
@@ -391,6 +488,14 @@
             text-align: center;
             padding: 10rem 0;
             position: relative;
+            margin-top: 140px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                margin-top: 75px;
+                padding: 7rem 0;
+            }
         }
         
         .hero h2 {
@@ -411,7 +516,7 @@
         
         .btn {
             display: inline-block;
-            background-color: var(--primary-green);
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
             color: white;
             padding: 14px 32px;
             border-radius: 50px;
@@ -440,7 +545,7 @@
         }
         
         .btn:hover {
-            background-color: var(--primary-green);
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
@@ -690,9 +795,25 @@
             text-align: left;
         }
         
-        .team-member .member-img {
-            border-radius: 15px 0 0 15px;
-            height: 100%;
+        .member-img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .member-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            border: 5px solid var(--light-green);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
         .team-member .member-info {
@@ -704,34 +825,6 @@
         
         .team-member:hover {
             transform: translateY(-10px);
-        }
-        
-        .member-img {
-            height: 250px;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 5rem;
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-        }
-        
-        .member-img:after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: -20px;
-            width: 150px;
-            height: 150px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-        }
-        
-        .member-info {
-            padding: 2rem;
         }
         
         .member-info h3 {
@@ -774,7 +867,7 @@
             display: inline-block;
             margin-top: 1rem;
             padding: 10px 20px;
-            background-color: var(--primary-green);
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
             color: white;
             border-radius: 25px;
             text-decoration: none;
@@ -785,7 +878,7 @@
         }
         
         .cv-download:hover {
-            background-color: var(--dark-green);
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
             transform: translateY(-2px);
         }
         
@@ -802,7 +895,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: var(--primary-green);
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
             color: white;
             border-radius: 50%;
             transition: var(--transition);
@@ -810,7 +903,7 @@
         }
         
         .social-links a:hover {
-            background-color: var(--primary-green);
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
             transform: translateY(-3px);
         }
         
@@ -897,7 +990,7 @@
         }
         
         .control-btn {
-            background-color: var(--primary-green);
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
             color: white;
             padding: 16px 40px;
             border-radius: 50px;
@@ -910,10 +1003,11 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
+            text-decoration: none;
         }
         
         .control-btn:hover {
-            background-color: var(--dark-green);
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
@@ -976,6 +1070,7 @@
             align-items: center;
             gap: 10px;
             margin-top: 1rem;
+            text-decoration: none;
         }
         
         /* Research Papers Section */
@@ -1129,95 +1224,19 @@
             transform: translateY(-3px);
         }
         
+        .map-container {
+            margin-top: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
         .copyright {
             text-align: center;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.8);
-        }
-        
-        /* Password Modal */
-        .password-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            overflow-y: auto;
-            padding: 2rem;
-        }
-        
-        .password-modal-content {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            max-width: 500px;
-            margin: 10% auto;
-            padding: 2.5rem;
-            position: relative;
-            animation: modalFadeIn 0.5s;
-            color: var(--text-dark);
-            text-align: center;
-        }
-        
-        .password-modal-title {
-            margin-bottom: 1.5rem;
-            color: var(--dark-green);
-            font-size: 1.8rem;
-        }
-        
-        .password-input {
-            width: 100%;
-            padding: 14px 20px;
-            border: 2px solid var(--light-green);
-            border-radius: 8px;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            transition: var(--transition);
-            background-color: var(--background-light);
-            color: var(--text-dark);
-        }
-        
-        .password-input:focus {
-            border-color: var(--primary-green);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
-        }
-        
-        .password-btn {
-            background-color: var(--primary-green);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            border: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            margin: 0 10px;
-        }
-        
-        .password-btn:hover {
-            background-color: var(--dark-green);
-            transform: translateY(-3px);
-        }
-        
-        .password-cancel {
-            background-color: #f44336;
-        }
-        
-        .password-cancel:hover {
-            background-color: #d32f2f;
-        }
-        
-        .password-error {
-            color: #f44336;
-            margin-top: 1rem;
-            display: none;
         }
         
         /* Animations */
@@ -1262,22 +1281,17 @@
                 grid-template-columns: 1fr;
             }
             
-            .team-member .member-img {
-                border-radius: 15px 15px 0 0;
-                height: 250px;
+            .member-img {
+                padding: 2rem 2rem 0;
+            }
+            
+            .member-photo {
+                width: 180px;
+                height: 180px;
             }
             
             .rover-image {
                 height: 300px;
-            }
-            
-            .header-right {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .logo-title {
-                font-size: 2rem;
             }
             
             .timeline::after {
@@ -1309,25 +1323,14 @@
         }
 
         @media (max-width: 768px) {
-            .header-top {
-                flex-direction: column;
-                text-align: center;
+            .mobile-header-content {
+                flex-direction: row;
+                text-align: left;
                 gap: 1rem;
             }
             
-            .header-right {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            nav ul {
-                margin-top: 1rem;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            nav ul li {
-                margin: 0.5rem;
+            .mobile-header-right {
+                justify-content: flex-end;
             }
             
             .hero h2 {
@@ -1372,64 +1375,131 @@
                 font-size: 1.8rem;
             }
             
+            .mobile-logo-title {
+                font-size: 1.3rem;
+            }
+            
+            .mobile-logo-subtitle {
+                font-size: 0.6rem;
+            }
+            
             .logo-img {
                 width: 60px;
                 height: 60px;
             }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-logo-container {
+                gap: 8px;
+            }
             
-            .password-modal-content {
-                padding: 2rem;
-                margin: 5% auto;
+            .mobile-logo-img {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .mobile-logo-title {
+                font-size: 1.1rem;
+            }
+            
+            .mobile-logo-subtitle {
+                font-size: 0.5rem;
+            }
+            
+            .mobile-header-right {
+                gap: 0.5rem;
+            }
+            
+            .theme-toggle, .sign-in {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .mobile-menu-toggle {
+                width: 35px;
+                height: 35px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-top">
-                <div class="logo-container">
-                    <div class="logo-img">
-                        <!-- <i class="fas fa-robot"></i> -->
-                        <img src="logo.png" alt="Prabhakar Rover Logo">
+    <!-- Desktop Header -->
+    <header id="desktopHeader">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="logo-container">
+                        <div class="logo-img">
+                            <img src="logo.png" alt="Prabhakar Rover Logo">
+                        </div>
+                        <div class="logo-text">
+                            <h1 class="logo-title">PRABHAKAR</h1>
+                            <div class="logo-subtitle">SOLAR EXPLORATION ROVER</div>
+                        </div>
                     </div>
-                    <div class="logo-text">
-                        <h1 class="logo-title">PRABHAKAR</h1>
-                        <div class="logo-subtitle">SOLAR EXPLORATION ROVER</div>
-                    </div>
-                </div>
-                <div class="header-right">
-                    <div class="theme-toggle" id="themeToggle">
-                        <i class="fas fa-moon"></i>
+                    <div class="header-top-right">
+                        <div class="theme-toggle" id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <a href="#" class="sign-in">
+                            <i class="fas fa-user"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="nav-container">
+        <div class="header-bottom">
             <div class="container">
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                
-                <nav>
-                    <ul>
-                        <li><a href="#about" class="nav-link">About</a></li>
-                        <li><a href="#timeline" class="nav-link">Timeline</a></li>
-                        <li><a href="#technology" class="nav-link">Technology</a></li>
-                        <li><a href="#team" class="nav-link">Team</a></li>
-                        <li><a href="#media" class="nav-link">Media</a></li>
-                        <li><a href="#control-measurement" class="nav-link">Control</a></li>
-                        <li><a href="#research" class="nav-link">Papers</a></li>
-                        <li><a href="#institute" class="nav-link">Institute</a></li>
-                        <li><a href="#university" class="nav-link">University</a></li>
-                    </ul>
-                </nav>
+                <div class="nav-container">
+                    <nav>
+                        <ul>
+                            <li><a href="#about" class="nav-link">About</a></li>
+                            <li><a href="#timeline" class="nav-link">Timeline</a></li>
+                            <li><a href="#technology" class="nav-link">Technology</a></li>
+                            <li><a href="#team" class="nav-link">Team</a></li>
+                            <li><a href="#media" class="nav-link">Media</a></li>
+                            <li><a href="#control-measurement" class="nav-link">Control</a></li>
+                            <li><a href="#research" class="nav-link">Papers</a></li>
+                            <li><a href="#institute" class="nav-link">Institute</a></li>
+                            <li><a href="#university" class="nav-link">University</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </header>
+
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <div class="container">
+            <div class="mobile-header-content">
+                <div class="mobile-logo-container">
+                    <div class="mobile-logo-img">
+                        <img src="logo.png" alt="Prabhakar Rover Logo">
+                    </div>
+                    <div class="mobile-logo-text">
+                        <h1 class="mobile-logo-title">PRABHAKAR</h1>
+                        <div class="mobile-logo-subtitle">SOLAR EXPLORATION ROVER</div>
+                    </div>
+                </div>
+                <div class="mobile-header-right">
+                    <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="theme-toggle" id="mobileThemeToggle">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <a href="#" class="sign-in">
+                        <i class="fas fa-user "></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scroll to top button -->
     <div class="scroll-to-top" id="scrollToTop">
@@ -1681,7 +1751,9 @@
                 <div class="team-grid">
                     <div class="team-member">
                         <div class="member-img">
-                            <i class="fas fa-user-graduate"></i>
+                            <div class="member-photo">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
                         </div>
                         <div class="member-info">
                             <h3>Nilotpal Bose</h3>
@@ -1704,7 +1776,9 @@
                     </div>
                     <div class="team-member">
                         <div class="member-img">
-                            <i class="fas fa-user-graduate"></i>
+                            <div class="member-photo">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
                         </div>
                         <div class="member-info">
                             <h3>Subhashish Paul</h3>
@@ -1725,7 +1799,9 @@
                     </div>
                     <div class="team-member">
                         <div class="member-img">
-                            <i class="fas fa-user-graduate"></i>
+                            <div class="member-photo">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
                         </div>
                         <div class="member-info">
                             <h3>Mahashweta Ghosh</h3>
@@ -1748,7 +1824,9 @@
                     </div>
                     <div class="team-member">
                         <div class="member-img">
-                            <i class="fas fa-user-graduate"></i>
+                            <div class="member-photo">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
                         </div>
                         <div class="member-info">
                             <h3>Dr. Soma Barman (Mandal)</h3>
@@ -1801,7 +1879,7 @@
                 </div>
                 
                 <div style="text-align: center;">
-                    <a href="#" class="btn media-btn" id="viewAllMediaBtn">
+                    <a href="https://example-media-gallery.com" class="btn media-btn" target="_blank">
                         <i class="fas fa-images"></i>
                         <span>View All Media</span>
                     </a>
@@ -1816,14 +1894,14 @@
                 <div class="control-content">
                     <p>Access the remote control interface to operate Prabhakar in real-time. This feature allows authorized users to control the rover's movement, camera systems, and data collection processes from anywhere with an internet connection. You can also view real-time measurement data from the rover's sensors.</p>
                     <div class="control-buttons">
-                        <button class="control-btn" id="controlRoverBtn">
+                        <a href="https://example-rover-control.com" class="control-btn" target="_blank">
                             <i class="fas fa-gamepad"></i>
                             Access Rover Control Panel
-                        </button>
-                        <button class="control-btn" id="viewMeasurementsBtn">
+                        </a>
+                        <a href="https://example-measurements.com" class="control-btn" target="_blank">
                             <i class="fas fa-chart-bar"></i>
                             View Measurement Data
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1947,9 +2025,24 @@
                 <div class="footer-section">
                     <h3>Contact Information</h3>
                     <ul class="footer-links">
-                        <li><a href="https://maps.app.goo.gl/pouV4jXaEShrn4358"><i class="fas fa-map-marker-alt"></i> Institute of Radio Physics and Electronics, University of Calcutta, 92 APC Road, Kolkata, West Bengal 700009</a></li>
-                        <li><a href="mailto:contact@prabhakarproject.in"><i class="fas fa-envelope"></i> contact@prabhakarproject.in</a></li>
-                        <li><a href="tel:+913322350661"><i class="fas fa-phone"></i> +91-33-2235-0661</a></li>
+                        <li>
+                            <a href="https://maps.app.goo.gl/pouV4jXaEShrn4358">
+                                <i class="fas fa-map-marker-alt"></i> 
+                                Institute of Radio Physics and Electronics, University of Calcutta, 92 APC Road, Kolkata, West Bengal 700009
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:sbrpe@caluniv.ac.in">
+                                <i class="fas fa-envelope"></i> 
+                                sbrpe@caluniv.ac.in
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+919434238666">
+                                <i class="fas fa-phone"></i> 
+                                +91 94342 38666
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -1959,19 +2052,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Password Modal -->
-    <div class="password-modal" id="passwordModal">
-        <div class="password-modal-content">
-            <h2 class="password-modal-title" id="passwordModalTitle">Enter Password</h2>
-            <input type="password" class="password-input" id="passwordInput" placeholder="Enter password">
-            <div class="password-error" id="passwordError">Incorrect password. Please try again.</div>
-            <div>
-                <button class="password-btn" id="passwordOk">OK</button>
-                <button class="password-btn password-cancel" id="passwordCancel">Cancel</button>
-            </div>
-        </div>
-    </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -1991,92 +2071,6 @@
                 this.classList.add('active');
                 document.getElementById(`${tabId}-content`).classList.add('active');
             });
-        });
-        
-        // Password Modal
-        const controlRoverBtn = document.getElementById('controlRoverBtn');
-        const viewMeasurementsBtn = document.getElementById('viewMeasurementsBtn');
-        const viewAllMediaBtn = document.getElementById('viewAllMediaBtn');
-        const passwordModal = document.getElementById('passwordModal');
-        const passwordInput = document.getElementById('passwordInput');
-        const passwordOk = document.getElementById('passwordOk');
-        const passwordCancel = document.getElementById('passwordCancel');
-        const passwordError = document.getElementById('passwordError');
-        const passwordModalTitle = document.getElementById('passwordModalTitle');
-        
-        let currentAction = ''; // 'control' or 'measurements' or 'media'
-        
-        function showPasswordModal(action) {
-            currentAction = action;
-            passwordInput.value = '';
-            passwordError.style.display = 'none';
-            
-            if (action === 'control') {
-                passwordModalTitle.textContent = 'Access Rover Control Panel';
-            } else if (action === 'measurements') {
-                passwordModalTitle.textContent = 'Access Measurement Data';
-            } else if (action === 'media') {
-                passwordModalTitle.textContent = 'Access Media Gallery';
-            }
-            
-            passwordModal.style.display = 'block';
-        }
-        
-        function hidePasswordModal() {
-            passwordModal.style.display = 'none';
-        }
-        
-        function checkPassword() {
-            const password = passwordInput.value;
-            const correctPassword = "prabhakar_26";
-            
-            if (password === correctPassword) {
-                hidePasswordModal();
-                
-                if (currentAction === 'control') {
-                    // Redirect to rover control website
-                    window.open('https://example-rover-control.com', '_blank');
-                } else if (currentAction === 'measurements') {
-                    // Redirect to measurements website
-                    window.open('https://example-measurements.com', '_blank');
-                } else if (currentAction === 'media') {
-                    // Redirect to media gallery website
-                    window.open('https://example-media-gallery.com', '_blank');
-                }
-            } else {
-                passwordError.style.display = 'block';
-                passwordInput.value = '';
-                passwordInput.focus();
-            }
-        }
-        
-        controlRoverBtn.addEventListener('click', function() {
-            showPasswordModal('control');
-        });
-        
-        viewMeasurementsBtn.addEventListener('click', function() {
-            showPasswordModal('measurements');
-        });
-        
-        viewAllMediaBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            showPasswordModal('media');
-        });
-        
-        passwordOk.addEventListener('click', checkPassword);
-        
-        passwordCancel.addEventListener('click', hidePasswordModal);
-        
-        passwordInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkPassword();
-            }
-        });
-        
-        window.addEventListener('click', function(event) {
-            if (event.target === passwordModal) {
-                hidePasswordModal();
-            }
         });
         
         // Mobile Navigation
@@ -2159,6 +2153,14 @@
             } else {
                 scrollToTopBtn.classList.remove('visible');
             }
+            
+            // Sticky header behavior
+            const header = document.getElementById('desktopHeader');
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
         
         scrollToTopBtn.addEventListener('click', function() {
@@ -2170,7 +2172,8 @@
         
         // Dark mode toggle
         const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
+        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+        const themeIcons = document.querySelectorAll('#themeToggle i, #mobileThemeToggle i');
         
         // Check for saved theme preference or respect OS preference
         const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
@@ -2178,23 +2181,32 @@
         
         if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
             document.body.classList.add('dark-mode');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+            themeIcons.forEach(icon => {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            });
         }
         
-        themeToggle.addEventListener('click', function() {
+        function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
             
             if (document.body.classList.contains('dark-mode')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
+                themeIcons.forEach(icon => {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                });
                 localStorage.setItem('theme', 'dark');
             } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
+                themeIcons.forEach(icon => {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                });
                 localStorage.setItem('theme', 'light');
             }
-        });
+        }
+        
+        themeToggle.addEventListener('click', toggleDarkMode);
+        mobileThemeToggle.addEventListener('click', toggleDarkMode);
         
         // Active section highlighting
         const sections = document.querySelectorAll('section');
