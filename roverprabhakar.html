@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prabhakar - Solar Powered Exploration Rover</title>
     <meta name="description" content="Prabhakar is a cutting-edge solar-powered rover designed to autonomously explore and monitor remote environments while collecting valuable scientific data.">
-    <link rel="icon" type="image/x-icon" href="https://nilotpalbose20.github.io/logo.png">
+    <link rel="icon" type="image/x-icon" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -653,6 +652,7 @@
             color: white;
             font-size: 8rem;
             box-shadow: var(--shadow);
+            border: 3px solid var(--primary-green);
             transition: transform 0.5s;
             position: relative;
             overflow: hidden;
@@ -844,9 +844,16 @@
             justify-content: center;
             color: white;
             font-size: 4rem;
-            border: 5px solid var(--primary-green);
+            border: 3px solid var(--primary-green);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             transition: transform 0.5s ease;
+            overflow: hidden;
+        }
+        
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .member-photo:hover {
@@ -871,7 +878,6 @@
         }
         
         .member-role {
-            /* color: var(--primary-saffron); */
             font-weight: 500;
             margin-bottom: 1rem;
             font-size: 1.1rem;
@@ -1095,6 +1101,12 @@
             cursor: pointer;
         }
         
+        .preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
         .preview-item:hover {
             transform: scale(1.05);
         }
@@ -1190,8 +1202,16 @@
             align-items: center;
             justify-content: center;
             color: white;
+            border: 3px solid var(--primary-green);
             font-size: 4rem;
             transition: transform 0.5s ease;
+            overflow: hidden;
+        }
+        
+        .institute-logo img, .university-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .institute-logo:hover, .university-logo:hover {
@@ -1624,7 +1644,7 @@
                 <h2 class="section-title">About Prabhakar</h2>
                 <div class="about-content">
                     <div class="rover-image">
-                        <i class="fas fa-robot"></i>
+                        <img src="prabhakarpic.jpg" alt="Prabhakar Rover">
                     </div>
                     <div class="about-text">
                         <h3>Revolutionizing Environmental Exploration</h3>
@@ -1806,7 +1826,7 @@
                     <div class="team-member">
                         <div class="member-img">
                             <div class="member-photo">
-                                <i class="fas fa-user-graduate"></i>
+                                <img src="nbpic.jpg" alt="Nilotpal Bose">
                             </div>
                         </div>
                         <div class="member-info">
@@ -1830,7 +1850,7 @@
                     <div class="team-member">
                         <div class="member-img">
                             <div class="member-photo">
-                                <i class="fas fa-user-graduate"></i>
+                                <img src="uspic.jpeg" alt="Uday Sannigrahi">
                             </div>
                         </div>
                         <div class="member-info">
@@ -1854,11 +1874,11 @@
                     <div class="team-member">
                         <div class="member-img">
                             <div class="member-photo">
-                                <i class="fas fa-user-graduate"></i>
+                                <img src="arcpic.png" alt="Abhishek Roy Choudhury">
                             </div>
                         </div>
                         <div class="member-info">
-                            <h3>Abhishek Roy Chaudhuri</h3>
+                            <h3>Abhishek Roy Choudhury</h3>
                             <div class="member-role">Contribution: ML Appliaction & Sensor Integration</div>
                             <div class="member-details">
                                 <p><i class="fas fa-graduation-cap"></i> M.Tech in VLSI</p>
@@ -1878,7 +1898,7 @@
                     <div class="team-member">
                         <div class="member-img">
                             <div class="member-photo">
-                                <i class="fas fa-user-graduate"></i>
+                                <img src="mgpic.jpeg" alt="Mahashweta Ghosh">
                             </div>
                         </div>
                         <div class="member-info">
@@ -1902,7 +1922,7 @@
                     <div class="team-member">
                         <div class="member-img">
                             <div class="member-photo">
-                                <i class="fas fa-user-graduate"></i>
+                                <img src="sbmpic.jpeg" alt="Dr. Soma Barman">
                             </div>
                         </div>
                         <div class="member-info">
@@ -1937,19 +1957,19 @@
                 
                 <div class="media-preview">
                     <div class="preview-item">
-                        <i class="fas fa-mountain"></i>
+                        <img src="https://images.pexels.com/photos/38136/pexels-photo-38136.jpeg" alt="Mountain Exploration">
                         <div class="preview-date">April 15, 2026</div>
                     </div>
                     <div class="preview-item">
-                        <i class="fas fa-tree"></i>
+                        <img src="https://images.pexels.com/photos/2132180/pexels-photo-2132180.jpeg" alt="Forest Exploration">
                         <div class="preview-date">April 22, 2026</div>
                     </div>
                     <div class="preview-item">
-                        <i class="fas fa-water"></i>
+                        <img src="https://images.pexels.com/photos/2150/sky-space-dark-galaxy.jpg" alt="Water Source Analysis">
                         <div class="preview-date">May 8, 2026</div>
                     </div>
                     <div class="preview-item">
-                        <i class="fas fa-cloud-sun"></i>
+                        <img src="https://images.pexels.com/photos/106606/pexels-photo-106606.jpeg" alt="Weather Monitoring">
                         <div class="preview-date">June 14, 2026</div>
                     </div>
                 </div>
@@ -2012,7 +2032,7 @@
                 <h2 class="section-title">Our Institute</h2>
                 <div class="institute-info">
                     <div class="institute-logo">
-                        <i class="fas fa-university"></i>
+                        <img src="irpe.jpg" alt="Institute of Radio Physics and Electronics">
                     </div>
                     <div class="institute-details">
                         <h3>Institute of Radio Physics and Electronics</h3>
@@ -2030,7 +2050,7 @@
                 <h2 class="section-title">Our University</h2>
                 <div class="university-info">
                     <div class="university-logo">
-                        <i class="fas fa-graduation-cap"></i>
+                        <img src="cu.jpg" alt="University of Calcutta">
                     </div>
                     <div class="university-details">
                         <h3>University of Calcutta</h3>
