@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microelectronics & VLSI Technology</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add MathJax for proper equation rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <!-- Fixed Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <button class="top-bar-btn" id="topBarSidebarToggle" title="Toggle Sidebar" aria-label="Toggle sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="top-bar-divider"></div>
+            <h1 class="top-bar-title">Microelectronics & VLSI Technology</h1>
+        </div>
+        
+        <div class="top-bar-right">
+            <button class="top-bar-btn" id="topBarThemeToggle" title="Toggle Dark Mode" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="top-bar-divider"></div>
+            <a href="https://youtube.com/playlist?list=PL018645397D9487AF&si=YlcGXXZ7wccbdy_h" class="top-bar-link" title="YouTube Video" aria-label="Open YouTube video" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1MGcs0Mq-FsugVahiZsD1vRa6DS5R5xx8" class="top-bar-link" title="Related Documents" aria-label="Open related document" target="_blank">
+                <i class="fas fa-file-pdf"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Microelectronics & VLSI Technology</h2>
+            </div>
+            
+            <div class="sidebar-content">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">CONTENTS</div>
+                    <ul class="nav-links">
+                        <li>
+                            <a href="#" class="nav-link has-dropdown active" id="introductionDropdown" aria-expanded="false">
+                                Introduction to VLSI and BJT Fabrication
+                                <i class="fas fa-chevron-down dropdown-icon"></i>
+                            </a>
+                            <ul class="dropdown-submenu" id="dropdown-process">
+                                <li><a href="#introduction-bjt" class="nav-link">Introduction</a></li>
+                                <li><a href="#crystal-growth-bjt" class="nav-link">1. Crystal Growth</a></li>
+                                <li><a href="#oxidation-bjt" class="nav-link">2. Oxidation</a></li>
+                                <li><a href="#photolithography-bjt" class="nav-link">3. Photolithography</a></li>
+                                <li><a href="#diffusion-bjt" class="nav-link">4. Diffusion</a></li>
+                                <li><a href="#epitaxy-bjt" class="nav-link">5. Epitaxy</a></li>
+                                <li><a href="#isolation-bjt" class="nav-link">6. Isolation (PN Junction)</a></li>
+                                <li><a href="#base-emitter-bjt" class="nav-link">7. Base & Emitter Diffusion</a></li>
+                                <li><a href="#metallization-bjt" class="nav-link">8. Metallization</a></li>
+                                <li><a href="#ion-implantation-bjt" class="nav-link">9. Ion Implantation</a></li>
+                                <li><a href="#fabrication-sequence-bjt" class="nav-link">10. Complete Fabrication Sequence</a></li>
+                                <li><a href="#advanced-topics-bjt" class="nav-link">11. Advanced Topics</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#" class="nav-link has-dropdown active" id="introductionDropdown" aria-expanded="false">
+                                MOSFET Fabrication
+                                <i class="fas fa-chevron-down dropdown-icon"></i>
+                            </a>
+                            <ul class="dropdown-submenu" id="dropdown-process">
+                                <li><a href="#introduction-mos" class="nav-link">Introduction</a></li>
+                                <li><a href="#metal-gate-process-mos" class="nav-link">1. Metal-Gate Process</a></li>
+                                <li><a href="#threshold-voltage-mos" class="nav-link">2. Threshold Voltage Physics</a></li>
+                                <li><a href="#ion-implantation-mos" class="nav-link">3. Ion Implantation</a></li>
+                                <li><a href="#polysilicon-gate-mos" class="nav-link">4. Polysilicon-Gate Technology</a></li>
+                                <li><a href="#self-alignment-mos" class="nav-link">5. Self-Alignment Technique</a></li>
+                                <li><a href="#comparison-mos" class="nav-link">6. MOSFET vs BJT Comparison</a></li>
+                                <li><a href="#scaling-effects-mos" class="nav-link">7. Scaling Effects</a></li>
+                                <li><a href="#advanced-topics-mos" class="nav-link">8. Advanced Topics</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">QUICK LINKS</div>
+                    <ul class="nav-links">
+                        <li><a href="vlsiportal.html" class="nav-link"><i class="fas fa-home" style="margin-right: 10px;"></i>Back to Subjects</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent-mos">
+            <div class="header">
+                <h1>VLSI Technology: Bipolar Junction Transistor Fabrication</h1>
+            </div>
+
+            <!-- Introduction -->
+            <section class="content-section" id="introduction-bjt">
+                <h2 class="section-title"><i class="fas fa-microchip"></i> Introduction to VLSI Technology</h2>
+                <p>Very Large Scale Integration (VLSI) technology refers to the process of creating integrated circuits (ICs) by combining thousands or millions of transistors into a single chip. This document details the comprehensive fabrication process of Bipolar Junction Transistors (BJTs) in VLSI technology, covering the physics, chemistry, and engineering principles involved.</p>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-lightbulb"></i> Key Technology Note</div>
+                    <p>More than 95% of today's VLSI chips are manufactured using silicon due to its excellent semiconductor properties, stable oxide formation, and abundance. The fabrication process involves precise control at nanometer scales, with each step building upon the previous to create functional electronic devices.</p>
+                </div>
+            </section>
+
+            <!-- 1. Crystal Growth -->
+            <section class="content-section" id="crystal-growth-bjt">
+                <h2 class="section-title"><i class="fas fa-gem"></i> 1. Crystal Growth</h2>
+                <p>The foundation of VLSI technology is the single-crystal silicon wafer. Silicon is chosen due to its excellent semiconductor properties, including a suitable bandgap (1.12 eV), high thermal conductivity, and the ability to form a stable oxide (SiO₂).</p>
+                
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Czochralski (CZ) Method</h3>
+                        <p>A seed crystal is dipped into molten silicon and slowly pulled while rotating. The crystal grows as the seed is withdrawn, producing a cylindrical ingot with precise crystalline orientation.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Float-Zone (FZ) Method</h3>
+                        <p>A polycrystalline rod is locally melted and a single crystal seed is passed through the molten zone to purify and crystallize. This method produces higher purity silicon but is more expensive.</p>
+                    </div>
+                </div>
+                
+                <div class="formula-box" id="resistivity-formula">
+                    <h3>Resistivity Calculation</h3>
+                    <div class="formula">
+                        \[ \rho = \frac{1}{q \mu N} \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(\rho\) = resistivity (\(\Omega\cdot\text{cm}\)), \(q\) = electron charge (\(1.602\times10^{-19}\ \text{C}\)), \(\mu\) = carrier mobility (\(\text{cm}^2/\text{V}\cdot\text{s}\)), \(N\) = doping concentration (\(\text{cm}^{-3}\))
+                    </div>
+                    
+                    <div class="formula">
+                        \[ N_A = \frac{1}{q \mu_p \rho} \]
+                    </div>
+                    <div class="formula-label">
+                        For p-type silicon with \(\rho = 10\ \Omega\cdot\text{cm}\) and \(\mu_p \approx 450\ \text{cm}^2/\text{V}\cdot\text{s}\):<br>
+                        \(N_A \approx 1.387 \times 10^{15}\ \text{cm}^{-3}\)
+                    </div>
+                </div>
+                
+                <p><span class="key-term">Crystal Orientation:</span> The (111) orientation is commonly used due to its higher oxidation rate and better mechanical stability. The orientation affects etching rates, oxidation kinetics, and electronic properties.</p>
+            </section>
+
+            <!-- 2. Oxidation -->
+            <section class="content-section" id="oxidation-bjt">
+                <h2 class="section-title"><i class="fas fa-fire"></i> 2. Oxidation</h2>
+                <p>Oxidation grows a layer of SiO₂ on the silicon surface, which serves as an insulator, diffusion mask, and protective layer. Silicon dioxide has excellent dielectric properties (\(\varepsilon \approx 3.9\)) and acts as an effective barrier against most dopants.</p>
+                
+                <h3>Oxidation Reactions:</h3>
+                <div class="formula-box">
+                    <div class="formula">Dry oxidation: \(\text{Si} + \text{O}_2 \rightarrow \text{SiO}_2\)</div>
+                    <div class="formula">Wet oxidation: \(\text{Si} + 2\text{H}_2\text{O} \rightarrow \text{SiO}_2 + 2\text{H}_2\)</div>
+                    <p>Wet oxidation is approximately 5-10 times faster than dry oxidation but produces a less dense oxide with lower dielectric strength.</p>
+                </div>
+                
+                <div class="formula-box" id="deal-grove">
+                    <h3>Deal-Grove Model for Oxidation</h3>
+                    <div class="formula">
+                        \[ x_o^2 + A x_o = B (t + \tau) \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(x_o\) = oxide thickness, \(t\) = time, \(A\) & \(B\) = temperature-dependent constants, \(\tau\) = initial time offset
+                    </div>
+                    
+                    <h4>Thin Oxide Approximation (\(x_o \ll A\)):</h4>
+                    <div class="formula">
+                        \[ x_o \approx \frac{B}{A} (t + \tau) \]
+                    </div>
+                    
+                    <h4>Thick Oxide Approximation (\(x_o \gg A\)):</h4>
+                    <div class="formula">
+                        \[ x_o^2 \approx B t \]
+                    </div>
+                    
+                    <p><span class="key-term">Example Constants at 1000°C:</span> Dry O₂: \(A = 0.165\ \mu\text{m}\), \(B = 0.0117\ \mu\text{m}^2/\text{hr}\); Wet H₂O: \(A = 0.226\ \mu\text{m}\), \(B = 0.287\ \mu\text{m}^2/\text{hr}\)</p>
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-exclamation-triangle"></i> Oxidation Color Interference</div>
+                    <p>The oxide thickness determines the color due to thin-film interference: \(2n_{\text{ox}}t = m\lambda\), where \(n_{\text{ox}} \approx 1.46\) (refractive index), \(t\) is thickness, \(m\) is an integer, \(\lambda\) is the wavelength of reflected light. This provides a visual method for thickness estimation.</p>
+                </div>
+            </section>
+
+            <!-- 3. Photolithography -->
+            <section class="content-section" id="photolithography-bjt">
+                <h2 class="section-title"><i class="fas fa-layer-group"></i> 3. Photolithography</h2>
+                <p>Photolithography transfers geometric patterns from a mask to the photoresist-coated wafer. This is a critical step that defines the microscopic features of the integrated circuit.</p>
+                
+                <h3>Process Steps:</h3>
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Photoresist Coating</h3>
+                        <p>Spin-coating to achieve uniform thickness (1-2 μm). Positive photoresist becomes soluble when exposed to UV light, while negative photoresist becomes insoluble.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Pre-bake</h3>
+                        <p>Removes solvent (90-120°C) to harden the photoresist before exposure.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Exposure</h3>
+                        <p>UV light (\(\lambda = 365\ \text{nm}\), 248 nm, or 193 nm) passes through a mask, transferring the pattern to the photoresist.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Development</h3>
+                        <p>Soluble regions are removed (positive resist) or retained (negative resist), revealing the pattern.</p>
+                    </div>
+                </div>
+                
+                <div class="formula-box">
+                    <h3>Resolution Limit (Rayleigh Criterion)</h3>
+                    <div class="formula">
+                        \[ R = k_1 \frac{\lambda}{\text{NA}} \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(R\) = minimum resolvable feature size, \(k_1\) = process factor (~0.4-0.8), \(\lambda\) = wavelength, NA = numerical aperture of the lens
+                    </div>
+                    <p>Modern immersion lithography with \(\lambda = 193\ \text{nm}\) and NA = 1.35 can achieve features below 40 nm.</p>
+                </div>
+            </section>
+
+            <!-- 4. Diffusion -->
+            <section class="content-section" id="diffusion-bjt">
+                <h2 class="section-title"><i class="fas fa-arrows-alt-h"></i> 4. Diffusion</h2>
+                <p>Diffusion introduces dopants into silicon by high-temperature annealing (800-1200°C). This process follows Fick's laws of diffusion and is fundamental to creating p-n junctions.</p>
+                
+                <div class="formula-box" id="fick-laws">
+                    <h3>Fick's Laws of Diffusion</h3>
+                    <h4>First Law (Flux proportional to concentration gradient):</h4>
+                    <div class="formula">
+                        \[ J = -D \frac{\partial C}{\partial x} \]
+                    </div>
+                    
+                    <h4>Second Law (Time-dependent diffusion):</h4>
+                    <div class="formula">
+                        \[ \frac{\partial C}{\partial t} = D \frac{\partial^2 C}{\partial x^2} \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(J\) = flux (\(\text{atoms}/\text{cm}^2\cdot\text{s}\)), \(D\) = diffusion coefficient, \(C\) = concentration, \(x\) = distance, \(t\) = time
+                    </div>
+                </div>
+                
+                <h3>Diffusion Profiles:</h3>
+                
+                <div class="formula-box">
+                    <h4>Constant Surface Concentration (Predeposition):</h4>
+                    <div class="formula">
+                        \[ C(x,t) = C_s \text{erfc}\left[ \frac{x}{2\sqrt{Dt}} \right] \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(C_s\) = surface concentration, erfc = complementary error function
+                    </div>
+                </div>
+                
+                <div class="formula-box">
+                    <h4>Constant Total Dose (Drive-in):</h4>
+                    <div class="formula">
+                        \[ C(x,t) = \frac{Q}{\sqrt{\pi Dt}} \exp\left(-\frac{x^2}{4Dt}\right) \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(Q\) = total dose (\(\text{atoms}/\text{cm}^2\))
+                    </div>
+                </div>
+                
+                <div class="formula-box" id="junction-depth">
+                    <h3>Junction Depth Calculation</h3>
+                    <div class="formula">
+                        \[ x_j = 2 \sqrt{Dt \ln\left(\frac{Q}{C_B \sqrt{\pi Dt}}\right)} \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(x_j\) = junction depth, \(C_B\) = background doping concentration
+                    </div>
+                </div>
+                
+                <div class="formula-box">
+                    <h3>Temperature Dependence of Diffusion Coefficient</h3>
+                    <div class="formula">
+                        \[ D = D_0 \exp\left(-\frac{E_a}{kT}\right) \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(D_0\) = pre-exponential factor, \(E_a\) = activation energy, \(k\) = Boltzmann constant, \(T\) = temperature
+                    </div>
+                    <p><span class="key-term">Example for Boron:</span> \(D_0 = 0.76\ \text{cm}^2/\text{s}\), \(E_a = 3.46\ \text{eV}\). At 1000°C (1273 K): \(D \approx 1.42\times10^{-14}\ \text{cm}^2/\text{s}\)</p>
+                </div>
+            </section>
+
+            <!-- 5. Epitaxy -->
+            <section class="content-section" id="epitaxy-bjt">
+                <h2 class="section-title"><i class="fas fa-layer-group"></i> 5. Epitaxy</h2>
+                <p>Epitaxial growth deposits a single-crystal layer on the substrate, maintaining crystallographic continuity. This is crucial for creating the collector region in BJTs and for advanced device structures.</p>
+                
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Chemical Vapor Deposition (CVD)</h3>
+                        <p>Silicon source gases (\(\text{SiH}_4\), \(\text{SiH}_2\text{Cl}_2\)) decompose at high temperature (1000-1200°C) to deposit silicon atoms on the substrate. The growth rate is typically 0.1-3 μm/min.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">In-situ Doping</h3>
+                        <p>Dopant gases (\(\text{PH}_3\) for n-type, \(\text{B}_2\text{H}_6\) for p-type) are mixed with the silicon source to create doped epitaxial layers with precise concentration control.</p>
+                    </div>
+                </div>
+                
+                <div class="formula-box">
+                    <h3>Epitaxial Growth Rate</h3>
+                    <div class="formula">
+                        \[ G = k_s C_s \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(G\) = growth rate, \(k_s\) = surface reaction rate constant, \(C_s\) = gas concentration at the surface
+                    </div>
+                    <p>The growth rate is often mass-transport limited at high temperatures and surface-reaction limited at lower temperatures.</p>
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-info-circle"></i> Buried Layer Out-diffusion</div>
+                    <p>During epitaxial growth, the buried n+ layer dopant diffuses upward into the epitaxial layer. This out-diffusion must be accounted for in device design to ensure proper doping profiles and transistor characteristics.</p>
+                </div>
+            </section>
+
+            <!-- 6. Isolation -->
+            <section class="content-section" id="isolation-bjt">
+                <h2 class="section-title"><i class="fas fa-shield-alt"></i> 6. Isolation (PN Junction Isolation)</h2>
+                <p>Adjacent devices are isolated by reverse-biased pn junctions to prevent unwanted electrical interaction. This is achieved through deep p+ diffusion that surrounds each transistor's active region.</p>
+                
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Isolation Diffusion</h3>
+                        <p>A deep p+ diffusion (boron) surrounds each active region, reaching the p-substrate. This creates a p+ region that forms a reverse-biased junction with the n-epitaxial layer.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Reverse Bias Condition</h3>
+                        <p>The substrate is connected to the most negative supply voltage, ensuring the isolation junctions remain reverse biased during circuit operation.</p>
+                    </div>
+                </div>
+                
+                <div class="formula-box">
+                    <h3>Reverse Leakage Current</h3>
+                    <div class="formula">
+                        \[ J_{\text{leak}} = q \sqrt{\frac{D_p}{\tau_p}} \frac{n_i^2}{N_D} + q \frac{n_i W}{\tau_g} \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(D_p\) = hole diffusion coefficient, \(\tau_p\) = hole lifetime, \(n_i\) = intrinsic carrier concentration, \(N_D\) = n-epi doping, \(W\) = depletion width, \(\tau_g\) = generation lifetime
+                    </div>
+                    <p>The first term represents diffusion current, while the second term represents generation-recombination current in the depletion region.</p>
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-exclamation-triangle"></i> Isolation Challenges</div>
+                    <p>PN junction isolation requires significant chip area and has capacitance that limits high-frequency performance. Modern technologies use trench isolation (STI) for denser packing, but pn junction isolation remains important for bipolar circuits.</p>
+                </div>
+            </section>
+
+            <!-- 7. Base and Emitter Diffusion -->
+            <section class="content-section" id="base-emitter-bjt">
+                <h2 class="section-title"><i class="fas fa-sitemap"></i> 7. Base and Emitter Diffusion</h2>
+                <p>The base and emitter regions are formed through sequential diffusion processes. The base is doped p-type (boron) and the emitter is doped n+ (phosphorus or arsenic), with the emitter more heavily doped than the base for high injection efficiency.</p>
+                
+                <h3>Key Principles:</h3>
+                <ul style="padding-left: 20px; margin: 15px 0;">
+                    <li><span class="key-term">Base Diffusion First:</span> The base is diffused before the emitter because the emitter doping concentration is higher and would overwhelm the base profile if done first.</li>
+                    <li><span class="key-term">Emitter Push Effect:</span> High concentration of emitter dopant enhances the diffusion of the base dopant, causing the base to become deeper under the emitter.</li>
+                    <li><span class="key-term">Collector Contact:</span> An n+ pocket is diffused simultaneously with the emitter to reduce contact resistance to the lightly doped collector region.</li>
+                </ul>
+                
+                <div class="formula-box">
+                    <h3>Emitter Push Effect</h3>
+                    <div class="formula">
+                        \[ D_{\text{eff}} = D_0 \exp\left(-\frac{E_a}{kT}\right) \left[1 + \beta \frac{C_{\text{emitter}}}{C_{\text{intrinsic}}}\right] \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(D_{\text{eff}}\) = effective diffusion coefficient, \(\beta\) = enhancement factor, \(C_{\text{emitter}}\) = emitter doping concentration, \(C_{\text{intrinsic}}\) = intrinsic carrier concentration
+                    </div>
+                    <p>This enhanced diffusion can increase base width under the emitter by 20-30%, affecting transistor gain and frequency response.</p>
+                </div>
+                
+                <h3>Typical Doping Profiles:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Region</th>
+                            <th>Dopant</th>
+                            <th>Surface Concentration</th>
+                            <th>Junction Depth</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Emitter</td>
+                            <td>Phosphorus/Arsenic</td>
+                            <td>\(10^{20}\)-\(10^{21}\ \text{cm}^{-3}\)</td>
+                            <td>0.2-0.5 μm</td>
+                        </tr>
+                        <tr>
+                            <td>Base</td>
+                            <td>Boron</td>
+                            <td>\(10^{17}\)-\(10^{18}\ \text{cm}^{-3}\)</td>
+                            <td>0.5-1.0 μm</td>
+                        </tr>
+                        <tr>
+                            <td>Collector Contact</td>
+                            <td>Phosphorus</td>
+                            <td>\(10^{19}\)-\(10^{20}\ \text{cm}^{-3}\)</td>
+                            <td>0.3-0.6 μm</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 8. Metallization -->
+            <section class="content-section" id="metallization-bjt">
+                <h2 class="section-title"><i class="fas fa-bolt"></i> 8. Metallization</h2>
+                <p>Metal layers provide electrical connections to the transistor terminals. Aluminum has been the traditional interconnect material, but copper is now widely used for advanced technologies due to its lower resistivity and better electromigration resistance.</p>
+                
+                <div class="formula-box">
+                    <h3>Contact Resistance</h3>
+                    <div class="formula">
+                        \[ \rho_c \propto \exp\left[\frac{2\sqrt{\varepsilon_s m^* \phi_B}}{\hbar \sqrt{N}}\right] \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(\rho_c\) = specific contact resistivity, \(\varepsilon_s\) = silicon permittivity, \(m^*\) = effective mass, \(\phi_B\) = barrier height, \(N\) = doping concentration, \(\hbar\) = reduced Planck constant
+                    </div>
+                    <p>Higher doping concentration exponentially reduces contact resistance, justifying the use of n+ and p+ regions under contacts.</p>
+                </div>
+                
+                <h3>Aluminum vs. Copper:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Aluminum (Al)</th>
+                            <th>Copper (Cu)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Resistivity</td>
+                            <td>2.7 μΩ·cm</td>
+                            <td>1.7 μΩ·cm</td>
+                        </tr>
+                        <tr>
+                            <td>Electromigration Eₐ</td>
+                            <td>0.5-0.8 eV</td>
+                            <td>1.2 eV</td>
+                        </tr>
+                        <tr>
+                            <td>Melting Point</td>
+                            <td>660°C</td>
+                            <td>1085°C</td>
+                        </tr>
+                        <tr>
+                            <td>Deposition Method</td>
+                            <td>Sputtering (PVD)</td>
+                            <td>Electroplating (ECD)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="formula-box">
+                    <h3>Electromigration: Black's Equation</h3>
+                    <div class="formula">
+                        \[ \text{MTF} = A J^{-n} \exp\left(\frac{E_a}{kT}\right) \]
+                    </div>
+                    <div class="formula-label">
+                        Where: MTF = median time to failure, \(A\) = material constant, \(J\) = current density, \(n \approx 2\), \(E_a\) = activation energy, \(k\) = Boltzmann constant, \(T\) = temperature
+                    </div>
+                    <p>Copper's higher activation energy (1.2 eV vs. 0.6 eV for Al) provides significantly better electromigration resistance, allowing higher current densities.</p>
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-exclamation-triangle"></i> Aluminum Issues</div>
+                    <p>Aluminum suffers from <span class="highlight">electromigration</span> (atom movement under high current density) and <span class="highlight">spiking</span> (penetration into silicon along grain boundaries). These issues are mitigated in copper interconnects through barrier layers and improved microstructure.</p>
+                </div>
+            </section>
+
+            <!-- 9. Ion Implantation -->
+            <section class="content-section" id="ion-implantation-bjt">
+                <h2 class="section-title"><i class="fas fa-atom"></i> 9. Ion Implantation</h2>
+                <p>Ion implantation offers precise control over doping dose and depth by accelerating dopant ions to high energies and implanting them into the silicon substrate. This technique has largely replaced diffusion for critical doping steps.</p>
+                
+                <div class="formula-box">
+                    <h3>Implantation Profile (Gaussian Approximation)</h3>
+                    <div class="formula">
+                        \[ C(x) = \frac{Q}{\sqrt{2\pi} \Delta R_p} \exp\left[-\frac{(x - R_p)^2}{2(\Delta R_p)^2}\right] \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(C(x)\) = concentration at depth \(x\), \(Q\) = dose (\(\text{ions}/\text{cm}^2\)), \(R_p\) = projected range, \(\Delta R_p\) = straggle
+                    </div>
+                    <p>The actual profile may deviate from Gaussian, especially at high doses or when channeling occurs along crystal directions.</p>
+                </div>
+                
+                <h3>Advantages Over Diffusion:</h3>
+                <ul style="padding-left: 20px; margin: 15px 0;">
+                    <li><span class="key-term">Precise Dose Control:</span> Can achieve accuracy better than 1% using Faraday cup measurements.</li>
+                    <li><span class="key-term">Low Temperature Processing:</span> Implantation is done at room temperature, followed by annealing.</li>
+                    <li><span class="key-term">Profile Control:</span> Multiple implants at different energies can create complex doping profiles.</li>
+                    <li><span class="key-term">Masking Flexibility:</span> Can implant through thin oxides or other layers.</li>
+                </ul>
+                
+                <div class="formula-box">
+                    <h3>Projected Range and Straggle</h3>
+                    <div class="formula">
+                        \[ R_p \propto \frac{E^n}{N Z_1 Z_2} \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(E\) = ion energy, \(N\) = target atomic density, \(Z_1, Z_2\) = atomic numbers of ion and target, \(n \approx 1.7\) for medium energies
+                    </div>
+                    <p>Empirical models (Lindhard-Scharff-Schiøtt theory) or Monte Carlo simulations are used to calculate \(R_p\) and \(\Delta R_p\) for different ion/target combinations.</p>
+                </div>
+                
+                <h3>Typical Implantation Parameters:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dopant</th>
+                            <th>Energy Range</th>
+                            <th>Dose Range</th>
+                            <th>\(R_p\) (100 keV)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Boron (B⁺)</td>
+                            <td>5-200 keV</td>
+                            <td>\(10^{11}\)-\(10^{16}\ \text{cm}^{-2}\)</td>
+                            <td>0.31 μm</td>
+                        </tr>
+                        <tr>
+                            <td>Phosphorus (P⁺)</td>
+                            <td>10-400 keV</td>
+                            <td>\(10^{11}\)-\(10^{16}\ \text{cm}^{-2}\)</td>
+                            <td>0.12 μm</td>
+                        </tr>
+                        <tr>
+                            <td>Arsenic (As⁺)</td>
+                            <td>20-600 keV</td>
+                            <td>\(10^{11}\)-\(10^{16}\ \text{cm}^{-2}\)</td>
+                            <td>0.06 μm</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 10. Fabrication Sequence -->
+            <section class="content-section" id="fabrication-sequence-bjt">
+                <h2 class="section-title"><i class="fas fa-list-ol"></i> 10. Complete BJT Fabrication Sequence</h2>
+                <p>The complete process for fabricating an npn bipolar junction transistor involves approximately 20 major steps, each requiring precise control and alignment.</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Process</th>
+                            <th>Purpose</th>
+                            <th>Key Parameters</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Crystal Growth</td>
+                            <td>Produce p-type (111) Si wafer</td>
+                            <td>Resistivity: 10 Ω·cm, diameter, orientation</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Wafer Preparation</td>
+                            <td>Slice and polish wafer</td>
+                            <td>Thickness: 500 μm, surface roughness < 1 nm</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Oxidation</td>
+                            <td>Grow SiO₂ mask</td>
+                            <td>Thickness: 0.5-1 μm, dry/wet</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Photolithography (Active)</td>
+                            <td>Define buried layer window</td>
+                            <td>Mask alignment, exposure dose</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Buried Layer Diffusion</td>
+                            <td>Form n+ buried layer</td>
+                            <td>Dopant: As/Sb, surface conc. ~\(10^{20}\ \text{cm}^{-3}\)</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Oxide Removal</td>
+                            <td>Strip oxide</td>
+                            <td>HF etch</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Epitaxy</td>
+                            <td>Grow n-type epi layer</td>
+                            <td>Thickness: 1-5 μm, doping ~\(10^{16}\ \text{cm}^{-3}\)</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Oxidation</td>
+                            <td>Grow oxide for isolation</td>
+                            <td>Thickness: 0.5 μm</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Photolithography (Isolation)</td>
+                            <td>Define isolation regions</td>
+                            <td>Mask design for p+ diffusion</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Isolation Diffusion</td>
+                            <td>Form p+ isolation regions</td>
+                            <td>Boron, junction depth > epi thickness</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Oxidation</td>
+                            <td>Grow oxide for base diffusion</td>
+                            <td>Thickness: 0.3 μm</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Photolithography (Base)</td>
+                            <td>Define base window</td>
+                            <td>Alignment to active region</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Base Diffusion</td>
+                            <td>Form p-type base</td>
+                            <td>Boron, surface conc. ~\(10^{18}\ \text{cm}^{-3}\)</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>Photolithography (Emitter)</td>
+                            <td>Define emitter and collector contact</td>
+                            <td>Alignment to base</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>Emitter Diffusion</td>
+                            <td>Form n+ emitter and collector contact</td>
+                            <td>Phosphorus/arsenic, surface conc. ~\(10^{21}\ \text{cm}^{-3}\)</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>Oxidation</td>
+                            <td>Grow oxide for passivation</td>
+                            <td>Thickness: 0.5 μm</td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td>Photolithography (Contacts)</td>
+                            <td>Open contact holes</td>
+                            <td>Alignment to emitter, base, collector</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>Metallization</td>
+                            <td>Deposit and pattern metal</td>
+                            <td>Al or Cu, thickness ~1 μm</td>
+                        </tr>
+                        <tr>
+                            <td>19</td>
+                            <td>Annealing</td>
+                            <td>Alloy contacts and reduce defects</td>
+                            <td>Temperature: 400-450°C, forming gas</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-clipboard-check"></i> Process Integration Note</div>
+                    <p>Each photolithography step requires precise alignment to previous patterns (typically ±0.1 μm). The entire process takes 6-8 weeks from wafer start to finished chips, with hundreds of wafers processed simultaneously in batch operations.</p>
+                </div>
+            </section>
+
+            <!-- 11. Advanced Topics -->
+            <section class="content-section" id="advanced-topics-bjt">
+                <h2 class="section-title"><i class="fas fa-rocket"></i> 11. Advanced Topics in VLSI Technology</h2>
+                
+                <h3>1. Scaling Laws (Moore's Law)</h3>
+                <p>Device dimensions shrink by approximately 0.7× each generation, doubling transistor density every 2 years. The scaling rules (Denard Scaling) maintain electric field constant by reducing voltages along with dimensions.</p>
+                
+                <div class="formula-box">
+                    <h4>Scaling Relationships</h4>
+                    <div class="formula">
+                        \[ \text{Dimension} \propto \frac{1}{k},\quad \text{Voltage} \propto \frac{1}{k}, \] \[ \quad \text{Doping} \propto k,\quad \text{Delay} \propto \frac{1}{k} \]
+                    </div>
+                    <div class="formula-label">
+                        Where k is the scaling factor (>1). This leads to increased speed and reduced power per transistor, but power density increases.
+                    </div>
+                </div>
+                
+                <h3>2. CMOS Technology</h3>
+                <p>Modern VLSI uses CMOS (Complementary MOS) for low power digital circuits. BJTs are primarily used in analog/RF circuits where high speed, linearity, or matching is critical. BiCMOS technology integrates both BJTs and MOSFETs on the same chip.</p>
+                
+                <h3>3. Process Simulation</h3>
+                <p>Tools like SUPREM (Stanford University Process Engineering Models) solve diffusion equations numerically to predict doping profiles. Modern TCAD (Technology Computer-Aided Design) tools simulate entire fabrication sequences and device electrical characteristics.</p>
+                
+                <div class="formula-box">
+                    <h4>Yield Modeling</h4>
+                    <div class="formula">
+                        \[ Y = \left(1 + \frac{AD}{n}\right)^{-n} \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(Y\) = yield, \(A\) = chip area, \(D\) = defect density, \(n\) = clustering parameter. For mature processes, yield can exceed 95% for small chips.
+                    </div>
+                </div>
+                
+                <h3>4. Future Trends</h3>
+                <ul style="padding-left: 20px; margin: 15px 0;">
+                    <li><span class="key-term">3D Integration:</span> Stacking multiple chips or layers for increased density and functionality.</li>
+                    <li><span class="key-term">New Materials:</span> High-k dielectrics (HfO₂), III-V compounds (GaAs, InP) for high-speed devices.</li>
+                    <li><span class="key-term">EUV Lithography:</span> Extreme ultraviolet (\(\lambda = 13.5\ \text{nm}\)) for patterning features below 10 nm.</li>
+                    <li><span class="key-term">Quantum Devices:</span> Exploring quantum effects for beyond-CMOS computing.</li>
+                </ul>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-chart-line"></i> Technology Roadmap</div>
+                    <p>The semiconductor industry follows the International Technology Roadmap for Semiconductors (ITRS), now replaced by the International Roadmap for Devices and Systems (IRDS). Current research focuses on sub-3 nm nodes, new transistor architectures (Gate-All-Around, Nanosheet), and heterogeneous integration.</p>
+                </div>
+            </section>
+
+            <div class="header">
+                <h1>VLSI Technology: MOSFET Fabrication - Complete Analysis</h1>
+            </div>
+
+            <!-- Introduction -->
+            <section class="content-section" id="introduction-mos">
+                <h2 class="section-title"><i class="fas fa-microchip"></i> Introduction to MOSFET Fabrication</h2>
+                <p>The Metal-Oxide-Semiconductor Field-Effect Transistor (MOSFET) is the fundamental building block of modern integrated circuits, particularly in digital logic and memory devices. Unlike Bipolar Junction Transistors (BJTs), MOSFETs are unipolar devices where current flow is controlled by an electric field rather than minority carrier injection.</p>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-lightbulb"></i> Historical Context</div>
+                    <p>Despite the theory of MOSFET operation being predicted by Shockley before BJT theory, practical MOSFETs took significantly longer to commercialize due to difficulties in controlling gate oxide quality and threshold voltage. The first practical MOSFETs were p-channel devices because positive oxide charges made n-MOSFET threshold control problematic.</p>
+                </div>
+                
+                <div class="comparison-box">
+                    <div class="comparison-title"><i class="fas fa-balance-scale"></i> MOSFET vs BJT Comparison</div>
+                    <p><span class="key-term">MOSFET Advantages:</span> Higher packing density, lower power consumption (especially CMOS), simpler fabrication steps, better scalability. <span class="key-term">BJT Advantages:</span> Higher transconductance, better analog performance, lower 1/f noise.</p>
+                </div>
+            </section>
+
+            <!-- 1. Metal-Gate Process -->
+            <section class="content-section" id="metal-gate-process-mos">
+                <h2 class="section-title"><i class="fas fa-layer-group"></i> 1. Metal-Gate MOSFET Fabrication Process</h2>
+                <p>The metal-gate process was the first successful MOSFET fabrication technology. Despite its simplicity, it revealed fundamental challenges in device control.</p>
+                
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Field Oxidation</h3>
+                        <p>Start with p-type or n-type substrate (for p-MOS or n-MOS respectively). Grow thick field oxide (8000-10000 Å) using wet oxidation at 900-1000°C. The Deal-Grove model governs oxidation kinetics:</p>
+                        <div class="formula-box">
+                            <h3>Deal-Grove Model</h3>
+                            <div class="formula">
+                                \[ x_o^2 + A x_o = B (t + \tau) \]
+                            </div>
+                            <div class="formula-label">
+                                For 8000 Å (0.8 μm) SiO₂ using wet oxidation at 1000°C: t ≈ 4-6 hours
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Source/Drain Window Patterning</h3>
+                        <p>Photolithography to open windows in the field oxide. Alignment tolerance becomes critical as device dimensions shrink.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Source/Drain Doping</h3>
+                        <p>Diffusion or ion implantation through the windows. Lateral encroachment causes the doped region to extend beyond the mask opening:</p>
+                        <div class="formula-box">
+                            <h3>Lateral Diffusion</h3>
+                            <div class="formula">
+                                \[ x_j^{\text{lateral}} = 0.8 \times x_j^{\text{vertical}} \]
+                            </div>
+                            <div class="formula-label">
+                                This necessitates intentional overlap in subsequent gate patterning
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Gate Oxidation</h3>
+                        <p>Grow thin gate oxide (100-200 Å) using dry oxidation at 800-900°C. The gate oxide thickness directly controls threshold voltage:</p>
+                        <div class="formula-box">
+                            <h3>Threshold Voltage Dependence</h3>
+                            <div class="formula">
+                                \[ \Delta V_T \propto t_{ox} \]
+                            </div>
+                            <div class="formula-label">
+                                For 100 Å oxide at 900°C: t ≈ 30-60 minutes
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Contact Metallization</h3>
+                        <p>Deposit aluminum (≈1 μm) by sputtering, then pattern contacts for source, drain, and gate. Aluminum's low melting point (660°C) limits subsequent processing.</p>
+                    </div>
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-exclamation-triangle"></i> Critical Issue: Alignment Tolerance</div>
+                    <p>The gate must overlap source/drain regions to ensure continuous channel. For 5 μm technology, typical alignment tolerance is ±1 μm, requiring 2 μm overlap. As dimensions shrink, this becomes a limiting factor.</p>
+                </div>
+            </section>
+
+            <!-- 2. Threshold Voltage Physics -->
+            <section class="content-section" id="threshold-voltage-mos">
+                <h2 class="section-title"><i class="fas fa-bolt"></i> 2. Threshold Voltage Physics and Control</h2>
+                
+                <div id="threshold-voltage-formula"></div>
+                <div class="formula-box">
+                    <h3>Complete Threshold Voltage Formula</h3>
+                    <div class="formula">
+                        \[ V_T = V_{FB} + 2\phi_F + \frac{\sqrt{4\varepsilon_s q N_A \phi_F}}{C_{ox}} + \frac{Q_{ox}}{C_{ox}} \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(V_{FB}\) = flat-band voltage, \(\phi_F\) = Fermi potential, \(\varepsilon_s\) = silicon permittivity, \(q\) = electron charge, \(N_A\) = substrate doping, \(C_{ox}\) = oxide capacitance, \(Q_{ox}\) = oxide charge
+                    </div>
+                    
+                    <h4>Flat-Band Voltage:</h4>
+                    <div class="formula">
+                        \[ V_{FB} = \phi_{ms} = \phi_m - \phi_s \]
+                    </div>
+                    <div class="formula-label">
+                        \(\phi_m\) = metal work function, \(\phi_s\) = silicon work function
+                    </div>
+                    
+                    <h4>Oxide Capacitance:</h4>
+                    <div class="formula">
+                        \[ C_{ox} = \frac{\varepsilon_{ox}}{t_{ox}} \]
+                    </div>
+                    <div class="formula-label">
+                        \(\varepsilon_{ox} = 3.9\varepsilon_0 \approx 3.45\times10^{-13} \text{ F/cm}\), \(t_{ox}\) = oxide thickness
+                    </div>
+                </div>
+                
+                <h3>Threshold Voltage Components:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Typical Value</th>
+                            <th>Physical Origin</th>
+                            <th>Control Method</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Flat-Band Voltage</td>
+                            <td>-0.6 to -1.0 V</td>
+                            <td>Work function difference</td>
+                            <td>Gate material selection</td>
+                        </tr>
+                        <tr>
+                            <td>Band Bending (\(2\phi_F\))</td>
+                            <td>0.6-0.8 V</td>
+                            <td>Surface inversion</td>
+                            <td>Substrate doping</td>
+                        </tr>
+                        <tr>
+                            <td>Depletion Charge</td>
+                            <td>0.5-1.5 V</td>
+                            <td>Ionized acceptors/donors</td>
+                            <td>Substrate doping, back bias</td>
+                        </tr>
+                        <tr>
+                            <td>Oxide Charge (\(Q_{ox}/C_{ox}\))</td>
+                            <td>0.2-2.0 V</td>
+                            <td>Fixed, mobile, interface charges</td>
+                            <td>Clean processing, anneals</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="formula-box">
+                    <h3>Fermi Potential Calculation</h3>
+                    <div class="formula">
+                        \[ \phi_F = \frac{kT}{q} \ln\left(\frac{N_A}{n_i}\right) \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(k\) = Boltzmann constant (1.38×10⁻²³ J/K), \(T\) = temperature (K), \(n_i\) = intrinsic carrier concentration (1.5×10¹⁰ cm⁻³ at 300K)
+                    </div>
+                    <p>For \(N_A = 10^{16} \text{ cm}^{-3}\) at 300K: \(\phi_F \approx 0.35 \text{ V}\)</p>
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-exclamation-triangle"></i> Oxide Charge Problem</div>
+                    <p>Positive oxide charges (Na⁺, K⁺ ions, fixed oxide charge) shift \(V_T\) negative. For n-MOSFET (enhancement mode, \(V_T > 0\)), this can convert it to depletion mode (\(V_T < 0\)), causing circuit failure. This explains why early MOSFETs were p-channel: negative \(V_T\) becomes more negative with positive \(Q_{ox}\), remaining enhancement mode.</p>
+                </div>
+            </section>
+
+            <!-- 3. Ion Implantation -->
+            <section class="content-section" id="ion-implantation-mos">
+                <h2 class="section-title"><i class="fas fa-atom"></i> 3. Ion Implantation for Threshold Tailoring</h2>
+                
+                <div id="ion-implantation-profile"></div>
+                <div class="formula-box">
+                    <h3>Gaussian Implantation Profile</h3>
+                    <div class="formula">
+                        \[ C(x) = \frac{Q}{\sqrt{2\pi} \Delta R_p} \exp\left[-\frac{(x - R_p)^2}{2(\Delta R_p)^2}\right] \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(C(x)\) = concentration at depth \(x\), \(Q\) = dose (ions/cm²), \(R_p\) = projected range, \(\Delta R_p\) = straggle
+                    </div>
+                    
+                    <h4>Projected Range (Empirical):</h4>
+                    <div class="formula">
+                        \[ R_p \propto \frac{E^n}{N Z_1 Z_2} \]
+                    </div>
+                    <div class="formula-label">
+                        \(E\) = ion energy, \(N\) = target atomic density, \(Z_1,Z_2\) = atomic numbers, \(n \approx 1.7\)
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Threshold Adjustment Implant</h3>
+                        <p>For n-MOSFET: implant p-type (boron) in channel region to increase \(V_T\). Required dose:</p>
+                        <div class="formula-box">
+                            <div class="formula">
+                                \[ \Delta V_T = \frac{q \Delta N}{C_{ox}} \Rightarrow Q = \Delta N \times x_j \]
+                            </div>
+                            <div class="formula-label">
+                                Example: Increase \(V_T\) by 0.5 V with \(t_{ox} = 200 \text{ Å} \Rightarrow Q \approx 5\times10^{12} \text{ ions/cm}^2\)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Retrograde Well Formation</h3>
+                        <p>High-energy implants create buried layers with peak concentration below surface, improving latch-up immunity and reducing substrate noise coupling.</p>
+                    </div>
+                </div>
+                
+                <h3>Implantation Parameters:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Application</th>
+                            <th>Ion</th>
+                            <th>Energy</th>
+                            <th>Dose</th>
+                            <th>\(R_p\)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>\(V_T\) adjustment (n-MOS)</td>
+                            <td>B⁺</td>
+                            <td>20-100 keV</td>
+                            <td>10¹¹-10¹³ cm⁻²</td>
+                            <td>0.1-0.3 μm</td>
+                        </tr>
+                        <tr>
+                            <td>Source/Drain (n-MOS)</td>
+                            <td>As⁺</td>
+                            <td>30-150 keV</td>
+                            <td>10¹⁵-10¹⁶ cm⁻²</td>
+                            <td>0.05-0.15 μm</td>
+                        </tr>
+                        <tr>
+                            <td>Source/Drain (p-MOS)</td>
+                            <td>BF₂⁺</td>
+                            <td>50-200 keV</td>
+                            <td>10¹⁵-10¹⁶ cm⁻²</td>
+                            <td>0.05-0.1 μm</td>
+                        </tr>
+                        <tr>
+                            <td>Retrograde Well</td>
+                            <td>P⁺</td>
+                            <td>500-1000 keV</td>
+                            <td>10¹²-10¹³ cm⁻²</td>
+                            <td>0.5-1.0 μm</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-info-circle"></i> Critical Technology Dependency</div>
+                    <p>While BJTs can be fabricated without ion implantation (using diffusion only), modern MOSFET technology is completely dependent on ion implantation for threshold control, source/drain formation, and well engineering. The precision of implantation (dose control < 1%) enables scaling to nanometer dimensions.</p>
+                </div>
+            </section>
+
+            <!-- 4. Polysilicon-Gate Technology -->
+            <section class="content-section" id="polysilicon-gate-mos">
+                <h2 class="section-title"><i class="fas fa-cube"></i> 4. Polysilicon-Gate Technology</h2>
+                
+                <div class="comparison-box">
+                    <div class="comparison-title"><i class="fas fa-exchange-alt"></i> Polysilicon vs Metal Gate</div>
+                    <p><span class="key-term">Polysilicon Advantages:</span> High-temperature stability (mp: 1414°C vs Al: 660°C), enables self-alignment, tunable work function, compatible with silicide formation. <span class="key-term">Metal Gate Advantages:</span> Lower resistivity, no depletion effects, simpler integration for some applications.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Gate Stack Formation</h3>
+                        <p>After field oxidation, grow thin gate oxide (10-50 Å in modern technologies). Deposit polysilicon by LPCVD at 600-650°C:</p>
+                        <div class="formula-box">
+                            <div class="formula">
+                                \[ \text{SiH}_4 \rightarrow \text{Si} + 2\text{H}_2 \quad (\text{at } 600-650^\circ\text{C}) \]
+                            </div>
+                            <div class="formula-label">
+                                Typical thickness: 100-200 nm. Dope polysilicon in-situ or by implantation.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Gate Patterning</h3>
+                        <p>Photolithography and dry etching (RIE) define gate electrode. Critical dimension control:</p>
+                        <div class="formula-box">
+                            <div class="formula">
+                                \[ \text{CD}_{\text{final}} = \text{CD}_{\text{mask}} \pm \Delta_{\text{litho}} \pm \Delta_{\text{etch}} \]
+                            </div>
+                            <div class="formula-label">
+                                For 0.1 μm gates: \(\Delta_{\text{total}} < 10 \text{ nm}\) required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Source/Drain Formation</h3>
+                        <p>With polysilicon gate as mask, implant source/drain. Gate edge acts as natural boundary, creating self-aligned structure.</p>
+                    </div>
+                </div>
+                
+                <div class="formula-box">
+                    <h3>Polysilicon Work Function Engineering</h3>
+                    <div class="formula">
+                        \[ \phi_{\text{poly}} = \chi + \frac{E_g}{2} \pm \frac{kT}{q} \ln\left(\frac{N}{n_i}\right) \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(\chi\) = electron affinity (4.05 eV for Si), \(E_g\) = bandgap (1.12 eV), \(N\) = doping concentration
+                    </div>
+                    <p>n⁺ polysilicon: \(\phi \approx 4.05 \text{ eV}\) (similar to Al). p⁺ polysilicon: \(\phi \approx 5.05 \text{ eV}\). Dual work function gates enable optimal \(V_T\) for both n and p MOSFETs in CMOS.</p>
+                </div>
+                
+                <h3>Gate Resistance Calculation:</h3>
+                <div class="formula-box">
+                    <div class="formula">
+                        \[ R_{\text{gate}} = R_{\text{sheet}} \frac{L}{W} \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(R_{\text{sheet}}\) = sheet resistance, \(L\) = gate length, \(W\) = gate width
+                    </div>
+                    <div class="formula">
+                        \[ R_{\text{sheet}} = \frac{1}{q \mu N t} \]
+                    </div>
+                    <div class="formula-label">
+                        \(\mu\) = polysilicon mobility (~30 cm²/V·s), \(N\) = doping, \(t\) = thickness
+                    </div>
+                    <p>For doped polysilicon: \(R_{\text{sheet}} \approx 20-30\ \Omega\). For \(L = 0.1\ \mu\text{m}\), \(W = 1\ \mu\text{m}\): \(R_{\text{gate}} \approx 2-3\ \Omega\).</p>
+                </div>
+            </section>
+
+            <!-- 5. Self-Alignment Technique -->
+            <section class="content-section" id="self-alignment-mos">
+                <h2 class="section-title"><i class="fas fa-object-group"></i> 5. Self-Alignment Technique</h2>
+                
+                <div class="formula-box">
+                    <h3>Overlap Capacitance Comparison</h3>
+                    <div class="formula">
+                        \[ C_{\text{ov}} = \frac{\varepsilon_{\text{ox}} W L_{\text{ov}}}{t_{\text{ox}}} \]
+                    </div>
+                    <div class="formula-label">
+                        Where: \(L_{\text{ov}}\) = overlap length, \(W\) = gate width
+                    </div>
+                    <p><span class="key-term">Metal-gate:</span> \(L_{\text{ov}} = \sigma_{\text{lateral}} + \Delta_{\text{align}} \approx 0.07 + 0.25 = 0.32\ \mu\text{m}\) (for 1 μm technology)</p>
+                    <p><span class="key-term">Self-aligned:</span> \(L_{\text{ov}} = \sigma_{\text{lateral}} \approx 0.07\ \mu\text{m}\)</p>
+                    <p>Reduction: \(0.32/0.07 \approx 4.6\times\) less overlap capacitance!</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Gate-First Approach</h3>
+                        <p>Define gate before source/drain. The polysilicon gate acts as implant mask. After implantation, only spacers define lightly-doped drain (LDD) regions.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Sidewall Spacer Formation</h3>
+                        <p>Deposit and anisotropically etch dielectric (SiO₂ or Si₃N₄) to form spacers. These separate heavily-doped source/drain from channel, reducing hot carrier effects.</p>
+                    </div>
+                </div>
+                
+                <h3>Self-Alignment Process Sequence:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Process</th>
+                            <th>Purpose</th>
+                            <th>Key Benefit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Gate stack formation</td>
+                            <td>Define transistor location</td>
+                            <td>No alignment to source/drain needed</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>LDD implant</td>
+                            <td>Lightly-doped extensions</td>
+                            <td>Reduce electric field</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Spacer formation</td>
+                            <td>Dielectric sidewalls</td>
+                            <td>Separate LDD from S/D</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Heavy S/D implant</td>
+                            <td>Low-resistance contacts</td>
+                            <td>Self-aligned to gate+spacers</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Rapid thermal anneal</td>
+                            <td>Activate dopants</td>
+                            <td>Minimize diffusion</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="formula-box">
+                    <h3>Process Window Enhancement</h3>
+                    <div class="formula">
+                        \[ \text{Process Window} \propto \frac{1}{\text{Alignment Tolerance}} \]
+                    </div>
+                    <div class="formula-label">
+                        Self-alignment eliminates critical alignment between gate and source/drain, increasing process window by 3-5× for the same feature size.
+                    </div>
+                    <p>For 0.1 μm technology, alignment tolerance ±0.02 μm would be impossible without self-alignment. With self-alignment: only gate definition needs tight control.</p>
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-cogs"></i> Historical Significance</div>
+                    <p>The invention of self-aligned polysilicon gate technology (c. 1970) was as important as the transistor itself. It enabled scaling from 10 μm to 1 μm technology (1980s), making VLSI and ULSI possible. Today, all CMOS technologies use variations of this approach.</p>
+                </div>
+            </section>
+
+            <!-- 6. MOSFET vs BJT Comparison -->
+            <section class="content-section" id="comparison-mos">
+                <h2 class="section-title"><i class="fas fa-balance-scale-right"></i> 6. MOSFET vs BJT: Detailed Comparison</h2>
+                
+                <h3>Process Complexity:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>MOSFET</th>
+                            <th>BJT</th>
+                            <th>Implications</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mask Count</td>
+                            <td>10-15 masks (modern CMOS)</td>
+                            <td>8-12 masks</td>
+                            <td>MOSFET more complex but enables higher density</td>
+                        </tr>
+                        <tr>
+                            <td>Thermal Budget</td>
+                            <td>Lower (after gate formation)</td>
+                            <td>Higher (multiple diffusions)</td>
+                            <td>MOSFET better for shallow junctions</td>
+                        </tr>
+                        <tr>
+                            <td>Critical Layers</td>
+                            <td>Gate, contact</td>
+                            <td>Emitter, base, isolation</td>
+                            <td>MOSFET has fewer critical alignments</td>
+                        </tr>
+                        <tr>
+                            <td>Process Control</td>
+                            <td>Oxide thickness, \(V_T\)</td>
+                            <td>Doping profiles, \(\beta\)</td>
+                            <td>MOSFET requires tighter thickness control</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Device Characteristics:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>MOSFET</th>
+                            <th>BJT</th>
+                            <th>Ratio (MOSFET/BJT)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Input Impedance</td>
+                            <td>10¹²-10¹⁵ Ω</td>
+                            <td>10³-10⁵ Ω</td>
+                            <td>10⁷-10¹⁰×</td>
+                        </tr>
+                        <tr>
+                            <td>Transconductance (\(g_m\))</td>
+                            <td>1-10 mS/μm</td>
+                            <td>40 mS/μm (IC)</td>
+                            <td>0.025-0.25×</td>
+                        </tr>
+                        <tr>
+                            <td>Switching Speed</td>
+                            <td>Limited by \(R_{on}C_{ox}\)</td>
+                            <td>Limited by \(\tau_F\)</td>
+                            <td>MOSFET faster at same geometry</td>
+                        </tr>
+                        <tr>
+                            <td>Power Dissipation (static)</td>
+                            <td>nW-μW (CMOS)</td>
+                            <td>mW-MW</td>
+                            <td>10⁻³-10⁻⁶×</td>
+                        </tr>
+                        <tr>
+                            <td>Scalability</td>
+                            <td>Excellent (to nm)</td>
+                            <td>Limited (to μm)</td>
+                            <td>MOSFET scales 10-100× better</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="formula-box">
+                    <h3>Current-Voltage Characteristics</h3>
+                    <h4>MOSFET (Saturation):</h4>
+                    <div class="formula">
+                        \[ I_D = \frac{\mu C_{ox} W}{2L} (V_{GS} - V_T)^2 (1 + \lambda V_{DS}) \]
+                    </div>
+                    
+                    <h4>BJT (Active):</h4>
+                    <div class="formula">
+                        \[ I_C = I_S \exp\left(\frac{V_{BE}}{V_T}\right) \left(1 + \frac{V_{CE}}{V_A}\right) \]
+                    </div>
+                    <div class="formula-label">
+                        MOSFET: Square-law, voltage-controlled. BJT: Exponential, current-controlled.
+                    </div>
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-chart-line"></i> Technology Evolution</div>
+                    <p>1970s: p-MOS dominated (simple, tolerant to oxide charges). 1980s: n-MOS took over (faster, better ion implant control). Late 1980s: CMOS became dominant (low power). 1990s: BiCMOS integrated both for mixed-signal. 2000s: CMOS-only for digital, BJT for analog/RF. Today: FinFET/3D transistors extend MOSFET scaling beyond planar limits.</p>
+                </div>
+            </section>
+
+            <!-- 7. Scaling Effects -->
+            <section class="content-section" id="scaling-effects-mos">
+                <h2 class="section-title"><i class="fas fa-compress-arrows-alt"></i> 7. Scaling Effects and Limitations</h2>
+                
+                <div id="short-channel-effects"></div>
+                <div class="formula-box">
+                    <h3>Short-Channel Effects</h3>
+                    <h4>Threshold Voltage Roll-off:</h4>
+                    <div class="formula">
+                        \[ \Delta V_T = \frac{q N_A W_{dm} x_d}{C_{ox} L} \left[\sqrt{1 + \frac{2x_j}{W_{dm}}} - 1\right] \]
+                    </div>
+                    
+                    <h4>Drain-Induced Barrier Lowering (DIBL):</h4>
+                    <div class="formula">
+                        \[ V_T(V_{DS}) = V_T(0) - \sigma V_{DS} \]
+                    </div>
+                    <div class="formula">
+                        \[ \sigma = \frac{3}{2} \frac{t_{ox}}{L} \frac{1}{\sqrt{1 + \frac{x_j^2}{L^2}}} \]
+                    </div>
+                    
+                    <h4>Subthreshold Swing:</h4>
+                    <div class="formula">
+                        \[ S = \frac{kT}{q} \ln(10) \left(1 + \frac{C_d}{C_{ox}}\right) \]
+                    </div>
+                    <div class="formula-label">
+                        Boltzmann limit at 300K: \(S > 60\ \text{mV/decade}\)
+                    </div>
+                </div>
+                
+                <h3>Scaling Rules (Denard Scaling):</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Scaling Factor</th>
+                            <th>Old Value</th>
+                            <th>New Value (k=2)</th>
+                            <th>Benefit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dimension</td>
+                            <td>1/k</td>
+                            <td>L = 1 μm</td>
+                            <td>L = 0.5 μm</td>
+                            <td>Density k² = 4×</td>
+                        </tr>
+                        <tr>
+                            <td>Voltage</td>
+                            <td>1/k</td>
+                            <td>\(V_{DD}\) = 5 V</td>
+                            <td>\(V_{DD}\) = 2.5 V</td>
+                            <td>Field constant</td>
+                        </tr>
+                        <tr>
+                            <td>Doping</td>
+                            <td>k</td>
+                            <td>\(N_A = 10^{16} \text{ cm}^{-3}\)</td>
+                            <td>\(N_A = 2\times10^{16} \text{ cm}^{-3}\)</td>
+                            <td>Maintain depletion width</td>
+                        </tr>
+                        <tr>
+                            <td>Delay</td>
+                            <td>1/k</td>
+                            <td>τ = 100 ps</td>
+                            <td>τ = 50 ps</td>
+                            <td>Speed k×</td>
+                        </tr>
+                        <tr>
+                            <td>Power/Circuit</td>
+                            <td>1/k²</td>
+                            <td>P = 10 mW</td>
+                            <td>P = 2.5 mW</td>
+                            <td>Power density constant</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="formula-box">
+                    <h3>Quantum Mechanical Effects in Ultrathin Oxides</h3>
+                    <h4>Direct Tunneling Current:</h4>
+                    <div class="formula">
+                        \[ J_{\text{tunnel}} = A \left(\frac{V_{\text{ox}}}{t_{\text{ox}}}\right)^2 \exp\left(-\frac{B t_{\text{ox}}}{V_{\text{ox}}}\right) \]
+                    </div>
+                    <div class="formula-label">
+                        Where A, B are constants. For SiO₂ at 1 V: \(J \approx 1\ \text{A/cm}^2\) at \(t_{\text{ox}} \approx 15\ \text{Å}\) (unacceptable for standby power)
+                    </div>
+                    
+                    <h4>Carrier Confinement:</h4>
+                    <div class="formula">
+                        \[ E_n = \frac{n^2 h^2}{8m^* t_{\text{Si}}^2} \]
+                    </div>
+                    <div class="formula-label">
+                        Energy level splitting for silicon thickness \(t_{\text{Si}}\). For \(t_{\text{Si}} < 5\ \text{nm}\), \(E_1 - E_0 > kT\) (affects carrier distribution)
+                    </div>
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-exclamation-triangle"></i> Fundamental Limits</div>
+                    <p>1. Oxide thickness: Direct tunneling limits SiO₂ to >15 Å (1.5 nm). 2. Channel length: Source-drain tunneling limits to >10 nm. 3. Supply voltage: Subthreshold swing limits to >0.4 V at 300K. 4. Random dopant fluctuation: \(\sigma_{V_T} \propto 1/\sqrt{WL}\) limits minimum area.</p>
+                </div>
+            </section>
+
+            <!-- 8. Advanced Topics -->
+            <section class="content-section" id="advanced-topics-mos">
+                <h2 class="section-title"><i class="fas fa-rocket"></i> 8. Advanced MOSFET Technologies</h2>
+                
+                <h3>High-k/Metal Gate Technology</h3>
+                <div class="formula-box">
+                    <h4>Equivalent Oxide Thickness (EOT):</h4>
+                    <div class="formula">
+                        \[ \text{EOT} = \frac{\varepsilon_{\text{SiO}_2}}{\varepsilon_{\text{high-k}}} t_{\text{high-k}} \]
+                    </div>
+                    <div class="formula-label">
+                        HfO₂: \(\varepsilon \approx 25\) vs SiO₂: \(\varepsilon \approx 3.9\). For same capacitance, HfO₂ can be 6.4× thicker, reducing tunneling current by 10⁶×.
+                    </div>
+                    
+                    <h4>Gate Stack Capacitance:</h4>
+                    <div class="formula">
+                        \[ \frac{1}{C_{\text{total}}} = \frac{1}{C_{\text{high-k}}} + \frac{1}{C_{\text{IL}}} \]
+                    </div>
+                    <div class="formula-label">
+                        Interfacial layer (IL, usually SiO₂) capacitance in series with high-k reduces overall capacitance.
+                    </div>
+                </div>
+                
+                <h3>FinFET/3D Transistors</h3>
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Multiple Gate Control</h3>
+                        <p>Gate wraps around channel (2, 3, or 4 sides), improving electrostatic control. Subthreshold swing approaches ideal value:</p>
+                        <div class="formula-box">
+                            <div class="formula">
+                                \[ S = \frac{kT}{q} \ln(10) \left(1 + \frac{C_d}{n C_{ox}}\right) \]
+                            </div>
+                            <div class="formula-label">
+                                Where \(n\) = number of gates (2 for FinFET, 4 for GAA).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Effective Width Enhancement</h3>
+                        <p>Fin height (\(H_{\text{fin}}\)) determines effective width:</p>
+                        <div class="formula-box">
+                            <div class="formula">
+                                \[ W_{\text{eff}} = 2 H_{\text{fin}} + W_{\text{fin}} \approx 2 H_{\text{fin}} \]
+                            </div>
+                            <div class="formula-label">
+                                For \(H_{\text{fin}} = 50\ \text{nm}\), \(W_{\text{fin}} = 10\ \text{nm}\): \(W_{\text{eff}} = 110\ \text{nm}\) (11× larger than planar).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Strained Silicon Technology</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Strain Type</th>
+                            <th>Method</th>
+                            <th>Mobility Enhancement</th>
+                            <th>Application</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tensile (n-MOS)</td>
+                            <td>SiN capping layer</td>
+                            <td>\(\mu_n +70-100\%\)</td>
+                            <td>NMOS transistors</td>
+                        </tr>
+                        <tr>
+                            <td>Compressive (p-MOS)</td>
+                            <td>SiGe source/drain</td>
+                            <td>\(\mu_p +50-80\%\)</td>
+                            <td>PMOS transistors</td>
+                        </tr>
+                        <tr>
+                            <td>Biaxial (both)</td>
+                            <td>Si on relaxed SiGe</td>
+                            <td>\(\mu_n +100\%\), \(\mu_p +60\%\)</td>
+                            <td>Early strained technology</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="formula-box">
+                    <h3>Mobility Enhancement Physics</h3>
+                    <div class="formula">
+                        \[ \frac{\Delta \mu}{\mu} = \frac{\Delta m^*}{m^*} + \frac{\Delta \tau}{\tau} \]
+                    </div>
+                    <div class="formula-label">
+                        Strain changes effective mass (\(m^*\)) and scattering time (\(\tau\)). Tensile strain splits conduction band valleys, populating lighter mass valleys.
+                    </div>
+                    <p>For electrons in tensile silicon: \(m^*\) decreases by 30-50%, mobility increases 70-100%.</p>
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title"><i class="fas fa-road"></i> Future Technology Roadmap</div>
+                    <p>Beyond FinFET: Gate-All-Around (GAA) nanowires (2-3 nm), nanosheet transistors, 2D materials (MoS₂, graphene), tunnel FETs (TFETs) for sub-60 mV/decade, spintronics, quantum computing elements. The International Roadmap for Devices and Systems (IRDS) projects CMOS scaling to 1 nm (2028+) with new materials and architectures.</p>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>VLSI Technology: MOSFET Fabrication Process | Comprehensive Reference Guide</p>
+                <p>Based on lecture materials from IIT Madras | Enhanced with detailed mathematical models and process explanations</p>
+                <p>MOSFET Fabrication Reference | © 2026 VLSI Technology | For Educational Purposes</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Mobile Toggle Button -->
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="common.js"></script>
+</body>
+</html>

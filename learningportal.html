@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLSI Learning Portal</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f5f7fa;
+            --light-text: #2c3e50;
+            --light-card: #ffffff;
+            --light-border: #e1e8ed;
+            --dark-bg: #1a1a2e;
+            --dark-text: #f0f0f0;
+            --dark-card: #162447;
+            --dark-border: #2d4059;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.2);
+            --top-bar-height: 60px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            transition: var(--transition);
+            background-color: var(--light-bg);
+            color: var(--light-text);
+            min-height: 100vh;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--top-bar-height);
+            background-color: var(--light-card);
+            border-bottom: 1px solid var(--light-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .dark-mode .top-bar {
+            background-color: var(--dark-card);
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .top-bar-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-left: 10px;
+        }
+
+        .dark-mode .top-bar-title {
+            color: var(--dark-text);
+        }
+
+        .top-bar-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .dark-mode .top-bar-btn {
+            color: var(--dark-text);
+        }
+
+        .top-bar-btn:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .top-bar-divider {
+            width: 1px;
+            height: 30px;
+            background-color: var(--light-border);
+            margin: 0 5px;
+        }
+
+        .dark-mode .top-bar-divider {
+            background-color: var(--dark-border);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: calc(var(--top-bar-height) + 30px) 30px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 60px 0 40px;
+            margin-bottom: 40px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dark-mode .hero-title {
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Subjects Grid */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .subject-card {
+            background-color: var(--light-card);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--light-border);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dark-mode .subject-card {
+            background-color: var(--dark-card);
+            border: 1px solid var(--dark-border);
+        }
+
+        .subject-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .subject-header {
+            background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+            padding: 25px;
+            text-align: center;
+        }
+
+        .subject-icon {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .subject-title {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .subject-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+
+        .subject-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .subject-link {
+            display: block;
+            text-align: center;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        .subject-link:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Content Section */
+        .content-section {
+            background-color: var(--light-card);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .dark-mode .content-section {
+            background-color: var(--dark-card);
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 1px solid var(--light-border);
+            color: var(--light-text);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .dark-mode .footer {
+            border-top: 1px solid var(--dark-border);
+            color: var(--dark-text);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: calc(var(--top-bar-height) + 20px) 20px 20px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .subject-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <h1 class="top-bar-title">Bose's Learning Portal</h1>
+        </div>
+        
+        <div class="top-bar-right">
+            <button class="top-bar-btn" id="topBarThemeToggle" title="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-title">Welcome to Bose's Learning Portal</h1>
+            <p class="hero-subtitle">This is a comprehensive educational platform covering advanced topics in Microelectronics & VLSI Technology, CMOS Technology & Digital VLSI Design. Explore detailed tutorials, mathematical models, and practical implementations.</p>
+        </section>
+
+        <!-- Available Subjects -->
+        <section class="content-section">
+            <h2 class="section-title"><i class="fas fa-book-open"></i> Available Subjects</h2>
+            <p>Select a subject below to explore detailed content, tutorials, and learning materials:</p>
+            
+            <div class="subjects-grid">
+                <!-- VLSI Technology Card -->
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <i class="fas fa-microchip subject-icon"></i>
+                        <h3 class="subject-title">Microelectronics & VLSI Technology</h3>
+                        <p class="subject-description">Comprehensive guide to VLSI fabrication processes with detailed mathematical models and step-by-step procedures</p>
+                    </div>
+                    <div class="subject-content">
+                        <a href="vlsitechnology.html" class="subject-link">
+                            <i class="fas fa-external-link-alt"></i> Open Subject
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coming Soon Cards -->
+                <div class="subject-card">
+                    <div class="subject-header" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);">
+                        <i class="fas fa-cogs subject-icon"></i>
+                        <h3 class="subject-title">CMOS Technology & Digital VLSI Design</h3>
+                        <p class="subject-description">Deep dive into Complementary Metal-Oxide-Semiconductor technology, design principles, and fabrication processes</p>
+                    </div>
+                    <div class="subject-content">
+                        <div class="subject-link" style="background-color: #9b59b6; opacity: 0.7; cursor: not-allowed;">
+                            <i class="fas fa-lock"></i> Coming Soon
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Comprehensive Educational Resource | Created by Nilotpal Bose</p>
+            <p>© 2026 Bose's Learning Portal | For Educational Purposes</p>
+        </footer>
+    </main>
+
+    <script>
+        // Theme Toggle Functionality
+        const topBarThemeToggle = document.getElementById('topBarThemeToggle');
+        const topBarThemeIcon = topBarThemeToggle.querySelector('i');
+        
+        // Function to apply theme from localStorage
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                topBarThemeIcon.className = 'fas fa-sun';
+                topBarThemeToggle.title = 'Toggle Light Mode';
+            } else {
+                document.body.classList.remove('dark-mode');
+                topBarThemeIcon.className = 'fas fa-moon';
+                topBarThemeToggle.title = 'Toggle Dark Mode';
+            }
+        }
+        
+        // Theme toggle click handler
+        topBarThemeToggle.addEventListener('click', () => {
+            const isDarkMode = document.body.classList.toggle('dark-mode');
+            
+            if (isDarkMode) {
+                topBarThemeIcon.className = 'fas fa-sun';
+                topBarThemeToggle.title = 'Toggle Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                topBarThemeIcon.className = 'fas fa-moon';
+                topBarThemeToggle.title = 'Toggle Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Initialize theme on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            applySavedTheme();
+        });
+    </script>
+</body>
+</html>
