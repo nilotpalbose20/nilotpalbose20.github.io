@@ -1,0 +1,2170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prabhakar - Solar Powered Exploration Rover</title>
+    <meta name="description" content="Prabhakar is a cutting-edge solar-powered rover designed to autonomously explore and monitor remote environments while collecting valuable scientific data.">
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-saffron: #FF9933;
+            --light-saffron: #FFB366;
+            --dark-saffron: #E68A00;
+            --primary-green: #138808;
+            --light-green: #4CAF50;
+            --dark-green: #0A5C00;
+            --accent-green: #81c784;
+            --text-dark: #333;
+            --text-light: #f5f5f5;
+            --background-light: #f9f9f9;
+            --card-bg: #ffffff;
+            --gradient: linear-gradient(135deg, var(--primary-saffron), var(--primary-green));
+            --header-gradient: linear-gradient(135deg, var(--primary-saffron), var(--primary-green));
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        /* Dark Mode Variables */
+        .dark-mode {
+            --primary-saffron: #FF9933;
+            --light-saffron: #FFB366;
+            --dark-saffron: #E68A00;
+            --primary-green: #138808;
+            --light-green: #4CAF50;
+            --dark-green: #0A5C00;
+            --accent-green: #81c784;
+            --text-dark: #f5f5f5;
+            --text-light: #f5f5f5;
+            --background-light: #121212;
+            --card-bg: #1e1e1e;
+            --gradient: linear-gradient(135deg, var(--primary-saffron), var(--primary-green));
+            --header-gradient: linear-gradient(135deg, var(--primary-saffron), var(--primary-green));
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .header-top {
+            background: var(--header-gradient);
+            padding: 1rem 0;
+            transition: var(--transition);
+            transform: translateY(0);
+        }
+        
+        header.scrolled .header-top {
+            transform: translateY(-100%);
+        }
+        
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, var(--primary-saffron), var(--primary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+        
+        .logo-img:hover {
+            transform: rotate(360deg) scale(1.05);
+        }
+        
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #ffffff, #e8f5e9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        .logo-subtitle {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #e8f5e9;
+            margin-top: -5px;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header-top-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .header-bottom {
+            background: linear-gradient(135deg, var(--dark-saffron), var(--dark-green));
+            padding: 0.8rem 0;
+            transition: var(--transition);
+        }
+        
+        header.scrolled .header-bottom {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: #e8f5e9;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-bottom: 2px solid var(--primary-saffron);
+        }
+        
+        nav ul li a:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-saffron);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        nav ul li a:hover:before {
+            width: 100%;
+        }
+        
+        /* Mobile Header */
+        .mobile-header {
+            display: none;
+            background: var(--header-gradient);
+            padding: 0.8rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .mobile-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .mobile-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .mobile-logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary-saffron), var(--primary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+        
+        .mobile-logo-img:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+        
+        .mobile-logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .mobile-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mobile-logo-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #ffffff, #e8f5e9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        
+        .mobile-logo-subtitle {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #e8f5e9;
+            letter-spacing: 0.8px;
+            line-height: 1.2;
+            text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .mobile-header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .mobile-nav-container {
+            background: linear-gradient(135deg, var(--dark-saffron), var(--dark-green));
+            padding: 0.8rem 0;
+        }
+        
+        /* Mobile Navigation Styles */
+        .mobile-menu-toggle, .sign-in, .theme-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-saffron);
+            border: 2px solid white;
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 8px;
+            gap: 4px;
+            transition: var(--transition);
+            color: white;
+        }
+
+        .mobile-menu-toggle:hover, .sign-in:hover, .theme-toggle:hover {
+            background: var(--primary-green);
+            border-color: var(--primary-saffron);
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--dark-saffron), var(--dark-green));
+            z-index: 2000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            display: block;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-nav-title {
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+        }
+
+        .close-mobile-nav {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-mobile-nav:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .mobile-nav-links li a {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+        }
+
+        .mobile-nav-links li a.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--primary-saffron);
+        }
+
+        .mobile-nav-links li a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--primary-saffron);
+            transform: translateX(10px);
+        }
+
+        .mobile-nav-links li a i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Hide regular nav on mobile, show mobile header */
+        @media (max-width: 768px) {
+            .mobile-header {
+                display: block;
+            }
+            
+            header {
+                display: none;
+            }
+        }
+
+        /* Animation for mobile nav */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+     
+        /* Hero Section */
+        .hero {
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-light);
+            text-align: center;
+            padding: 10rem 0;
+            position: relative;
+            overflow: hidden;
+            margin-top: 140px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                margin-top: 60px;
+                padding: 7rem 0;
+            }
+        }
+        
+        #heroVideo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Add overlay for better text readability */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.5s ease;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 2s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(135deg, var(--dark-saffron), var(--dark-green));
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover:after {
+            animation: ripple 1s ease-out;
+        }
+        
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+        
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: linear-gradient(135deg, var(--dark-saffron), var(--dark-green));
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--primary-green);
+            position: relative;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: var(--gradient);
+            margin: 15px auto;
+            border-radius: 3px;
+        }
+        
+        /* About Rover Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .rover-image {
+            background: var(--gradient);
+            height: 360px;
+            width: 480px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 8rem;
+            box-shadow: var(--shadow);
+            border: 3px solid var(--primary-green);
+            transition: transform 0.5s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .rover-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .about-text h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            font-size: 1.8rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .report-download {
+            margin-top: 2rem;
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 5px solid var(--primary-saffron);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+        
+        /* Mission Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-green);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--card-bg);
+            border: 4px solid var(--primary-green);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .timeline-item:hover::after {
+            background-color: var(--primary-saffron);
+            transform: scale(1.2);
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -10px;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--card-bg);
+            border-radius: 6px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-date i {
+            margin-right: 8px;
+        }
+        
+        /* Team Section */
+        .dark-mode .team {
+            background-color: #1a1a1a;
+        }
+        
+        .team-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+        
+        .team-member {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            text-align: left;
+        }
+        
+        .member-img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .member-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            border: 3px solid var(--primary-green);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.5s ease;
+            overflow: hidden;
+        }
+        
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-photo:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+        
+        .team-member .member-info {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-green);
+            font-size: 1.4rem;
+        }
+        
+        .member-role {
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .member-details {
+            margin: 1rem 0;
+            text-align: left;
+        }
+        
+        .member-details p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .member-details i {
+            margin-right: 10px;
+            color: var(--primary-green);
+            width: 20px;
+        }
+               
+        .cv-download {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 10px 20px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            text-align: center;
+            width: 150px;
+        }
+        
+        .cv-download:hover {
+            background: linear-gradient(135deg, var(--dark-saffron), var(--dark-green));
+            transform: translateY(-2px);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--dark-saffron), var(--dark-green));
+            transform: translateY(-3px) scale(1.1);
+        }
+        
+        /* Technology Section */
+        .tech-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        
+        .tech-tab {
+            padding: 12px 24px;
+            background: var(--card-bg);
+            border: 2px solid var(--primary-green);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .tech-tab.active {
+            background: var(--gradient);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .tech-tab:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tech-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tech-content.active {
+            display: block;
+        }
+        
+        .tech-detail {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .tech-detail h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            font-size: 1.6rem;
+        }
+        
+        .tech-detail ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-detail li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        
+        .tech-detail li:before {
+            content: '▸';
+            color: var(--primary-saffron);
+            position: absolute;
+            left: -1rem;
+        }
+        
+        /* Control & Measurement Section */
+        .dark-mode .rover-control {
+            background-color: #1a1a1a;
+        }
+        
+        .control-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .control-content p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .control-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .control-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .control-btn:hover {
+            background: linear-gradient(135deg, var(--dark-saffron), var(--dark-green));
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Media Section */
+        .dark-mode .media {
+            background-color: #1a1a1a;
+        }
+        
+        .media-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .media-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .media-btn:hover {
+            background: linear-gradient(135deg, var(--dark-saffron), var(--dark-green));
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Research Papers Section */
+        .papers-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+        
+        .paper-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary-saffron);
+            width: 100%;
+        }
+        
+        .paper-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .paper-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+            font-size: 1.3rem;
+        }
+        
+        .paper-meta {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .paper-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .paper-link:hover {
+            color: var(--primary-saffron);
+        }
+        
+        /* Institute & University Sections */
+        .institute-info, .university-info {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+        }
+        
+        .institute-logo, .university-logo {
+            background: var(--gradient);
+            height: 200px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border: 3px solid var(--primary-green);
+            font-size: 4rem;
+            transition: transform 0.5s ease;
+            overflow: hidden;
+        }
+        
+        .institute-logo img, .university-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .institute-logo:hover, .university-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .institute-details h3, .university-details h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            font-size: 1.6rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--gradient);
+            color: var(--text-light);
+            padding: 4rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 12px;
+            font-size: 1.4rem;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-saffron);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-saffron);
+            transform: translateX(5px);
+        }
+        
+        .blog-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1.5rem;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .blog-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .map-container {
+            margin-top: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 1;
+            }
+            20% {
+                transform: scale(25, 25);
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(40, 40);
+            }
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content, .institute-info, .university-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-member {
+                grid-template-columns: 1fr;
+            }
+            
+            .member-img {
+                padding: 2rem 2rem 0;
+            }
+            
+            .member-photo {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .rover-image {
+                height: 300px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0;
+            }
+            
+            .control-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-header-content {
+                flex-direction: row;
+                text-align: left;
+                gap: 1rem;
+            }
+            
+            .mobile-header-right {
+                justify-content: flex-end;
+            }
+            
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .logo-container {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 7rem 0;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+            
+            .feature-card, .team-member, .paper-card {
+                padding: 1.5rem;
+            }
+            
+            .institute-info, .university-info {
+                padding: 2rem;
+            }
+            
+            .logo-title {
+                font-size: 1.8rem;
+            }
+            
+            .mobile-logo-title {
+                font-size: 1.3rem;
+            }
+            
+            .mobile-logo-subtitle {
+                font-size: 0.6rem;
+            }
+            
+            .logo-img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-logo-container {
+                gap: 8px;
+            }
+            
+            .mobile-logo-img {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .mobile-logo-title {
+                font-size: 1.1rem;
+            }
+            
+            .mobile-logo-subtitle {
+                font-size: 0.5rem;
+            }
+            
+            .mobile-header-right {
+                gap: 0.5rem;
+            }
+            
+            .theme-toggle, .sign-in {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .mobile-menu-toggle {
+                width: 35px;
+                height: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Desktop Header -->
+    <header id="desktopHeader">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="logo-container">
+                        <div class="logo-img">
+                            <img src="logo.png" alt="Prabhakar Rover Logo">
+                        </div>
+                        <div class="logo-text">
+                            <h1 class="logo-title">PRABHAKAR</h1>
+                            <div class="logo-subtitle">SOLAR EXPLORATION ROVER</div>
+                        </div>
+                    </div>
+                    <div class="header-top-right">
+                        <div class="theme-toggle" id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="container">
+                <div class="nav-container">
+                    <nav>
+                        <ul>
+                            <li><a href="#about" class="nav-link">About</a></li>
+                            <li><a href="#timeline" class="nav-link">Timeline</a></li>
+                            <li><a href="#technology" class="nav-link">Technology</a></li>
+                            <li><a href="#team" class="nav-link">Team</a></li>
+                            <li><a href="#media" class="nav-link">Media</a></li>
+                            <li><a href="#control-measurement" class="nav-link">Control</a></li>
+                            <!-- <li><a href="#research" class="nav-link">Papers</a></li> -->
+                            <li><a href="#institute" class="nav-link">Institute</a></li>
+                            <li><a href="#university" class="nav-link">University</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <div class="container">
+            <div class="mobile-header-content">
+                <div class="mobile-logo-container">
+                    <div class="mobile-logo-img">
+                        <img src="logo.png" alt="Prabhakar Rover Logo">
+                    </div>
+                    <div class="mobile-logo-text">
+                        <h1 class="mobile-logo-title">PRABHAKAR</h1>
+                        <div class="mobile-logo-subtitle">SOLAR EXPLORATION ROVER</div>
+                    </div>
+                </div>
+                <div class="mobile-header-right">
+                    <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="theme-toggle" id="mobileThemeToggle">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-nav-title">Navigation Menu</div>
+            <button class="close-mobile-nav" id="closeMobileNav">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#about" class="mobile-nav-link">
+                <i class="fas fa-info-circle"></i>
+                About
+            </a></li>
+            <li><a href="#timeline" class="mobile-nav-link">
+                <i class="fas fa-history"></i>
+                Timeline
+            </a></li>
+            <li><a href="#technology" class="mobile-nav-link">
+                <i class="fas fa-microchip"></i>
+                Technology
+            </a></li>
+            <li><a href="#team" class="mobile-nav-link">
+                <i class="fas fa-users"></i>
+                Team
+            </a></li>
+            <li><a href="#media" class="mobile-nav-link">
+                <i class="fas fa-photo-video"></i>
+                Media
+            </a></li>
+            <li><a href="#control-measurement" class="mobile-nav-link">
+                <i class="fas fa-gamepad"></i>
+                Control
+            </a></li>
+            <!-- <li><a href="#research" class="mobile-nav-link">
+                <i class="fas fa-file-alt"></i>
+                Papers
+            </a></li> -->
+            <li><a href="#institute" class="mobile-nav-link">
+                <i class="fas fa-university"></i>
+                Institute
+            </a></li>
+            <li><a href="#university" class="mobile-nav-link">
+                <i class="fas fa-graduation-cap"></i>
+                University
+            </a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video autoplay muted loop playsinline id="heroVideo">
+            <source src="webvideo.mp4" type="video/mp4">
+        </video>
+        <div class="container">
+            <h2>Prabhakar: Eco-Friendly Smart Rover with Integrated Solar Tracking and Soil Humidity Monitoring</h2>
+            <p>An innovative web-controlled vehicle designed for soil humidity monitoring, distance detection, and remote operation using sustainable solar technology.</p>
+            <a href="#about" class="btn">Explore the Project</a>
+        </div>
+    </section>
+
+    <main id="main-content">
+        <!-- About Prabhakar Section -->
+        <section id="about" class="about-rover">
+            <div class="container">
+                <h2 class="section-title">About Prabhakar</h2>
+                <div class="about-content">
+                    <div class="rover-image">
+                        <img src="prabhakarpic.jpg" alt="Prabhakar Rover">
+                    </div>
+                    <div class="about-text">
+                        <h3>Intelligent Solar-Powered Rover for Environmental Monitoring</h3>
+                        <p>Prabhakar is a compact, web‑controlled, solar‑powered rover that integrates dual‑axis solar tracking, real‑time soil moisture sensing, and ultrasonic obstacle detection. Built around an Arduino Uno and an ESP32, it continuously harvests solar energy to charge onboard Li‑ion batteries while monitoring ground humidity and obstacles. All sensor data and motor commands are exchanged via Google Firebase, enabling remote operation from any modern web browser.</p>
+                        <p>The rover employs four light‑dependent resistors (LDRs) and two SG90 servo motors to keep its 6 V solar panels aligned with the sun, maximising energy capture. A capacitive soil‑moisture probe, deployed by a dedicated servo, measures water content without electrode corrosion. An HC‑SR04 ultrasonic sensor, mounted on a panning servo, provides distance readings for obstacle avoidance. The entire chassis, including the tracker turret and wheel assemblies, was 3D‑printed from PLA after extensive modelling and motion analysis in Autodesk Fusion 360.</p>
+                        <p>Prabhakar can be steered manually, triggered to take a moisture sample, and monitored for battery voltage, solar voltage, and obstacle distance—all from an intuitive web dashboard. The project demonstrates a cost‑effective fusion of renewable energy, IoT, and mobile robotics suitable for precision agriculture, environmental monitoring, and STEM education.</p>
+                    </div>
+                </div>
+                
+                <div class="report-download">
+                    <h3>Project Report</h3>
+                    <p>Download the comprehensive project report detailing the design, implementation, and findings of the Prabhakar rover project.</p>
+                    <a href="#" class="btn" style="margin-top: 1rem;">
+                        <i class="fas fa-download"></i>
+                        Download Dissertation (PDF)
+                    </a>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-solar-panel"></i>
+                        <h3>Solar Powered</h3>
+                        <p>Dual‑axis LDR‑based solar tracker with two 6 V panels, TP4056 charger, and 3.7 V Li‑ion batteries for extended field operation.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-microchip"></i>
+                        <h3>Obstacle Detection</h3>
+                        <p>HC‑SR04 ultrasonic sensor with panning servo for distance measurement and real‑time obstacle avoidance during navigation.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-tint"></i>
+                        <h3>Soil Moisture Monitoring</h3>
+                        <p>Capacitive soil moisture sensor V2.0 deployed by a servo, providing corrosion‑free humidity readings sent to the cloud.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Timeline Section -->
+        <section id="timeline" class="timeline-section">
+            <div class="container">
+                <h2 class="section-title">Mission Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <div class="timeline-date">
+                                <i class="far fa-calendar-alt"></i>
+                                August 2025
+                            </div>
+                            <h3>Project Inception</h3>
+                            <p>Literature survey on solar tracking and IoT‑enabled rovers, definition of system requirements, and initial block diagram design.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <div class="timeline-date">
+                                <i class="far fa-calendar-alt"></i>
+                                October 2025
+                            </div>
+                            <h3>3D Modelling & Component Selection</h3>
+                            <p>Complete digital assembly in Autodesk Fusion 360, section analysis, motion studies, and procurement of all electronic components.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <div class="timeline-date">
+                                <i class="far fa-calendar-alt"></i>
+                                December 2025
+                            </div>
+                            <h3>Prototype Assembly</h3>
+                            <p>3D printing of chassis and mounts, integration of the power management chain (buck/boost converters, TP4056 charger) and motor drivers.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <div class="timeline-date">
+                                <i class="far fa-calendar-alt"></i>
+                                February 2026
+                            </div>
+                            <h3>Sensor & Dashboard Integration</h3>
+                            <p>Deployment of capacitive soil‑moisture sensor and ultrasonic obstacle detection. Development of the Firebase‑connected web dashboard and ESP32 firmware.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <div class="timeline-date">
+                                <i class="far fa-calendar-alt"></i>
+                                April 2026
+                            </div>
+                            <h3>Field Testing & Calibration</h3>
+                            <p>Outdoor testing of dual‑axis solar tracking, soil moisture accuracy, obstacle avoidance, and end‑to‑end remote control under real conditions.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <div class="timeline-date">
+                                <i class="far fa-calendar-alt"></i>
+                                Future Plans
+                            </div>
+                            <h3>Autonomous Navigation & AI Vision</h3>
+                            <p>Integration of a camera module, on‑device machine learning for autonomous path planning, and multi‑rover swarm coordination.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Section -->
+        <section id="technology" class="technology">
+            <div class="container">
+                <h2 class="section-title">Technology</h2>
+                <div class="tech-tabs">
+                    <div class="tech-tab active" data-tab="solar">Solar Tracking</div>
+                    <div class="tech-tab" data-tab="navigation">Motor Control</div>
+                    <div class="tech-tab" data-tab="sensors">Environmental Sensors</div>
+                    <div class="tech-tab" data-tab="communication">Wireless Control</div>
+                </div>
+                
+                <div class="tech-content active" id="solar-content">
+                    <div class="tech-detail">
+                        <h3>Dual‑Axis LDR‑Based Solar Tracker</h3>
+                        <p>Four light‑dependent resistors (GL5528) arranged in a cruciform pattern sense the brightest sky region. An Arduino Uno reads the voltage differences and drives two SG90 servos—one standard for elevation (45°–135°) and one modified for continuous azimuth rotation—to keep the two 6 V, 500 mA solar panels perpendicular to the sun.</p>
+                        <ul>
+                            <li>Differential shadow‑casting principle immune to uniform cloud cover</li>
+                            <li>Elevation servo constrained to ±45° from horizontal</li>
+                            <li>Continuous‑rotation servo for unlimited azimuth travel</li>
+                            <li>Automatic return‑to‑horizontal during darkness</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tech-content" id="navigation-content">
+                    <div class="tech-detail">
+                        <h3>Differential Drive with N20 Motors</h3>
+                        <p>Four N20 micro gear motors (1:50 ratio) are driven by two TB6612FNG dual H‑bridge drivers. The ESP32 provides 5 kHz PWM signals for smooth speed control. Direction and speed commands are mapped to the motors via differential steering, enabling forward, backward, left/right turns, and stop.</p>
+                        <ul>
+                            <li>3.7 V direct battery supply for motors, 5 V for logic</li>
+                            <li>TB6612FNG supports 1.2 A continuous per channel with thermal protection</li>
+                            <li>Individual PWM and direction pins for each motor</li>
+                            <li>Coast and brake modes for precise stopping</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tech-content" id="sensors-content">
+                    <div class="tech-detail">
+                        <h3>Capacitive Soil Moisture & Ultrasonic Obstacle Detection</h3>
+                        <p>The rover carries a capacitive soil moisture sensor (V2.0) that outputs an analog voltage proportional to water content; its corrosive‑resistant design ensures long‑term reliability. A dedicated SG90 servo lowers the probe into the soil on command. An HC‑SR04 ultrasonic module, mounted on a second panning servo, measures distances from 2 cm to 4 m and helps avoid obstacles.</p>
+                        <ul>
+                            <li>Capacitive sensing—no exposed electrodes</li>
+                            <li>Ten‑sample averaging for stable moisture readings</li>
+                            <li>40 kHz ultrasonic pulses with 15° detection cone</li>
+                            <li>Servo sweep for side‑obstacle scanning</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tech-content" id="communication-content">
+                    <div class="tech-detail">
+                        <h3>ESP32 & Firebase Realtime Database</h3>
+                        <p>An ESP32 microcontroller connects to the local Wi‑Fi network and uses the Google Firebase Realtime Database to receive commands and upload telemetry. The web dashboard (hosted on Firebase) writes movement directions and speed values to the database, while the ESP32 publishes battery voltage, solar voltage, soil moisture percentage, and distance data every few seconds.</p>
+                        <ul>
+                            <li>Asynchronous command polling with 50 ms responsiveness</li>
+                            <li>Anonymous Firebase authentication for the device</li>
+                            <li>Real‑time update of all sensor values on the dashboard</li>
+                            <li>Wi‑Fi range up to 50 m; future LoRa/4G extension planned</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="team">
+            <div class="container">
+                <h2 class="section-title">Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-img">
+                            <div class="member-photo">
+                                <img src="nbpic.jpeg" alt="Nilotpal Bose">
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3>Nilotpal Bose</h3>
+                            <div class="member-role">Contribution: 3D Modeling, Circuit Design, Arduino Programming and Web Development (Front-end)</div>
+                            <div class="member-details">
+                                <p><i class="fas fa-graduation-cap"></i> B.Tech. (Hons.) in Electronics and Communication Engineering</p>
+                            </div>                            
+                            <div class="social-links">
+                                <a href="mailto:nilotpalbose20@gmail.com"><i class="fas fa-envelope"></i></a>
+                                <a href="https://www.linkedin.com/in/nilotpal-bose-69891b29b"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/nilotpalbose20"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-img">
+                            <div class="member-photo">
+                                <img src="sppic.jpeg" alt="Subhashish Paul">
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3>Subhashish Paul</h3>
+                            <div class="member-role">Contribution: Circuit Design, ESP32 Programming and Web Development (Back-end)</div>
+                            <div class="member-details">
+                                <p><i class="fas fa-graduation-cap"></i> B.Tech. in Electronics and Communication Engineering</p>
+                            </div>
+                            <div class="social-links">
+                                <a href="mailto:subhashishpaul846@gmail.com"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-img">
+                            <div class="member-photo">
+                                <img src="mgpic.jpeg" alt="Mahashweta Ghosh">
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3>Mahashweta Ghosh</h3>
+                            <div class="member-role">Contribution: Project Planning and Guiding</div>
+                            <div class="member-details">
+                                <p><i class="fas fa-graduation-cap"></i> Ph.D. Scholar (Institute of Radio Physics and Electronics, University of Calcutta)</p>
+                            </div>
+                            <div class="social-links">
+                                <a href="mailto:mgrpe_rs@caluniv.ac.in"><i class="fas fa-envelope"></i></a>
+                                <a href="https://www.linkedin.com/in/mahasweta-ghosh"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://scholar.google.com/citations?user=3NEsBGEAAAAJ&hl=en"><i class="ai ai-google-scholar"></i></a>
+                                <a href="https://www.researchgate.net/profile/Mahasweta-Ghosh"><i class="fab fa-researchgate"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-img">
+                            <div class="member-photo">
+                                <img src="sbmpic.jpeg" alt="Dr. Soma Barman">
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3>Dr. Soma Barman (Mandal)</h3>
+                            <div class="member-role">Project Guide</div>
+                            <div class="member-details">
+                                <p><i class="fas fa-graduation-cap"></i> Associate Professor (Institute of Radio Physics, University of Calcutta)</p>
+                            </div>
+                            <div class="social-links">
+                                <a href="mailto:sbrpe@caluniv.ac.in"><i class="fas fa-envelope"></i></a>
+                                <a href="https://www.linkedin.com/in/dr-soma-barman-mandal-7a350317"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://scholar.google.com/citations?user=of2_-JsAAAAJ&hl=en"><i class="ai ai-google-scholar"></i></a>
+                                <a href="https://www.researchgate.net/profile/S-Barman"><i class="fab fa-researchgate"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Media Section -->
+        <section id="media" class="media">
+            <div class="container">
+                <h2 class="section-title">Media & Documentation</h2>
+                <div class="media-intro">
+                    <p>Explore all the photos and videos of the design and performance of Prabhakar</p>
+                </div>
+                
+                <div style="text-align: center;">
+                    <a href="https://example-media-gallery.com" class="btn media-btn" target="_blank">
+                        <i class="fas fa-images"></i>
+                        <span>View All Media</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Control & Measurement Section -->
+        <section id="control-measurement" class="rover-control">
+            <div class="container">
+                <h2 class="section-title">Control & Measurement</h2>
+                <div class="control-content">
+                    <p>Access the remote control interface to operate Prabhakar in real-time. This feature allows authorized users to control the rover's movement, camera systems, and data collection processes from anywhere with an internet connection. You can also view real-time measurement data from the rover's sensors.</p>
+                    <div class="control-buttons">
+                        <a href="https://prabhakar-65e5b.web.app/index.html" class="control-btn" target="_blank">
+                            <i class="fas fa-gamepad"></i>
+                            Access Rover Control Panel
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Papers Section (commented out in original, remains unchanged) -->
+
+        <!-- Institute Section -->
+        <section id="institute" class="institute">
+            <div class="container">
+                <h2 class="section-title">Our Institute</h2>
+                <div class="institute-info">
+                    <div class="institute-logo">
+                        <img src="irpe.jpg" alt="Institute of Radio Physics and Electronics">
+                    </div>
+                    <div class="institute-details">
+                        <h3>Institute of Radio Physics and Electronics</h3>
+                        <p>The Institute of Radio Physics and Electronics (IRPE) is a premier research institute under the University of Calcutta, dedicated to advancing knowledge in radio physics, electronics, and communication technologies. With state-of-the-art laboratories and a distinguished faculty, IRPE focuses on cutting-edge research in electromagnetic theory, microwave engineering, semiconductor devices, and advanced communication systems.</p>
+                        <p>Our mission is to foster innovation in electronic and communication technologies while maintaining the highest standards of academic excellence. The Prabhakar project represents our commitment to applying advanced electronics and robotics to solve real-world environmental challenges.</p>
+                        <a href="https://www.irpe.in" class="btn" style="margin-top: 1.5rem;">Visit Institute Website</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- University Section -->
+        <section id="university" class="university">
+            <div class="container">
+                <h2 class="section-title">Our University</h2>
+                <div class="university-info">
+                    <div class="university-logo">
+                        <img src="cu.jpg" alt="University of Calcutta">
+                    </div>
+                    <div class="university-details">
+                        <h3>University of Calcutta</h3>
+                        <p>The University of Calcutta, established in 1857, is a premier public state university located in Kolkata, West Bengal, India. It was the first institution in Asia to be established as a multidisciplinary and secular Western-style university.</p>
+                        <p>With its rich heritage and commitment to excellence, the University of Calcutta has been recognized as a "University with Potential for Excellence" by the University Grants Commission (UGC). It has consistently ranked among the top universities in India and has produced numerous distinguished alumni, including Nobel laureates.</p>
+                        <p>The university offers a wide range of undergraduate, postgraduate, and doctoral programs across various disciplines, fostering an environment of academic rigor and innovation. The Institute of Radio Physics and Electronics operates under the Faculty of Technology at the University of Calcutta, continuing its tradition of excellence in education and research.</p>
+                        <a href="https://www.caluniv.ac.in" class="btn" style="margin-top: 1.5rem;">Visit University Website</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Prabhakar</h3>
+                    <p>Prabhakar is a solar-powered autonomous rover designed for environmental monitoring and exploration in remote locations.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="#team"><i class="fas fa-chevron-right"></i> Team</a></li>
+                        <li><a href="#media"><i class="fas fa-chevron-right"></i> Media</a></li>
+                        <li><a href="#control-measurement"><i class="fas fa-chevron-right"></i> Control & Measurement</a></li>
+                        <li><a href="#research"><i class="fas fa-chevron-right"></i> Papers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="https://maps.app.goo.gl/pouV4jXaEShrn4358">
+                                <i class="fas fa-map-marker-alt"></i> 
+                                Institute of Radio Physics and Electronics, University of Calcutta (92, Acharya Prafulla Chandra Road, Kolkata - 700009, India)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+913323509115">
+                                <i class="fas fa-phone"></i> 
+                                +91-33-2350-9115
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+913323509115">
+                                <i class="fas fa-phone"></i> 
+                                +91-33-2350-9116
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Prabhakar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tech Tabs
+        const techTabs = document.querySelectorAll('.tech-tab');
+        const techContents = document.querySelectorAll('.tech-content');
+        
+        techTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Remove active class from all tabs and contents
+                techTabs.forEach(t => t.classList.remove('active'));
+                techContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to current tab and content
+                this.classList.add('active');
+                document.getElementById(`${tabId}-content`).classList.add('active');
+            });
+        });
+        
+        // Mobile Navigation
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMobileNav = document.getElementById('closeMobileNav');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Open mobile navigation
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileNav.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        }
+
+        // Close mobile navigation
+        if (closeMobileNav) {
+            closeMobileNav.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+        }
+
+        // Close mobile nav when clicking on links
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+                
+                // Smooth scroll to section
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        setTimeout(() => {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }, 300);
+                    }
+                }
+            });
+        });
+
+        // Close mobile nav when clicking outside
+        mobileNav.addEventListener('click', function(e) {
+            if (e.target === mobileNav) {
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Smooth scrolling for navigation links (for regular navigation)
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+            
+            // Sticky header behavior
+            const header = document.getElementById('desktopHeader');
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Dark mode toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+        const themeIcons = document.querySelectorAll('#themeToggle i, #mobileThemeToggle i');
+        
+        // Check for saved theme preference or respect OS preference
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const currentTheme = localStorage.getItem('theme');
+        
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark-mode');
+            themeIcons.forEach(icon => {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            });
+        }
+        
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcons.forEach(icon => {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                });
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcons.forEach(icon => {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                });
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        
+        themeToggle.addEventListener('click', toggleDarkMode);
+        mobileThemeToggle.addEventListener('click', toggleDarkMode);
+        
+        // Active section highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinksAll = document.querySelectorAll('.nav-link, .mobile-nav-link');
+        
+        function highlightNavLink() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinksAll.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', highlightNavLink);
+        
+        // Initialize with first section active
+        highlightNavLink();
+    });
+</script>
+</body>
+</html>
