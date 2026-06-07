@@ -493,7 +493,7 @@
         <div class="logo-area">
             <div class="logo">OMTube</div>
             <div class="tagline">
-                🧠 Concentrated, ad‑free environment for students & researchers<br>
+                🧠 Concentrated, ad‑free environment for users<br>
                 <span class="support-badge">🎥 Single video · 📋 Full YouTube playlists — works with any link</span>
             </div>
         </div>
@@ -509,7 +509,7 @@
 
         <div class="player-wrapper" id="playerWrapper">
             <div class="player-placeholder" id="playerPlaceholder">
-                <span class="play-icon">🎓</span>
+                <span class="play-icon">🎬</span>
                 <span>Paste a YouTube video or playlist — autoplay enabled<br>⚡ Embedded restrictions? Smart skip protects your flow</span>
             </div>
             <div id="youtubePlayer"></div>
@@ -824,7 +824,7 @@
         else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) applyTheme(true);
         themeToggle.addEventListener('click', () => { const isCurrentlyLight = document.body.classList.contains('light-mode'); applyTheme(!isCurrentlyLight); showToast(isCurrentlyLight ? '🌙 Dark mode activated' : '☀️ Light mode activated'); });
         setTimeout(()=> urlInput.focus(), 200);
-        showToast('✨ OMTube ready · saffron-green focus · playlists & videos embed-safe');
+        showToast('✨ Welcome to OMTube!');
     })();
 </script>
 </body>
