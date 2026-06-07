@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>OMTube — Ad-Free Study Player | YouTube Playlist & Video</title>
+    <title>OMTube — Ad-Free YouTube Player | YouTube Playlist & Video</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23FF9933'/%3E%3Cstop offset='100%25' stop-color='%23138808'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='url(%23g)' stroke='white' stroke-width='2'/%3E%3Cpath d='M40 35 L65 50 L40 65 Z' fill='white' opacity='0.9'/%3E%3C/svg%3E">
     <style>
         * {
             margin: 0;
@@ -13,7 +14,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* SAFFRON (#FF9933) & GREEN (#138808) THEME — Dynamic Variables */
+        /* SAFFRON (#FF9933) & GREEN (#138808) THEME — Enhanced with animations */
         :root {
             /* Dark mode (default) */
             --bg: #0a0c0f;
@@ -26,12 +27,13 @@
             --accent-green: #138808;
             --accent-saffron-light: #FFB85C;
             --accent-green-light: #2CA82C;
-            --glow-saffron: rgba(255, 153, 51, 0.4);
-            --glow-green: rgba(19, 136, 8, 0.45);
+            --glow-saffron: rgba(255, 153, 51, 0.5);
+            --glow-green: rgba(19, 136, 8, 0.5);
             --gradient-primary: linear-gradient(135deg, var(--accent-saffron), var(--accent-green));
             --gradient-bg-shine: linear-gradient(145deg, rgba(255,153,51,0.15), rgba(19,136,8,0.1));
             --card-backdrop-blur: 32px;
             --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.5);
+            --transition-smooth: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
 
         body.light-mode {
@@ -60,7 +62,7 @@
             transition: background 0.3s ease, color 0.2s;
         }
 
-        /* animated floating orbs - saffron & green theme */
+        /* animated floating orbs - enhanced movement */
         .bg-orbs {
             position: fixed;
             inset: 0;
@@ -83,8 +85,8 @@
         .bg-orb:nth-child(4) { width: 350px; height: 350px; background: #2E7D32; top: 20%; left: 55%; animation-duration: 28s; }
 
         @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, -50px) scale(1.15); }
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            100% { transform: translate(40px, -60px) scale(1.2) rotate(5deg); }
         }
 
         .grid-overlay {
@@ -93,7 +95,7 @@
             pointer-events: none;
             opacity: 0.03;
             background-image: linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px);
+                            linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px);
             background-size: 45px 45px;
             mask-image: radial-gradient(ellipse at center, black 50%, transparent 80%);
         }
@@ -110,6 +112,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            animation: slideUpFade 0.5s ease-out;
         }
 
         /* header area with theme toggle */
@@ -172,11 +175,12 @@
             align-items: center;
             gap: 10px;
             color: var(--text);
-            transition: 0.2s;
+            transition: var(--transition-smooth);
         }
         .theme-toggle:hover {
+            transform: translateY(-2px);
             background: var(--surface-hover);
-            border-color: var(--accent-saffron);
+            border-color: var(--accent-green);
         }
 
         .glass-card {
@@ -186,7 +190,7 @@
             border-radius: 28px;
             padding: 26px;
             box-shadow: var(--shadow-soft);
-            transition: all 0.25s;
+            transition: var(--transition-smooth);
         }
 
         .input-wrapper {
@@ -212,9 +216,9 @@
             border-radius: 24px;
             color: var(--text);
             font-size: 1rem;
-            font-family: var(--font);
+            font-family: inherit;
             outline: none;
-            transition: 0.2s;
+            transition: var(--transition-smooth);
         }
         body.light-mode .url-input {
             background: rgba(0, 0, 0, 0.05);
@@ -228,21 +232,27 @@
             border-radius: 40px;
             font-weight: 700;
             cursor: pointer;
-            transition: 0.2s;
+            transition: var(--transition-smooth);
             font-family: inherit;
             border: none;
             font-size: 1rem;
         }
         .btn-go {
-            background: var(--gradient-primary);
+            background: linear-gradient(135deg, #FF9933, #138808, #FFB85C);
+            background-size: 200% auto;
             color: white;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            background-size: 150% auto;
+            animation: gradientShift 4s ease infinite;
         }
         .btn-go:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.07);
-            box-shadow: 0 6px 20px var(--glow-green);
+            transform: translateY(-3px) scale(1.02);
+            filter: brightness(1.08);
+            box-shadow: 0 8px 25px var(--glow-green);
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .btn-clear {
             background: transparent;
@@ -264,7 +274,18 @@
             background: #000;
             margin-top: 20px;
             box-shadow: 0 12px 35px rgba(0,0,0,0.5);
-            transition: all 0.2s;
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(255,153,51,0.3);
+            animation: borderGlow 4s infinite ease;
+        }
+        .player-wrapper:hover {
+            transform: scale(1.01);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+        @keyframes borderGlow {
+            0% { border-color: rgba(255,153,51,0.2); box-shadow: 0 0 0 0 rgba(255,153,51,0.2); }
+            50% { border-color: rgba(19,136,8,0.6); box-shadow: 0 0 18px 2px var(--glow-green); }
+            100% { border-color: rgba(255,153,51,0.2); box-shadow: 0 0 0 0 rgba(255,153,51,0.2); }
         }
         .player-placeholder {
             position: absolute;
@@ -314,6 +335,18 @@
             font-weight: 800;
             color: var(--accent-saffron);
             letter-spacing: 0.08em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .now-playing-label::before {
+            content: "●";
+            animation: pulse 1.2s infinite;
+            font-size: 0.8rem;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.3; text-shadow: 0 0 0 var(--accent-saffron); }
+            100% { opacity: 1; text-shadow: 0 0 6px var(--accent-saffron); }
         }
         .video-title-display {
             font-weight: 600;
@@ -370,17 +403,24 @@
             padding: 10px 12px;
             border-radius: 18px;
             cursor: pointer;
-            transition: 0.15s;
+            transition: var(--transition-smooth);
             border: 1px solid transparent;
+            animation: slideUpFade 0.3s ease backwards;
+            animation-delay: calc(0.02s * var(--order, 0));
+        }
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .queue-item:hover {
             background: var(--surface-hover);
             border-color: var(--accent-saffron);
-            transform: translateX(3px);
+            transform: translateX(6px) scale(1.01);
         }
         .queue-item.playing {
-            background: linear-gradient(95deg, rgba(255,153,51,0.12), rgba(19,136,8,0.08));
+            background: linear-gradient(95deg, rgba(255,153,51,0.2), rgba(19,136,8,0.12));
             border-left: 4px solid var(--accent-saffron);
+            box-shadow: 0 4px 12px rgba(255,153,51,0.2);
             pointer-events: none;
         }
         .q-index {
@@ -417,6 +457,10 @@
             display: block;
             animation: blink 1s infinite;
         }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
 
         .shortcuts-toggle {
             margin-top: 18px;
@@ -428,6 +472,11 @@
             font-size: 0.7rem;
             cursor: pointer;
             font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+        .shortcuts-toggle:hover {
+            border-color: var(--accent-saffron);
+            color: var(--accent-saffron);
         }
         .shortcuts-panel {
             display: grid;
